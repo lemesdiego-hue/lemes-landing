@@ -22,7 +22,7 @@
    .split("/").pop()
    .toLowerCase();
  if (Object.prototype.hasOwnProperty.call(known, seg)) {
-  location.replace("/" + seg + ".html" + location.search + location.hash);
+  location.replace("/" + seg + "/" + location.search + location.hash);
  } else {
   location.replace("/");
  }
