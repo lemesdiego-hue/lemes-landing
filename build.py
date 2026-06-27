@@ -4,10 +4,13 @@
 Gerador das landing pages otimizadas da Lemes Advogados.
 Fonte única de verdade: CSS, template e conteúdo de cada página ficam aqui.
 Rode:  python3 build.py
-Saída: trabalhista.html, civel.html, divorcio.html, inventario.html,
-       aereo.html, previdenciario.html, schema-markup.json, home-meta-tags.txt
+Saída: pasta dist/ pronta para deploy (rotas limpas em diretório):
+       dist/index.html (home), dist/<slug>/index.html (6 áreas),
+       dist/404.html, dist/sitemap.xml, dist/robots.txt, dist/CNAME, dist/.nojekyll
+Estáticos autorais (entradas, não geradas): index.html (home) e 404.html.
+Artefatos de referência na raiz: schema-markup.json, home-meta-tags.txt.
 """
-import json, pathlib
+import json, pathlib, shutil, datetime
 from string import Template
 
 OUT = pathlib.Path(__file__).resolve().parent
@@ -765,18 +768,63 @@ def render(page):
     })
     return TPL.substitute(mapping)
 
+def sitemap_xml():
+    """Gera o sitemap.xml a partir de LANDING + PRACTICES (forma com barra /slug/)."""
+    today = datetime.date.today().isoformat()
+    entries = [(f"{LANDING}/", "1.0")] + [(f"{LANDING}/{slug}/", "0.8") for slug, _ in PRACTICES]
+    urls = "\n".join(
+        "  <url>\n"
+        f"    <loc>{loc}</loc>\n"
+        f"    <lastmod>{today}</lastmod>\n"
+        "    <changefreq>monthly</changefreq>\n"
+        f"    <priority>{prio}</priority>\n"
+        "  </url>"
+        for loc, prio in entries
+    )
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"{urls}\n</urlset>\n")
+
+def robots_txt():
+    return f"User-agent: *\nAllow: /\n\nSitemap: {LANDING}/sitemap.xml\n"
+
 def main():
     warnings = []
     all_schema = {}
+
+    # ---- diretório de saída pronto para deploy (rotas limpas /slug/) ----
+    dist = OUT / "dist"
+    if dist.exists():
+        shutil.rmtree(dist)
+    dist.mkdir()
+
     for slug, page in PAGES.items():
         page["eyebrow_top"] = f"Direito {dict(PRACTICES)[slug]} · São Paulo" if slug in dict(PRACTICES) else "São Paulo"
         # avisos de tamanho
         if len(page["title"]) > 60: warnings.append(f"[TITLE>60] {slug}: {len(page['title'])}")
         if len(page["meta"]) > 155: warnings.append(f"[META>155] {slug}: {len(page['meta'])}")
-        (OUT / f"{slug}.html").write_text(render(page), encoding="utf-8")
+        page_dir = dist / slug
+        page_dir.mkdir(parents=True, exist_ok=True)
+        (page_dir / "index.html").write_text(render(page), encoding="utf-8")
         legal, faqpage = schema_for(page)
         all_schema[slug] = {"@context":"https://schema.org","@graph":[legal, faqpage]}
 
+    # ---- estáticos autorais (entradas, NÃO geradas aqui) copiados para o dist ----
+    #   index.html = home (hub)  |  404.html = fallback de rotas
+    for static_name in ("index.html", "404.html"):
+        src = OUT / static_name
+        if src.exists():
+            shutil.copy2(src, dist / static_name)
+        else:
+            warnings.append(f"[FALTANDO] estático '{static_name}' não encontrado em {OUT}")
+
+    # ---- configuração/SEO gerada (sempre em sincronia com as páginas) ----
+    (dist / "sitemap.xml").write_text(sitemap_xml(), encoding="utf-8")
+    (dist / "robots.txt").write_text(robots_txt(), encoding="utf-8")
+    (dist / "CNAME").write_text(LANDING.split("//")[-1] + "\n", encoding="utf-8")
+    (dist / ".nojekyll").write_text("", encoding="utf-8")
+
+    # ---- artefatos de referência (não servidos) ficam na raiz do projeto ----
     (OUT / "schema-markup.json").write_text(json.dumps(all_schema, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # home meta tags
@@ -794,8 +842,9 @@ def main():
         lines.append(f"H1: {page['h1']}\n")
     (OUT / "home-meta-tags.txt").write_text("\n".join(lines), encoding="utf-8")
 
-    print("Páginas geradas:", ", ".join(f"{s}.html" for s in PAGES))
-    print("Extras: schema-markup.json, home-meta-tags.txt")
+    print("Site gerado em:", dist)
+    print("Rotas:", "/  " + "  ".join(f"/{s}/" for s in PAGES))
+    print(f"Deploy: cp -R {dist}/. ~/Projects/lemes-landing/ && (cd ~/Projects/lemes-landing && git add -A && git commit && git push)")
     if warnings:
         print("AVISOS:", *warnings, sep="\n  ")
     else:
