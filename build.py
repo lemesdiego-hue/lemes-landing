@@ -238,7 +238,7 @@ def faq_html(faqs):
     return "".join(out)
 
 def footer_links():
-    return "".join(f'<a href="/{slug}">{label}</a>' for slug, label in PRACTICES)
+    return "".join(f'<a href="/{slug}/">{label}</a>' for slug, label in PRACTICES)
 
 def schema_for(page):
     legal = {
@@ -510,8 +510,8 @@ PAGES["civel"] = {
  "sit_h2":"Como podemos ajudar",
  "sit_sub":"Atuo nas principais demandas cíveis das famílias e do dia a dia. Clique para ver a página específica.",
  "cards":[
-  {"t":"Divórcio","d":"Consensual ou litigioso, no cartório ou na Justiça. Veja como funciona e quanto custa.","href":"/divorcio"},
-  {"t":"Inventário e partilha","d":"Partilha de bens após o falecimento, no cartório ou judicial. Prazos, custos e tabela OAB.","href":"/inventario"},
+  {"t":"Divórcio","d":"Consensual ou litigioso, no cartório ou na Justiça. Veja como funciona e quanto custa.","href":"/divorcio/"},
+  {"t":"Inventário e partilha","d":"Partilha de bens após o falecimento, no cartório ou judicial. Prazos, custos e tabela OAB.","href":"/inventario/"},
   {"t":"Pequenas causas","d":"Cobranças, problemas de consumo e conflitos de menor valor no Juizado Especial."},
   {"t":"Contratos e indenizações","d":"Revisão de contratos, descumprimento, danos morais e materiais."},
   {"t":"Cobranças e dívidas","d":"Negociação, defesa em cobranças indevidas e inscrição irregular em cadastros."},
@@ -523,7 +523,7 @@ PAGES["civel"] = {
   {"h2":"Pequenas causas: quando vale a pena",
    "p":["O Juizado Especial Cível resolve conflitos de até 40 salários mínimos, como cobranças indevidas, problemas com produtos e serviços e pequenos contratos. Para causas de até 20 salários mínimos, é possível entrar sem advogado, mas a orientação jurídica aumenta as chances de êxito e evita erros que atrasam o processo."]},
   {"h2":"Divórcio e inventário: as demandas mais comuns",
-   "p":["Dois dos atendimentos mais frequentes são o <strong>divórcio</strong> e o <strong>inventário</strong>. Quando há acordo entre as partes, ambos podem ser feitos em cartório, de forma mais rápida e barata. Criamos páginas específicas para explicar cada um em detalhe — veja como funciona o <a href=\"/divorcio\">divórcio</a> e o <a href=\"/inventario\">inventário</a>."]},
+   "p":["Dois dos atendimentos mais frequentes são o <strong>divórcio</strong> e o <strong>inventário</strong>. Quando há acordo entre as partes, ambos podem ser feitos em cartório, de forma mais rápida e barata. Criamos páginas específicas para explicar cada um em detalhe — veja como funciona o <a href=\"/divorcio/\">divórcio</a> e o <a href=\"/inventario/\">inventário</a>."]},
  ],
  "steps_h2":"Como começamos",
  "steps":[
@@ -751,7 +751,7 @@ def render(page):
     mapping.update({
         "title": page["title"], "meta": page["meta"], "h1": page["h1"],
         "hero_sub": page["hero_sub"], "hero_note": page["hero_note"], "eyebrow": page["eyebrow_top"],
-        "canonical": f"{LANDING}/{page['slug']}",
+        "canonical": f"{LANDING}/{page['slug']}/",
         "css": CSS, "js": JS, "zap": ZAP_SVG, "whats": WHATS, "ads_id": ADS_ID,
         "phone_display": NAP["phone_display"], "phone_tel": NAP["phone_tel"],
         "sit_eyebrow": page["sit_eyebrow"], "sit_h2": page["sit_h2"], "sit_sub": page["sit_sub"],
@@ -788,7 +788,7 @@ def main():
     lines.append(f"Meta  ({len(home_meta)}): {home_meta}")
     lines.append(f"H1 sugerido: Lemes Sociedade Individual de Advogados\n")
     for slug, page in PAGES.items():
-        lines.append(f"## /{slug} — {LANDING}/{slug}")
+        lines.append(f"## /{slug} — {LANDING}/{slug}/")
         lines.append(f"Title ({len(page['title'])}): {page['title']}")
         lines.append(f"Meta  ({len(page['meta'])}): {page['meta']}")
         lines.append(f"H1: {page['h1']}\n")

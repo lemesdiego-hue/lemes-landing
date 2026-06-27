@@ -5,32 +5,32 @@ Title (56): Lemes Advogados | Trabalhista, Cível e Previdenciário SP
 Meta  (139): Escritório de advocacia em Perdizes, São Paulo. Trabalhista, Cível, Divórcio, Inventário, Previdenciário e Aéreo. Fale agora pelo WhatsApp.
 H1 sugerido: Lemes Sociedade Individual de Advogados
 
-## /trabalhista — https://landing.lemesadvogados.com/trabalhista
+## /trabalhista — https://landing.lemesadvogados.com/trabalhista/
 Title (56): Advogado Trabalhista em SP | Cálculo de Rescisão | Lemes
 Meta  (144): Foi demitido ou tem horas extras não pagas? Calcule sua rescisão e fale com advogado trabalhista em São Paulo pelo WhatsApp. Atendimento direto.
 H1: Advogado Trabalhista em São Paulo
 
-## /civel — https://landing.lemesadvogados.com/civel
+## /civel — https://landing.lemesadvogados.com/civel/
 Title (45): Advogado Cível em São Paulo | Lemes Advogados
 Meta  (138): Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.
 H1: Advogado Cível em São Paulo
 
-## /divorcio — https://landing.lemesadvogados.com/divorcio
+## /divorcio — https://landing.lemesadvogados.com/divorcio/
 Title (56): Advogado de Divórcio em SP | Cartório e Judicial | Lemes
 Meta  (145): Divórcio no cartório ou judicial, consensual ou litigioso. Saiba quanto custa e como funciona com advogado de divórcio em SP. Fale pelo WhatsApp.
 H1: Advogado de Divórcio em São Paulo
 
-## /inventario — https://landing.lemesadvogados.com/inventario
+## /inventario — https://landing.lemesadvogados.com/inventario/
 Title (57): Advogado de Inventário em SP | Custo e Tabela OAB | Lemes
 Meta  (144): Quanto custa um advogado de inventário? Veja a tabela OAB/SP, prazos e como funciona o inventário extrajudicial. Fale pelo WhatsApp com a Lemes.
 H1: Advogado de Inventário em São Paulo
 
-## /aereo — https://landing.lemesadvogados.com/aereo
+## /aereo — https://landing.lemesadvogados.com/aereo/
 Title (53): Advogado de Direito Aéreo | Overbooking e Voo | Lemes
 Meta  (138): Overbooking, preterição de embarque, mala extraviada ou atraso de voo? Saiba seus direitos pela Resolução 400 da ANAC. Fale pelo WhatsApp.
 H1: Direito do Passageiro Aéreo
 
-## /previdenciario — https://landing.lemesadvogados.com/previdenciario
+## /previdenciario — https://landing.lemesadvogados.com/previdenciario/
 Title (53): Advogado Previdenciário em SP | Aposentadoria | Lemes
 Meta  (146): INSS negou seu benefício? Saiba com quantos anos a mulher se aposenta e como dar entrada na aposentadoria. Fale com advogado previdenciário em SP.
 H1: Advogado Previdenciário em São Paulo
