@@ -314,6 +314,14 @@ TPL = Template(r"""<!DOCTYPE html>
  gtag('js', new Date());
  gtag('config', '$ads_id');
 </script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3YLQXJDLJE');
+</script>
 <style>$css</style>
 <script type="application/ld+json">$schema</script>
 </head>
