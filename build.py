@@ -186,11 +186,30 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 JS = r"""
 (function(){"use strict";
  var Z="https://wa.me/5511995155021";
+ // local do clique no WhatsApp (rótulo para o GA4)
+ function whatsLoc(a){
+  if(a.classList.contains("fab")) return "fab";
+  if(a.closest(".bar")) return "header";
+  if(a.closest(".hero")) return "hero";
+  if(a.closest(".band")) return "cta_band";
+  if(a.closest("#contato")) return "contato";
+  if(a.closest(".foot")) return "footer";
+  return "other";
+ }
+ function whatsEvent(loc,url){
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+ }
+ // dispara o evento em qualquer clique num link de WhatsApp
+ document.addEventListener("click",function(e){
+  var a=e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="whatsapp"]'):null;
+  if(a){whatsEvent(whatsLoc(a),a.href);}
+ },true);
  // formulário -> WhatsApp (CTA secundário funciona sem backend)
  var f=document.getElementById("leadform");
  if(f){f.addEventListener("submit",function(e){e.preventDefault();
   var n=(f.nome.value||"").trim(),c=(f.contato.value||"").trim(),m=(f.msg.value||"").trim();
   var t="Olá! Meu nome é "+n+". "+(m||"Gostaria de uma consulta.")+(c?" Meu contato: "+c+".":"");
+  whatsEvent("form","");
   window.open(Z+"?text="+encodeURIComponent(t),"_blank","noopener");
  });}
 })();
