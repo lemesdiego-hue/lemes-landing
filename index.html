@@ -100,15 +100,16 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .h2wrap p{margin-top:.9rem;color:var(--ink2)}
 .cards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(1.8rem,4vw,2.6rem);border-radius:var(--radius);overflow:hidden}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
-@media(min-width:980px){.cards--3{grid-template-columns:1fr 1fr 1fr}}
+@media(min-width:980px){.cards--3{grid-template-columns:1fr 1fr 1fr}.cards--4{grid-template-columns:repeat(4,1fr)}}
 .card{background:var(--paper);padding:clamp(1.3rem,2.5vw,1.8rem);display:block;text-decoration:none;transition:background .16s}
 .card:hover{background:var(--paper2)}
 .card h3{font-weight:800;font-size:var(--s1);margin-bottom:.5rem}
 .card p{color:var(--ink2);font-size:var(--s0)}
 .card__more{display:inline-block;margin-top:.7rem;font-family:var(--mono);font-size:var(--s-1);color:var(--carimbo);letter-spacing:.06em}
 /* ícone das áreas (hub) */
-.card__ico{display:block;width:2.2rem;height:2.2rem;color:var(--carimbo);margin-bottom:1rem}
+.card__ico{display:block;width:2.2rem;height:2.2rem;color:var(--carimbo);margin-bottom:1rem;transform-origin:left center;transition:transform .18s ease}
 .card__ico svg{width:100%;height:100%;display:block}
+a.card:hover .card__ico{transform:scale(1.1)}
 a.card:hover .card__more{text-decoration:underline;text-underline-offset:3px}
 /* blocos de conteúdo (texto rastreável) */
 .prose h2{font-weight:800;font-size:var(--s2);margin-top:clamp(2.2rem,4vw,3rem)}
@@ -237,7 +238,7 @@ a.card:hover .card__more{text-decoration:underline;text-underline-offset:3px}
  <!-- ÁREAS DE ATUAÇÃO (HUB) -->
  <section class="section wrap" id="areas">
   <div class="h2wrap"><p class="eyebrow">Áreas de atuação</p><h2>Em que posso ajudar você</h2><p>Escolha a sua área e veja, na página específica, como funciona, prazos e direitos. Em todas elas o primeiro contato é gratuito.</p></div>
-  <div class="cards cards--3">
+  <div class="cards cards--4">
    <a class="card" href="/trabalhista/">
     <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10"/><path d="M12 5l7 2M12 5l-7 2"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
     <h3>Trabalhista</h3>
