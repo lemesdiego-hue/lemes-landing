@@ -34,3 +34,13 @@ H1: Direito do Passageiro Aéreo
 Title (53): Advogado Previdenciário em SP | Aposentadoria | Lemes
 Meta  (146): INSS negou seu benefício? Saiba com quantos anos a mulher se aposenta e como dar entrada na aposentadoria. Fale com advogado previdenciário em SP.
 H1: Advogado Previdenciário em São Paulo
+
+## /familia — https://landing.lemesadvogados.com/familia/
+Title (53): Advogado de Família em SP | Guarda, Pensão e Divórcio
+Meta  (139): Guarda, pensão alimentícia, união estável, partilha ou divórcio? Advogado de família em São Paulo. Fale agora pelo WhatsApp, com discrição.
+H1: Advogado de Família em São Paulo
+
+## /imobiliario — https://landing.lemesadvogados.com/imobiliario/
+Title (51): Advogado Imobiliário SP | Usucapião e Regularização
+Meta  (147): Usucapião, regularização de imóvel, despejo ou reintegração de posse? Advogado imobiliário em São Paulo. Fale agora pelo WhatsApp, sem compromisso.
+H1: Advogado Imobiliário em São Paulo
