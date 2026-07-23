@@ -4,20 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Advogado Cível em São Paulo | Lemes Advogados</title>
-<meta name="description" content="Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.">
+<meta name="description" content="Cobrança, regularização de imóveis, divórcio, inventário e pequenas causas. Advogado cível em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.">
 <link rel="canonical" href="https://landing.lemesadvogados.com/civel/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lemes Advogados">
 <meta property="og:title" content="Advogado Cível em São Paulo | Lemes Advogados">
-<meta property="og:description" content="Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.">
+<meta property="og:description" content="Cobrança, regularização de imóveis, divórcio, inventário e pequenas causas. Advogado cível em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.">
 <meta property="og:url" content="https://landing.lemesadvogados.com/civel/">
 <meta property="og:locale" content="pt_BR">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonte carregada sem bloquear a renderização (media=print -> troca para all no -->
+<!-- onload): o texto aparece na hora com a fonte de sistema e troca ao carregar. -->
+<!-- Corta o principal bloqueio de render no celular. &display=swap já evita FOIT. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap"></noscript>
 <!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida em -->
 <!-- que um clique rápido no WhatsApp acontece antes de os dois scripts async -->
 <!-- carregarem e o evento se perde). Uma biblioteca, dois destinos (config). -->
@@ -87,6 +91,10 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .hero__note{font-family:var(--mono);font-size:var(--s-1);color:var(--muted);margin-top:.9rem}
 .trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--s-1);letter-spacing:.04em;color:var(--ink2)}
 .trust b{color:var(--carimbo);font-weight:700}
+.rev{margin-top:1.1rem;font-family:var(--mono);font-size:var(--s-1);letter-spacing:.03em;color:var(--ink2)}
+.rev a{text-decoration:none;border-bottom:1px solid var(--line)}
+.rev__stars{color:#E8A33D;letter-spacing:.05em}
+.rev b{color:var(--ink);font-weight:700}
 /* cards */
 .h2wrap{max-width:54ch}
 .h2wrap h2{font-weight:800;font-size:var(--s3);margin-top:.6rem}
@@ -174,7 +182,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
    "@type": "LegalService",
    "@id": "https://www.lemesadvogados.com/civel#legalservice",
    "name": "Lemes Sociedade Individual de Advogados",
-   "description": "Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.",
+   "description": "Cobrança, regularização de imóveis, divórcio, inventário e pequenas causas. Advogado cível em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.",
    "url": "https://www.lemesadvogados.com/civel",
    "telephone": "+55-11-99515-5021",
    "email": "diego@lemesadvogados.com",
@@ -191,6 +199,8 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
    "areaServed": "São Paulo, SP",
    "knowsAbout": [
     "Direito Civil",
+    "Cobrança de dívidas",
+    "Regularização de imóveis",
     "Divórcio",
     "Inventário",
     "Partilha de bens",
@@ -218,6 +228,22 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "O advogado cível atua em conflitos do dia a dia entre pessoas e empresas: divórcio, inventário, partilha, contratos, cobranças, indenizações por danos morais e materiais e causas de consumo, entre outros."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Advogado para cobrança de dívida: como funciona?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Dá para cobrar de forma extrajudicial (notificação e negociação) ou judicial (ação de cobrança ou execução). Se a cobrança for contra você e for indevida, cabe defesa e, em alguns casos, indenização. Mande os detalhes pelo WhatsApp que eu avalio o melhor caminho."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Como regularizar um imóvel ou tirar quem ocupa indevidamente?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Depende do caso: usucapião para quem tem posse antiga sem título, regularização documental, e reintegração de posse ou despejo quando há ocupação indevida ou inquilino que não desocupa. O caminho varia com os documentos e o tempo de posse — me conte a situação para eu orientar."
      }
     },
     {
@@ -263,27 +289,32 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
  <section class="hero wrap" aria-labelledby="h1">
   <p class="eyebrow">Direito Cível · São Paulo</p>
   <h1 id="h1">Advogado Cível em São Paulo</h1>
-  <p class="lead">Divórcio, inventário, partilha, contratos e pequenas causas. Atendimento próximo, com explicação em linguagem que você entende e foco em resolver.</p>
+  <p class="lead">Cobrança de dívidas, regularização de imóveis, divórcio, inventário, contratos e pequenas causas. Atendimento próximo, em linguagem que você entende e foco em resolver.</p>
   <div class="cta">
    <a class="btn" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> Falar agora no WhatsApp</a>
    <a class="btn--ghost btn" href="#contato">Enviar mensagem</a>
   </div>
-  <p class="hero__note">Advogado cível perto de você · Atendimento em todo São Paulo</p>
+  <p class="hero__note">Cobrança · Imóveis · Divórcio e inventário · Atendimento em todo São Paulo</p>
   <div class="trust">
    <span>Diego Henrique Lemes · <b>OAB/SP 255.888</b></span><span>Perdizes, São Paulo/SP</span><span>Seg–Sex, 9h às 18h</span>
   </div>
+  
  </section>
 
  <!-- SITUAÇÕES / SERVIÇOS -->
  <section class="section wrap">
   <div class="h2wrap"><p class="eyebrow">Áreas do direito cível</p><h2>Como podemos ajudar</h2><p>Atuo nas principais demandas cíveis das famílias e do dia a dia. Clique para ver a página específica.</p></div>
-  <div class="cards cards--3"><a class="card" href="/divorcio/"><h3>Divórcio</h3><p>Consensual ou litigioso, no cartório ou na Justiça. Veja como funciona e quanto custa.</p><span class="card__more">Saiba mais &rarr;</span></a><a class="card" href="/inventario/"><h3>Inventário e partilha</h3><p>Partilha de bens após o falecimento, no cartório ou judicial. Prazos, custos e tabela OAB.</p><span class="card__more">Saiba mais &rarr;</span></a><div class="card"><h3>Pequenas causas</h3><p>Cobranças, problemas de consumo e conflitos de menor valor no Juizado Especial.</p></div><div class="card"><h3>Contratos e indenizações</h3><p>Revisão de contratos, descumprimento, danos morais e materiais.</p></div><div class="card"><h3>Cobranças e dívidas</h3><p>Negociação, defesa em cobranças indevidas e inscrição irregular em cadastros.</p></div><div class="card"><h3>Família e união estável</h3><p>Reconhecimento e dissolução de união estável, alimentos e guarda.</p></div></div>
+  <div class="cards cards--3"><div class="card"><h3>Cobrança de dívidas</h3><p>Negociação e cobrança judicial de valores a receber, e defesa em cobranças indevidas ou inscrição irregular no SPC/Serasa.</p></div><div class="card"><h3>Regularização de imóveis</h3><p>Usucapião, regularização, reintegração de posse e despejo. Resolva a situação do seu imóvel.</p></div><a class="card" href="/divorcio/"><h3>Divórcio</h3><p>Consensual ou litigioso, no cartório ou na Justiça. Veja como funciona e quanto custa.</p><span class="card__more">Saiba mais &rarr;</span></a><a class="card" href="/inventario/"><h3>Inventário e partilha</h3><p>Partilha de bens após o falecimento, no cartório ou judicial. Prazos, custos e tabela OAB.</p><span class="card__more">Saiba mais &rarr;</span></a><div class="card"><h3>Contratos e indenizações</h3><p>Revisão de contratos, descumprimento, danos morais e materiais.</p></div><div class="card"><h3>Pequenas causas</h3><p>Problemas de consumo, produtos com defeito e conflitos de menor valor no Juizado Especial.</p></div><div class="card"><h3>Família e união estável</h3><p>Reconhecimento e dissolução de união estável, alimentos e guarda.</p></div></div>
  </section>
 
  <!-- CONTEÚDO RASTREÁVEL -->
  <section class="section wrap prose">
   <h2>Advogado cível perto de você em São Paulo</h2>
 <p>O escritório fica em <strong>Perdizes, São Paulo</strong>, e atende clientes de toda a cidade e região. O atendimento começa pelo WhatsApp, de forma prática, e segue com a mesma pessoa do início ao fim — você sempre sabe com quem está falando.</p>
+<h2>Cobrança de dívidas e defesa em cobranças indevidas</h2>
+<p>Se você tem valores a receber, atuo na <strong>negociação e na cobrança judicial</strong> da dívida, incluindo ação de cobrança e execução. E se a cobrança é contra você — indevida, duplicada ou com inscrição irregular no SPC/Serasa —, avalio a defesa e o eventual pedido de indenização. Me mande os detalhes pelo WhatsApp que eu digo o caminho.</p>
+<h2>Regularização de imóveis: usucapião, posse e despejo</h2>
+<p>Imóvel sem escritura, posse antiga sem título, ocupação indevida ou inquilino que não desocupa? Atuo em <strong>usucapião, regularização, reintegração de posse e despejo</strong>. Cada caso depende dos documentos e do tempo de posse — conte a situação e eu oriento o próximo passo.</p>
 <h2>Pequenas causas: quando vale a pena</h2>
 <p>O Juizado Especial Cível resolve conflitos de até 40 salários mínimos, como cobranças indevidas, problemas com produtos e serviços e pequenos contratos. Para causas de até 20 salários mínimos, é possível entrar sem advogado, mas a orientação jurídica aumenta as chances de êxito e evita erros que atrasam o processo.</p>
 <h2>Divórcio e inventário: as demandas mais comuns</h2>
@@ -301,7 +332,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
  <!-- FAQ -->
  <section class="section wrap">
   <div class="h2wrap"><p class="eyebrow">Dúvidas frequentes</p><h2>Perguntas frequentes sobre direito cível</h2></div>
-  <div class="faq"><details><summary>O que faz um advogado cível?</summary><div class="faq__a"><p>O advogado cível atua em conflitos do dia a dia entre pessoas e empresas: divórcio, inventário, partilha, contratos, cobranças, indenizações por danos morais e materiais e causas de consumo, entre outros.</p></div></details><details><summary>Tem advogado cível perto de mim em São Paulo?</summary><div class="faq__a"><p>Sim. O escritório fica em Perdizes, São Paulo, e atende toda a cidade, com início do atendimento pelo WhatsApp para a sua comodidade.</p></div></details><details><summary>Como funciona o Juizado de Pequenas Causas?</summary><div class="faq__a"><p>O Juizado Especial Cível julga causas de até 40 salários mínimos de forma mais simples e rápida. Até 20 salários mínimos é possível ingressar sem advogado, mas a orientação jurídica ajuda a montar o pedido e reunir provas.</p></div></details><details><summary>Quanto custa um advogado cível?</summary><div class="faq__a"><p>Depende da complexidade e do tipo de ação. Em muitos casos é possível trabalhar com honorários combinados previamente ou vinculados ao êxito. Na primeira conversa, explico os valores com transparência, sem compromisso.</p></div></details></div>
+  <div class="faq"><details><summary>O que faz um advogado cível?</summary><div class="faq__a"><p>O advogado cível atua em conflitos do dia a dia entre pessoas e empresas: divórcio, inventário, partilha, contratos, cobranças, indenizações por danos morais e materiais e causas de consumo, entre outros.</p></div></details><details><summary>Advogado para cobrança de dívida: como funciona?</summary><div class="faq__a"><p>Dá para cobrar de forma extrajudicial (notificação e negociação) ou judicial (ação de cobrança ou execução). Se a cobrança for contra você e for indevida, cabe defesa e, em alguns casos, indenização. Mande os detalhes pelo WhatsApp que eu avalio o melhor caminho.</p></div></details><details><summary>Como regularizar um imóvel ou tirar quem ocupa indevidamente?</summary><div class="faq__a"><p>Depende do caso: usucapião para quem tem posse antiga sem título, regularização documental, e reintegração de posse ou despejo quando há ocupação indevida ou inquilino que não desocupa. O caminho varia com os documentos e o tempo de posse — me conte a situação para eu orientar.</p></div></details><details><summary>Tem advogado cível perto de mim em São Paulo?</summary><div class="faq__a"><p>Sim. O escritório fica em Perdizes, São Paulo, e atende toda a cidade, com início do atendimento pelo WhatsApp para a sua comodidade.</p></div></details><details><summary>Como funciona o Juizado de Pequenas Causas?</summary><div class="faq__a"><p>O Juizado Especial Cível julga causas de até 40 salários mínimos de forma mais simples e rápida. Até 20 salários mínimos é possível ingressar sem advogado, mas a orientação jurídica ajuda a montar o pedido e reunir provas.</p></div></details><details><summary>Quanto custa um advogado cível?</summary><div class="faq__a"><p>Depende da complexidade e do tipo de ação. Em muitos casos é possível trabalhar com honorários combinados previamente ou vinculados ao êxito. Na primeira conversa, explico os valores com transparência, sem compromisso.</p></div></details></div>
  </section>
 
  <!-- FAIXA CTA -->

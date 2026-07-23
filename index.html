@@ -19,7 +19,9 @@
 <meta name="geo.placename" content="São Paulo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonte sem bloquear render (media=print -> all no onload); texto aparece na hora. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap"></noscript>
 <!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida em -->
 <!-- que um clique rápido no WhatsApp acontece antes de os dois scripts async -->
 <!-- carregarem e o evento se perde). Uma biblioteca, dois destinos (config). -->
