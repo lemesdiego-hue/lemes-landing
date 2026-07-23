@@ -18,21 +18,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — Google Ads -->
+<!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993352616"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', 'AW-993352616');
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3YLQXJDLJE');
+ gtag('config', 'G-3YLQXJDLJE');
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -407,7 +400,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){

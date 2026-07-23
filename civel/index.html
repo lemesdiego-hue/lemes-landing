@@ -18,21 +18,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — Google Ads -->
+<!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida em -->
+<!-- que um clique rápido no WhatsApp acontece antes de os dois scripts async -->
+<!-- carregarem e o evento se perde). Uma biblioteca, dois destinos (config). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993352616"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', 'AW-993352616');
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3YLQXJDLJE');
+ gtag('config', 'G-3YLQXJDLJE');
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -364,7 +359,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   </div>
   <div>
    <h4>Áreas de atuação</h4>
-   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/familia/">Família</a><a href="/inventario/">Inventário</a><a href="/imobiliario/">Imobiliário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a>
+   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/inventario/">Inventário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a>
   </div>
   <div>
    <h4>Contato</h4>
@@ -396,7 +391,11 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  // transport_type:"beacon" -> navigator.sendBeacon: o evento sobrevive ao clique
+  // no link, que no celular abre o app do WhatsApp e descarrega a página na hora.
+  // Sem isso, boa parte dos cliques mobile morria antes de o hit ser enviado, e o
+  // GA4/Ads subcontava "whatsapp_click" (a conversão parecia menor do que é).
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){
