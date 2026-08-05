@@ -3,36 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Advogado de Família em SP | Guarda, Pensão e Divórcio</title>
-<meta name="description" content="Guarda, pensão alimentícia, união estável, partilha ou divórcio? Advogado de família em São Paulo. Fale agora pelo WhatsApp, com discrição.">
-<link rel="canonical" href="https://landing.lemesadvogados.com/familia/">
+<!-- Google Search Console: na verificação por "Tag HTML", copie SÓ o valor de content="..." e cole abaixo (remova COLE_AQUI). Não apague esta tag depois de verificar. -->
+<meta name="google-site-verification" content="COLE_AQUI_O_CODIGO_DO_SEARCH_CONSOLE">
+<title>Advogado em São Paulo | Lemes Advogados</title>
+<meta name="description" content="Advogado em São Paulo. Especialista em Direito Trabalhista, Cível, Divórcio, Inventário, Previdenciário e Aéreo. Consulta gratuita pelo WhatsApp. Perdizes/SP.">
+<link rel="canonical" href="https://landing.lemesadvogados.com/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lemes Advogados">
-<meta property="og:title" content="Advogado de Família em SP | Guarda, Pensão e Divórcio">
-<meta property="og:description" content="Guarda, pensão alimentícia, união estável, partilha ou divórcio? Advogado de família em São Paulo. Fale agora pelo WhatsApp, com discrição.">
-<meta property="og:url" content="https://landing.lemesadvogados.com/familia/">
+<meta property="og:title" content="Advogado em São Paulo | Lemes Advogados">
+<meta property="og:description" content="Advogado em São Paulo. Especialista em Direito Trabalhista, Cível, Divórcio, Inventário, Previdenciário e Aéreo. Consulta gratuita pelo WhatsApp. Perdizes/SP.">
+<meta property="og:url" content="https://landing.lemesadvogados.com/">
 <meta property="og:locale" content="pt_BR">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — Google Ads -->
+<!-- Fonte sem bloquear render (media=print -> all no onload); texto aparece na hora. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap"></noscript>
+<!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida em -->
+<!-- que um clique rápido no WhatsApp acontece antes de os dois scripts async -->
+<!-- carregarem e o evento se perde). Uma biblioteca, dois destinos (config). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993352616"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', 'AW-993352616');
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3YLQXJDLJE');
+ gtag('config', 'G-3YLQXJDLJE');
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -92,6 +91,9 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .hero__note{font-family:var(--mono);font-size:var(--s-1);color:var(--muted);margin-top:.9rem}
 .trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--s-1);letter-spacing:.04em;color:var(--ink2)}
 .trust b{color:var(--carimbo);font-weight:700}
+.rev{margin-top:1.1rem;font-family:var(--mono);font-size:var(--s-1);letter-spacing:.03em;color:var(--ink2)}
+.rev__stars{color:#E8A33D;letter-spacing:.05em}
+.rev b{color:var(--ink);font-weight:700}
 /* cards */
 .h2wrap{max-width:54ch}
 .h2wrap h2{font-weight:800;font-size:var(--s3);margin-top:.6rem}
@@ -99,11 +101,15 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .cards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(1.8rem,4vw,2.6rem);border-radius:var(--radius);overflow:hidden}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
 @media(min-width:980px){.cards--3{grid-template-columns:1fr 1fr 1fr}}
-.card{background:var(--paper);padding:clamp(1.3rem,2.5vw,1.8rem);display:block;text-decoration:none}
+.card{background:var(--paper);padding:clamp(1.3rem,2.5vw,1.8rem);display:block;text-decoration:none;transition:background .16s}
 .card:hover{background:var(--paper2)}
 .card h3{font-weight:800;font-size:var(--s1);margin-bottom:.5rem}
 .card p{color:var(--ink2);font-size:var(--s0)}
 .card__more{display:inline-block;margin-top:.7rem;font-family:var(--mono);font-size:var(--s-1);color:var(--carimbo);letter-spacing:.06em}
+/* ícone das áreas (hub) */
+.card__ico{display:block;width:2.2rem;height:2.2rem;color:var(--carimbo);margin-bottom:1rem}
+.card__ico svg{width:100%;height:100%;display:block}
+a.card:hover .card__more{text-decoration:underline;text-underline-offset:3px}
 /* blocos de conteúdo (texto rastreável) */
 .prose h2{font-weight:800;font-size:var(--s2);margin-top:clamp(2.2rem,4vw,3rem)}
 .prose h2:first-child{margin-top:0}
@@ -164,6 +170,8 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .foot h4{font-family:var(--mono);font-size:var(--s-1);letter-spacing:.12em;text-transform:uppercase;color:#8FD3B0;margin-bottom:.9rem;font-weight:700}
 .foot a,.foot p{color:rgba(236,233,225,.82);text-decoration:none;display:block;margin-bottom:.45rem;font-size:var(--s0)}
 .foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.foot a.social{display:inline-flex;align-items:center;gap:.5em}
+.foot a.social svg{width:1.15em;height:1.15em;flex:none}
 .foot__legal{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(236,233,225,.16);font-size:var(--s-1);color:rgba(236,233,225,.55);line-height:1.55;max-width:90ch}
 /* FAB */
 .fab{position:fixed;right:clamp(.9rem,3vw,1.8rem);bottom:clamp(.9rem,3vw,1.8rem);z-index:60;display:inline-flex;align-items:center;gap:.5em;background:var(--ledger);color:#fff;padding:.75em 1.05em;border-radius:100px;text-decoration:none;font-family:var(--display);font-weight:700;box-shadow:0 8px 24px rgba(27,36,32,.28)}
@@ -173,92 +181,29 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 </style>
 <script type="application/ld+json">{
  "@context": "https://schema.org",
- "@graph": [
-  {
-   "@context": "https://schema.org",
-   "@type": "LegalService",
-   "@id": "https://www.lemesadvogados.com/familia#legalservice",
-   "name": "Lemes Sociedade Individual de Advogados",
-   "description": "Guarda, pensão alimentícia, união estável, partilha ou divórcio? Advogado de família em São Paulo. Fale agora pelo WhatsApp, com discrição.",
-   "url": "https://www.lemesadvogados.com/familia",
-   "telephone": "+55-11-99515-5021",
-   "email": "diego@lemesadvogados.com",
-   "priceRange": "$$",
-   "openingHours": "Mo-Fr 09:00-18:00",
-   "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Coronel Melo de Oliveira, 557",
-    "addressLocality": "Perdizes, São Paulo",
-    "addressRegion": "SP",
-    "postalCode": "05011-040",
-    "addressCountry": "BR"
-   },
-   "areaServed": "São Paulo, SP",
-   "knowsAbout": [
-    "Direito de Família",
-    "Guarda de filhos",
-    "Pensão alimentícia",
-    "União estável",
-    "Partilha de bens",
-    "Divórcio",
-    "Alienação parental"
-   ],
-   "founder": {
-    "@type": "Person",
-    "name": "Diego Henrique Lemes",
-    "jobTitle": "Advogado",
-    "identifier": "OAB/SP 255.888"
-   },
-   "sameAs": [
-    "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
-   ]
-  },
-  {
-   "@context": "https://schema.org",
-   "@type": "FAQPage",
-   "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "O que faz um advogado de família?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Atua nos conflitos de família: divórcio, guarda de filhos, pensão alimentícia, união estável, partilha de bens e alienação parental, entre outros. Orienta acordos, atua em cartório quando possível e representa o cliente na Justiça quando necessário."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Como funciona a guarda compartilhada?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Na guarda compartilhada, ambos os pais participam das decisões sobre a vida do filho, com a convivência definida entre eles. É a regra atual e não depende de os pais morarem juntos. A guarda unilateral só é fixada em situações específicas, sempre no melhor interesse da criança."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Como é definido o valor da pensão alimentícia?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Pelo binômio necessidade e possibilidade: o que o filho precisa e o quanto o alimentante pode pagar. Não há percentual fixo em lei. Quando a situação muda, o valor pode ser revisado para mais ou para menos, ou até cessar."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "O que fazer quando a pensão não é paga?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "É possível ajuizar a execução de alimentos. Conforme o rito, o devedor pode ter bens penhorados e, no rito mais severo, ser preso pela dívida de pensão. Guarde os comprovantes do que não foi pago."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "União estável precisa de partilha ao terminar?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Sim. A dissolução da união estável, como o divórcio, exige a partilha dos bens adquiridos durante a convivência, conforme o regime aplicável. Havendo acordo, pode ser feita em cartório; havendo conflito, na Justiça."
-     }
-    }
-   ]
-  }
+ "@type": "LegalService",
+ "name": "Lemes Sociedade Individual de Advogados",
+ "telephone": "+55-11-99515-5021",
+ "email": "diego@lemesadvogados.com",
+ "url": "https://www.lemesadvogados.com",
+ "priceRange": "$$",
+ "openingHours": "Mo-Fr 09:00-18:00",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "Rua Coronel Melo de Oliveira, 557",
+  "addressLocality": "Perdizes, São Paulo",
+  "addressRegion": "SP",
+  "postalCode": "05011-040",
+  "addressCountry": "BR"
+ },
+ "areaServed": "São Paulo, SP",
+ "knowsAbout": [
+  "Direito Trabalhista",
+  "Direito Civil",
+  "Divórcio",
+  "Inventário",
+  "Direito Previdenciário",
+  "Direito Aéreo"
  ]
 }</script>
 </head>
@@ -267,64 +212,100 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
  <div class="wrap bar__in">
   <a class="brand" href="/" aria-label="Lemes Advogados — início"><b>Lemes</b><span>Advogados</span></a>
   <a class="bar__phone" href="tel:+5511995155021">(11) 99515-5021</a>
-  <a class="btn" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> WhatsApp</a>
+  <a class="btn" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> WhatsApp</a>
  </div>
 </header>
 
 <main>
  <!-- HERO -->
  <section class="hero wrap" aria-labelledby="h1">
-  <p class="eyebrow">Direito Família · São Paulo</p>
-  <h1 id="h1">Advogado de Família em São Paulo</h1>
-  <p class="lead">Guarda de filhos, pensão alimentícia, união estável, partilha de bens ou divórcio? Cuido de cada caso com atenção e discrição, e você fala direto comigo pelo WhatsApp.</p>
+  <p class="eyebrow">Advocacia · Perdizes, São Paulo</p>
+  <h1 id="h1">Advogado em São Paulo</h1>
+  <p class="lead">Atendimento direto com o advogado em seis áreas do direito — do trabalhista ao aéreo. Explico seu caso com clareza e você fala comigo pelo WhatsApp, sem compromisso.</p>
   <div class="cta">
-   <a class="btn" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> Falar agora no WhatsApp</a>
-   <a class="btn--ghost btn" href="#contato">Enviar mensagem</a>
+   <a class="btn" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> Consulta gratuita no WhatsApp</a>
+   <a class="btn--ghost btn" href="#areas">Ver áreas de atuação</a>
   </div>
-  <p class="hero__note">Guarda e pensão · União estável · Divórcio · Atendimento reservado</p>
+  <p class="hero__note">Consulta gratuita · Atendimento direto com o advogado · Resposta rápida</p>
   <div class="trust">
    <span>Diego Henrique Lemes · <b>OAB/SP 255.888</b></span><span>Perdizes, São Paulo/SP</span><span>Seg–Sex, 9h às 18h</span>
   </div>
+  <div class="rev"><span class="rev__stars" aria-hidden="true">★★★★★</span> <b>5,0</b> · 27 avaliações no Google</div>
  </section>
 
- <!-- SITUAÇÕES / SERVIÇOS -->
- <section class="section wrap">
-  <div class="h2wrap"><p class="eyebrow">Áreas do direito de família</p><h2>Como posso ajudar</h2><p>Atuo nas principais demandas de família. Clique no divórcio para ver a página específica.</p></div>
-  <div class="cards cards--3"><a class="card" href="/divorcio/"><h3>Divórcio</h3><p>Consensual ou litigioso, no cartório ou na Justiça. Veja como funciona, quanto custa e os prazos.</p><span class="card__more">Saiba mais &rarr;</span></a><div class="card"><h3>Guarda de filhos</h3><p>Definição da guarda (em regra compartilhada), convivência e responsabilidades, sempre no melhor interesse da criança.</p></div><div class="card"><h3>Pensão alimentícia</h3><p>Fixação, revisão (para mais ou para menos) e execução de pensão atrasada, para filhos e, em alguns casos, ex-cônjuge.</p></div><div class="card"><h3>União estável</h3><p>Reconhecimento e dissolução de união estável, inclusive homoafetiva, com partilha e definição de direitos.</p></div><div class="card"><h3>Partilha de bens</h3><p>Divisão do patrimônio conforme o regime de casamento ou união: imóveis, veículos, contas e dívidas.</p></div><div class="card"><h3>Alienação parental</h3><p>Quando um dos pais tenta afastar o filho do outro. A lei prevê medidas para proteger o convívio.</p></div></div>
+ <!-- ÁREAS DE ATUAÇÃO (HUB) -->
+ <section class="section wrap" id="areas">
+  <div class="h2wrap"><p class="eyebrow">Áreas de atuação</p><h2>Em que posso ajudar você</h2><p>Escolha a sua área e veja, na página específica, como funciona, prazos e direitos. Em todas elas o primeiro contato é gratuito.</p></div>
+  <div class="cards cards--3">
+   <a class="card" href="/trabalhista/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10"/><path d="M12 5l7 2M12 5l-7 2"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
+    <h3>Trabalhista</h3>
+    <p>Rescisão, demissão injusta, horas extras, FGTS.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+   <a class="card" href="/divorcio/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l3 3-3 3-3-3z"/><circle cx="12" cy="15" r="5"/></svg></span>
+    <h3>Divórcio</h3>
+    <p>Divórcio judicial e extrajudicial, guarda, partilha.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+   <a class="card" href="/inventario/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></span>
+    <h3>Inventário</h3>
+    <p>Inventário judicial e extrajudicial, herança, partilha.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+   <a class="card" href="/civel/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h10"/><path d="m14.5 12.5-8 8a2.12 2.12 0 1 1-3-3l8-8"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span>
+    <h3>Cível</h3>
+    <p>Contratos, consumidor, indenizações, cobranças.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+   <a class="card" href="/previdenciario/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+    <h3>Previdenciário</h3>
+    <p>Aposentadoria, benefícios INSS, BPC, revisão.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+   <a class="card" href="/aereo/">
+    <span class="card__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span>
+    <h3>Direito Aéreo</h3>
+    <p>Overbooking, mala extraviada, cancelamento de voo.</p>
+    <span class="card__more">Saiba mais &rarr;</span>
+   </a>
+  </div>
  </section>
 
  <!-- CONTEÚDO RASTREÁVEL -->
  <section class="section wrap prose">
-  <h2>O que faz um advogado de família</h2>
-<p>O advogado de família cuida dos conflitos mais pessoais: <strong>divórcio</strong>, <strong>guarda</strong>, <strong>pensão alimentícia</strong>, <strong>união estável</strong> e <strong>partilha de bens</strong>. São temas delicados, e o meu compromisso é conduzir cada caso com <strong>discrição</strong>, linguagem clara e o menor desgaste possível. O escritório fica em <strong>Perdizes, São Paulo</strong>, e o atendimento começa pelo WhatsApp, com a mesma pessoa do início ao fim.</p>
-<h2>Como funciona a guarda dos filhos</h2>
-<p>A regra hoje é a <strong>guarda compartilhada</strong>, em que ambos os pais participam das decisões sobre a vida do filho, com definição da convivência (as antigas “visitas”). A guarda unilateral só é fixada em situações específicas, quando um dos pais não pode ou não deve exercê-la. Em qualquer caso, o critério que orienta a decisão é o <strong>melhor interesse da criança</strong>.</p>
-<h2>Pensão alimentícia: como é definida, revisada e cobrada</h2>
-<p>A pensão é fixada conforme o <strong>binômio necessidade e possibilidade</strong> — o que o filho precisa e o que o alimentante pode pagar. Quando a situação de qualquer um muda, cabe <strong>revisão</strong> (para aumentar ou reduzir) ou até exoneração.</p>
-<p>Se a pensão não é paga, existe a <strong>execução de alimentos</strong>, que pode levar à <strong>penhora de bens</strong> e até à <strong>prisão do devedor</strong>. Se você precisa cobrar pensão atrasada ou revisar o valor, me envie os detalhes pelo WhatsApp.</p>
-<h2>União estável: reconhecimento e dissolução</h2>
-<p>A união estável é a convivência pública, contínua e duradoura com objetivo de constituir família — e gera <strong>direitos patrimoniais e sucessórios</strong> semelhantes aos do casamento. Pode ser reconhecida ou dissolvida em cartório (quando há acordo) ou na Justiça, com <strong>partilha dos bens</strong> adquiridos na constância da união. Um <strong>contrato de convivência</strong> ajuda a definir o regime de bens e evitar disputas futuras.</p>
+  <h2>Advogado em São Paulo com atendimento direto</h2>
+<p>A <strong>Lemes Sociedade Individual de Advogados</strong> atua em São Paulo com foco em resolver o seu caso de forma clara e próxima. O atendimento é conduzido pelo próprio advogado, <strong>Diego Henrique Lemes (OAB/SP 255.888)</strong>, do primeiro contato ao desfecho, sem intermediários e sem juridiquês.</p>
+<p>O escritório fica em <strong>Perdizes, São Paulo</strong>, e atende clientes de toda a cidade e do estado. A primeira conversa é <strong>gratuita</strong> e começa pelo WhatsApp: você explica a situação do seu jeito e recebe uma orientação honesta sobre o que dá para fazer.</p>
+<h2>Seis áreas de atuação</h2>
+<p>Reunimos em um só lugar as principais demandas das famílias e do dia a dia: <a href="/trabalhista/">Direito Trabalhista</a>, <a href="/divorcio/">Divórcio</a>, <a href="/inventario/">Inventário</a>, <a href="/civel/">Direito Cível</a>, <a href="/previdenciario/">Direito Previdenciário</a> e <a href="/aereo/">Direito Aéreo</a>. Cada área tem uma página própria explicando como funciona, prazos, custos e os seus direitos.</p>
+<h2>Como saber qual é o seu caso</h2>
+<p>Se você foi demitido ou tem horas extras não pagas, comece pelo <strong>Trabalhista</strong>. Para separação, guarda e partilha, veja o <strong>Divórcio</strong>. Após o falecimento de um familiar, o <strong>Inventário</strong>. Contratos, consumidor e cobranças ficam no <strong>Cível</strong>. Aposentadoria e benefícios negados pelo INSS, no <strong>Previdenciário</strong>. E problemas em voos — overbooking, bagagem, atraso ou cancelamento — no <strong>Direito Aéreo</strong>. Na dúvida, é só mandar uma mensagem que eu indico o caminho certo.</p>
  </section>
 
  <!-- PASSOS -->
  <section class="section dark">
   <div class="wrap">
-   <div class="h2wrap"><p class="eyebrow">Como funciona</p><h2 style="color:var(--paper)">Como conduzo seu caso</h2></div>
-   <div class="steps"><div class="step"><p class="n">01</p><h3>Conversa reservada</h3><p>Você me conta a situação pelo WhatsApp, com total sigilo. Avalio o que cabe e qual o caminho.</p></div><div class="step"><p class="n">02</p><h3>Organizo o caso</h3><p>Reúno documentos e defino a estratégia — acordo, cartório ou Justiça — com custos e prazos claros.</p></div><div class="step"><p class="n">03</p><h3>Conduzo até o fim</h3><p>Cuido de toda a parte jurídica e mantenho você informado em cada etapa do processo.</p></div></div>
+   <div class="h2wrap"><p class="eyebrow">Como funciona</p><h2 style="color:var(--paper)">Do primeiro contato à solução</h2></div>
+   <div class="steps"><div class="step"><p class="n">01</p><h3>Você me conta o que houve</h3><p>Mande uma mensagem no WhatsApp. Sem juridiquês: você explica do seu jeito e eu faço as perguntas certas.</p></div><div class="step"><p class="n">02</p><h3>Analiso seu caso</h3><p>Identifico a área certa, confiro documentos e digo com honestidade o que dá para buscar e qual o próximo passo.</p></div><div class="step"><p class="n">03</p><h3>Buscamos o seu direito</h3><p>Tentamos acordo ou entramos com a ação, e você acompanha cada etapa diretamente comigo.</p></div></div>
   </div>
  </section>
 
  <!-- FAQ -->
  <section class="section wrap">
-  <div class="h2wrap"><p class="eyebrow">Dúvidas frequentes</p><h2>Perguntas frequentes sobre direito de família</h2></div>
-  <div class="faq"><details><summary>O que faz um advogado de família?</summary><div class="faq__a"><p>Atua nos conflitos de família: divórcio, guarda de filhos, pensão alimentícia, união estável, partilha de bens e alienação parental, entre outros. Orienta acordos, atua em cartório quando possível e representa o cliente na Justiça quando necessário.</p></div></details><details><summary>Como funciona a guarda compartilhada?</summary><div class="faq__a"><p>Na guarda compartilhada, ambos os pais participam das decisões sobre a vida do filho, com a convivência definida entre eles. É a regra atual e não depende de os pais morarem juntos. A guarda unilateral só é fixada em situações específicas, sempre no melhor interesse da criança.</p></div></details><details><summary>Como é definido o valor da pensão alimentícia?</summary><div class="faq__a"><p>Pelo binômio necessidade e possibilidade: o que o filho precisa e o quanto o alimentante pode pagar. Não há percentual fixo em lei. Quando a situação muda, o valor pode ser revisado para mais ou para menos, ou até cessar.</p></div></details><details><summary>O que fazer quando a pensão não é paga?</summary><div class="faq__a"><p>É possível ajuizar a execução de alimentos. Conforme o rito, o devedor pode ter bens penhorados e, no rito mais severo, ser preso pela dívida de pensão. Guarde os comprovantes do que não foi pago.</p></div></details><details><summary>União estável precisa de partilha ao terminar?</summary><div class="faq__a"><p>Sim. A dissolução da união estável, como o divórcio, exige a partilha dos bens adquiridos durante a convivência, conforme o regime aplicável. Havendo acordo, pode ser feita em cartório; havendo conflito, na Justiça.</p></div></details></div>
+  <div class="h2wrap"><p class="eyebrow">Dúvidas frequentes</p><h2>Perguntas frequentes</h2></div>
+  <div class="faq"><details><summary>A consulta é gratuita?</summary><div class="faq__a"><p>Sim. A primeira conversa, em qualquer das seis áreas, é sem compromisso. Você explica a situação pelo WhatsApp e recebe uma orientação clara sobre se há o que fazer e qual o próximo passo.</p></div></details><details><summary>Quais áreas o escritório atende?</summary><div class="faq__a"><p>Direito Trabalhista, Divórcio, Inventário, Cível, Previdenciário e Aéreo. Cada área tem uma página própria com explicações detalhadas sobre direitos, prazos e custos.</p></div></details><details><summary>Onde fica o escritório?</summary><div class="faq__a"><p>Na Rua Coronel Melo de Oliveira, 557, em Perdizes, São Paulo/SP. O atendimento começa pelo WhatsApp, de forma prática, e segue com a mesma pessoa do início ao fim.</p></div></details><details><summary>Como falo com o advogado?</summary><div class="faq__a"><p>Pelo WhatsApp (11) 99515-5021 ou pelo e-mail diego@lemesadvogados.com. O atendimento é conduzido diretamente por Diego Henrique Lemes, OAB/SP 255.888.</p></div></details></div>
  </section>
 
  <!-- FAIXA CTA -->
  <section class="section band">
   <div class="wrap band__in">
-   <div><h2>Resolva sua questão de família com discrição</h2><p>Conte sua situação pelo WhatsApp, com total sigilo. Explico, sem compromisso, o caminho mais tranquilo para o seu caso.</p></div>
-   <a class="btn btn--lite" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> Falar no WhatsApp</a>
+   <div><h2>Fale com um advogado agora</h2><p>Conte sua situação pelo WhatsApp. A primeira conversa é gratuita e você fala direto comigo.</p></div>
+   <a class="btn btn--lite" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg> Falar no WhatsApp</a>
   </div>
  </section>
 
@@ -333,7 +314,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   <div class="about">
    <p class="about__sig">Diego H. Lemes<span>OAB/SP 255.888 · Lemes Sociedade Individual de Advogados</span></p>
    <div>
-    <p>Atendimento conduzido pelo próprio advogado, do primeiro contato ao desfecho. Atuação em Direito de Família — divórcio, guarda, pensão, união estável e partilha — com discrição e atenção a quem vive um momento delicado.</p>
+    <p>Atendimento conduzido pelo próprio advogado, do primeiro contato ao desfecho. Atuação em Direito Trabalhista, Cível, de Família, Previdenciário e do passageiro aéreo — com a mesma atenção em cada caso.</p>
     <p>Escritório em Perdizes, São Paulo, com atuação em todo o estado de SP. CNPJ 25.385.186/0001-75.</p>
    </div>
   </div>
@@ -344,13 +325,13 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   <div class="contact">
    <div>
     <p class="eyebrow">Fale com a Lemes</p>
-    <h2>Fale com um advogado de família</h2>
+    <h2>Fale com um advogado em São Paulo</h2>
     <p class="lead" style="margin-top:1rem">A primeira conversa é sem compromisso. Explico com clareza se há o que fazer e qual o próximo passo.</p>
     <div class="napcard">
      Lemes Sociedade Individual de Advogados<br>
      Rua Coronel Melo de Oliveira, 557 — Perdizes<br>
      São Paulo/SP · CEP 05011-040<br>
-     WhatsApp / Tel: <a href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener">(11) 99515-5021</a><br>
+     WhatsApp / Tel: <a href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener">(11) 99515-5021</a><br>
      E-mail: <a href="mailto:diego@lemesadvogados.com">diego@lemesadvogados.com</a><br>
      Seg–Sex, 9h às 18h
     </div>
@@ -375,15 +356,15 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   </div>
   <div>
    <h4>Áreas de atuação</h4>
-   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/familia/">Família</a><a href="/inventario/">Inventário</a><a href="/imobiliario/">Imobiliário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a>
+   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/inventario/">Inventário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a>
   </div>
   <div>
    <h4>Contato</h4>
-   <a href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener">WhatsApp (11) 99515-5021</a>
+   <a href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener">WhatsApp (11) 99515-5021</a>
    <a href="mailto:diego@lemesadvogados.com">diego@lemesadvogados.com</a>
    <p>Rua Coronel Melo de Oliveira, 557</p>
    <p>Perdizes, São Paulo/SP · 05011-040</p>
-   <a href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener">LinkedIn</a>
+   <a class="social" href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener" aria-label="LinkedIn de Diego Henrique Lemes"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
   </div>
  </div>
  <div class="wrap">
@@ -392,7 +373,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
  </div>
 </footer>
 
-<a class="fab" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg><span>Fale conosco</span></a>
+<a class="fab" href="https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.8A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.5-1.4L.5 23.5zM6.8 20l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9z"/></svg><span>Fale conosco</span></a>
 <script>
 (function(){"use strict";
  var Z="https://wa.me/5511995155021";
@@ -407,7 +388,11 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  // transport_type:"beacon" -> navigator.sendBeacon: o evento sobrevive ao clique
+  // no link, que no celular abre o app do WhatsApp e descarrega a página na hora.
+  // Sem isso, boa parte dos cliques mobile morria antes de o hit ser enviado, e o
+  // GA4/Ads subcontava "whatsapp_click" (a conversão parecia menor do que é).
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){
