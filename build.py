@@ -17,7 +17,7 @@ OUT = pathlib.Path(__file__).resolve().parent
 WHATS = "https://wa.me/5511995155021?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20consulta"
 # Domínio onde as páginas efetivamente ficam hospedadas (landing). O schema/marca
 # continua apontando para o site institucional (NAP['url']).
-LANDING = "https://landing.lemesadvogados.com"
+LANDING = "https://lemesadvogados.com"
 # ID do Google Ads — embutido em todas as páginas (a landing não tem injeção via Wix).
 ADS_ID = "AW-993352616"
 
