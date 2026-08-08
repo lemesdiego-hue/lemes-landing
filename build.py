@@ -49,6 +49,7 @@ PRACTICES = [
     ("imobiliario",   "Imobiliário"),
     ("aereo",         "Direito Aéreo"),
     ("previdenciario","Previdenciário"),
+    ("empresarial",   "Empresarial"),
 ]
 
 # ============================================================================ #
@@ -879,6 +880,55 @@ PAGES["imobiliario"] = {
  "band_sub":"Conte sua situação pelo WhatsApp. Explico, sem compromisso, o caminho para regularizar a documentação ou recuperar a posse do imóvel.",
  "contact_h2":"Fale com um advogado imobiliário",
  "about_line":"Atuação em Direito Imobiliário — usucapião, regularização, posse e despejo — com análise clara da documentação e do melhor caminho para cada caso.",
+}
+
+PAGES["empresarial"] = {
+ "slug":"empresarial",
+ "title":"Advogado Empresarial SP | Assessoria e Defesa de Empresas",
+ "meta":"Advogado empresarial em São Paulo. Assessoria preventiva, societário, acordos de sócios, marcas e contratos comerciais. Fale agora pelo WhatsApp.",
+ "h1":"Advogado Empresarial em São Paulo",
+ "hero_sub":"Assessoria societária, elaboração de contratos comerciais, proteção de patrimônio e defesa em litígios. Atendimento boutique sob medida para blindar e impulsionar a sua empresa.",
+ "hero_note":"Assessoria societária e contratual · Blindagem de patrimônio · Atendimento boutique ágil",
+ "knows":["Direito Empresarial","Sociedades","Acordo de sócios","Holding familiar","Registro de marcas","Contratos comerciais","Defesa tributária"],
+ "sit_eyebrow":"Como apoiar seu negócio",
+ "sit_h2":"Serviços e soluções empresariais",
+ "sit_sub":"Veja se a sua demanda corporativa aparece abaixo — estruturamos defesas e arranjos preventivos sob medida para blindar, organizar e acelerar sua empresa.",
+ "cards":[
+  {"t":"Societário e Holding","d":"Constituição de sociedades, acordos de sócios, planos de vesting e holdings familiares para fins de blindagem patrimonial e eficiência de impostos."},
+  {"t":"Contratos Empresariais","d":"Elaboração, análise e revisão de contratos de fornecedores, prestação de serviços, parcerias comerciais e locação não-residencial."},
+  {"t":"Registro de Marcas","d":"Proteção jurídica da sua marca no INPI contra cópias, plágios e notificações extrajudiciais. Registre e blinde o seu maior ativo comercial."},
+  {"t":"Compliance Trabalhista","d":"Auditoria trabalhista preventiva para eliminar brechas de processos de funcionários, acordos extrajudiciais e adequação jurídica de rotinas."},
+  {"t":"Planejamento Tributário","d":"Redução legal da carga de impostos, recuperação de créditos fiscais e defesas contra autuações administrativas e execuções fiscais."},
+  {"t":"Defesa em Litígios","d":"Atuação contenciosa especializada e estratégica em processos judiciais movidos por clientes, ex-sócios, fornecedores ou cobranças indevidas."},
+ ],
+ "prose":[
+  {"h2":"A importância vital do Acordo de Sócios (Quotas/Ações)",
+   "p":["Em qualquer sociedade (Limitada ou Anônima), o Contrato Social padrão de Junta Comercial é extremamente insuficiente para prever desentendimentos e conflitos futuros. O <strong>Acordo de Sócios</strong> é o contrato de gaveta ideal para estabelecer as regras privadas de tomada de decisão, dissolução de impasse, direito de preferência e critérios de saída de um sócio (valuation).",
+        "Ele funciona como um 'seguro contra brigas', impedindo que problemas pessoais paralisem a operação, travem as contas bancárias do negócio ou levem a empresa à dissolução forçada."]},
+  {"h2":"Blindagem Patrimonial e Sucessão com Holding Familiar",
+   "p":["A constituição de uma <strong>holding familiar ou patrimonial</strong> é o mecanismo corporativo mais sólido para blindar os bens imóveis e o patrimônio pessoal dos sócios contra riscos operacionais e trabalhistas da empresa principal.",
+        "Além disso, ela organiza a sucessão dos bens em vida (planejamento sucessório), eliminando por completo a necessidade, os custos astronômicos e a lentidão de um inventário judicial tradicional para os herdeiros, garantindo que o negócio continue operando normalmente."]},
+  {"h2":"Por que registrar sua Marca no INPI é um ato urgente",
+   "p":["Utilizar uma marca sem ter o seu registro oficial no INPI (Instituto Nacional da Propriedade Industrial) expõe a empresa a um risco existencial gravíssimo. Qualquer concorrente pode registrar o mesmo nome antes de você e te enviar uma notificação judicial exigindo a <strong>mudança imediata de nome fantasia, logomarcas, fachadas, redes sociais e domínios de site da noite para o dia</strong>, sob pena de pesadas multas diárias.",
+        "O registro da marca é a única ferramenta jurídica que garante a propriedade e o uso exclusivo do seu nome comercial em todo o território nacional."]},
+ ],
+ "steps_h2":"Como funciona o atendimento corporativo",
+ "steps":[
+  {"t":"Diagnóstico inicial","d":"Entendemos a operação, o setor e as principais dores ou riscos da sua empresa pelo WhatsApp, de forma direta e sem burocracia."},
+  {"t":"Análise documental","d":"Revisamos o contrato social atual, os principais contratos vigentes e processos ativos para identificar gargalos e propor blindagem."},
+  {"t":"Execução e Implementação","d":"Redigimos as minutas sob medida, reestruturamos as defesas ou registramos a sua marca para que você possa focar no crescimento do negócio."},
+ ],
+ "faq_h2":"Perguntas frequentes sobre direito empresarial",
+ "faqs":[
+  {"q":"O que é e para que serve uma Holding Familiar?","a":["É uma empresa constituída com o objetivo de administrar e centralizar o patrimônio de uma família (imóveis, participações societárias, ativos). Ela serve para proteger legalmente os bens familiares contra riscos operacionais das empresas de mercado, planejar a herança em vida sem necessidade de inventário futuro e economizar impostos na locação e venda de bens."]},
+  {"q":"Por que o Contrato Social padrão de internet é perigoso?","a":["Porque ele é genérico e não prevê conflitos reais. Ele não diz o que acontece se um sócio falecer (se os herdeiros assumem ou são pagos), como calcular o valor da empresa para pagar quem sai, ou quem tem a palavra final em impasses. Qualquer briga em um contrato genérico pode parar a operação da empresa na Justiça."]},
+  {"q":"O que acontece se eu não registrar minha marca no INPI?","a":["Você corre o risco de ser notificado a qualquer momento por outra empresa que registrou a marca primeiro, sendo obrigado a remover seu site do ar, mudar de redes sociais, descartar embalagens e mudar de nome fantasia da noite para o dia, além de poder sofrer ação de perdas e danos pelo uso indevido da marca alheia."]},
+  {"q":"Como o escritório pode ajudar na redução de processos trabalhistas?","a":["Através de um compliance e auditoria trabalhista preventiva. Analisamos os contratos de trabalho, prestadores de serviços (PJ), horas extras e formas de remuneração para identificar e estancar brechas legais que geram processos judiciais, reduzindo drasticamente o passivo trabalhista da empresa."]},
+ ],
+ "band_h2":"Blinde e estruture o seu negócio hoje",
+ "band_sub":"Agende um diagnóstico inicial preventivo e sem compromisso pelo WhatsApp. Analiso a estrutura e contratos da sua empresa para mitigar riscos comerciais.",
+ "contact_h2":"Fale com o advogado especialista",
+ "about_line":"Atuação em Direito Empresarial — acordo de sócios, holdings patrimoniais, blindagem de bens, contratos comerciais, marcas (INPI) e assessoria preventiva boutique.",
 }
 
 # ============================================================================ #
