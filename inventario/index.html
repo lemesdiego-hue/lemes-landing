@@ -5,34 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Advogado de Inventário em SP | Custo e Tabela OAB | Lemes</title>
 <meta name="description" content="Quanto custa um advogado de inventário? Veja a tabela OAB/SP, prazos e como funciona o inventário extrajudicial. Fale pelo WhatsApp com a Lemes.">
-<link rel="canonical" href="https://lemesadvogados.com/inventario/">
+<link rel="canonical" href="https://landing.lemesadvogados.com/inventario/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lemes Advogados">
 <meta property="og:title" content="Advogado de Inventário em SP | Custo e Tabela OAB | Lemes">
 <meta property="og:description" content="Quanto custa um advogado de inventário? Veja a tabela OAB/SP, prazos e como funciona o inventário extrajudicial. Fale pelo WhatsApp com a Lemes.">
-<meta property="og:url" content="https://lemesadvogados.com/inventario/">
+<meta property="og:url" content="https://landing.lemesadvogados.com/inventario/">
 <meta property="og:locale" content="pt_BR">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — Google Ads -->
+<!-- Fonte carregada sem bloquear a renderização (media=print -> troca para all no -->
+<!-- onload): o texto aparece na hora com a fonte de sistema e troca ao carregar. -->
+<!-- Corta o principal bloqueio de render no celular. &display=swap já evita FOIT. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap"></noscript>
+<!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (evita corrida em -->
+<!-- que um clique rápido no WhatsApp acontece antes de os dois scripts async -->
+<!-- carregarem e o evento se perde). Uma biblioteca, dois destinos (config). -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993352616"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', 'AW-993352616');
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3YLQXJDLJE');
+ gtag('config', 'G-3YLQXJDLJE');
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -92,6 +91,10 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
 .hero__note{font-family:var(--mono);font-size:var(--s-1);color:var(--muted);margin-top:.9rem}
 .trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--s-1);letter-spacing:.04em;color:var(--ink2)}
 .trust b{color:var(--carimbo);font-weight:700}
+.rev{margin-top:1.1rem;font-family:var(--mono);font-size:var(--s-1);letter-spacing:.03em;color:var(--ink2)}
+.rev a{text-decoration:none;border-bottom:1px solid var(--line)}
+.rev__stars{color:#E8A33D;letter-spacing:.05em}
+.rev b{color:var(--ink);font-weight:700}
 /* cards */
 .h2wrap{max-width:54ch}
 .h2wrap h2{font-weight:800;font-size:var(--s3);margin-top:.6rem}
@@ -284,6 +287,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   <div class="trust">
    <span>Diego Henrique Lemes · <b>OAB/SP 255.888</b></span><span>Perdizes, São Paulo/SP</span><span>Seg–Sex, 9h às 18h</span>
   </div>
+  <div class="rev"><span class="rev__stars" aria-hidden="true">★★★★★</span> <b>5,0</b> · 27 avaliações no Google</div>
  </section>
 
  <!-- SITUAÇÕES / SERVIÇOS -->
@@ -374,7 +378,7 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   </div>
   <div>
    <h4>Áreas de atuação</h4>
-   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/familia/">Família</a><a href="/inventario/">Inventário</a><a href="/imobiliario/">Imobiliário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a>
+   <a href="/trabalhista/">Trabalhista</a><a href="/civel/">Cível</a><a href="/divorcio/">Divórcio</a><a href="/inventario/">Inventário</a><a href="/aereo/">Direito Aéreo</a><a href="/previdenciario/">Previdenciário</a><a href="/noticias/" style="font-weight: bold;">Notícias & Decisões</a>
   </div>
   <div>
    <h4>Contato</h4>
@@ -406,7 +410,11 @@ h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;le
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  // transport_type:"beacon" -> navigator.sendBeacon: o evento sobrevive ao clique
+  // no link, que no celular abre o app do WhatsApp e descarrega a página na hora.
+  // Sem isso, boa parte dos cliques mobile morria antes de o hit ser enviado, e o
+  // GA4/Ads subcontava "whatsapp_click" (a conversão parecia menor do que é).
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){
