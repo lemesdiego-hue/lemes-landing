@@ -263,7 +263,8 @@ def faq_html(faqs):
     return "".join(out)
 
 def footer_links():
-    return "".join(f'<a href="/{slug}/">{label}</a>' for slug, label in PRACTICES)
+    links = "".join(f'<a href="/{slug}/">{label}</a>' for slug, label in PRACTICES)
+    return links + '<a href="/noticias/" style="font-weight: bold;">Notícias & Decisões</a>'
 
 def schema_for(page):
     legal = {
