@@ -1,0 +1,12 @@
+{
+  "name": "site-lemes-scripts",
+  "version": "1.0.0",
+  "description": "Scripts de automação e IA para o site Lemes Advogados",
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "mammoth": "^1.12.0",
+    "marked": "^18.0.9",
+    "pdf-parse": "^1.1.1"
+  }
+}
