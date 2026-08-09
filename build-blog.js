@@ -160,6 +160,7 @@ ${extraCss}
    <p>${NAP.street}</p>
    <p>${NAP.district}, ${NAP.city}/${NAP.region} · ${NAP.cep}</p>
    <a href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener">LinkedIn</a>
+   <a href="https://www.instagram.com/lemesadvsp/" target="_blank" rel="noopener">Instagram</a>
   </div>
  </div>
  <div class="wrap">
