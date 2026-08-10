@@ -358,9 +358,9 @@ TPL = Template(r"""<!DOCTYPE html>
 </head>
 <body>
 <header class="bar">
- <div class="wrap bar__in">
-  <a class="brand" href="/" aria-label="Lemes Advogados — início"><b>Lemes</b><span>Advogados</span></a>
-  <a class="bar__phone" href="tel:$phone_tel">$phone_display</a>
+  <div class="wrap bar__in">
+   <a class="brand" href="/" aria-label="Lemes Advogados — início" style="display: flex; align-items: center; text-decoration: none;"><img src="/assets/logo_lemes.png" alt="Lemes Advogados" style="height: 42px; width: auto; display: block;"></a>
+   <a class="bar__phone" href="tel:$phone_tel">$phone_display</a>
   <a class="btn" href="$whats" target="_blank" rel="noopener">$zap WhatsApp</a>
  </div>
 </header>
