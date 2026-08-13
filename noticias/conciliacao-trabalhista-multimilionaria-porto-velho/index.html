@@ -267,7 +267,7 @@ Se você está passando por uma situação semelhante ou deseja esclarecer dúvi
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){

@@ -200,7 +200,7 @@ JS = r"""
   return "other";
  }
  function whatsEvent(loc,url){
-  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||""});}
+  if(typeof gtag==="function"){gtag("event","whatsapp_click",{link_location:loc,link_url:url||"",transport_type:"beacon"});}
  }
  // dispara o evento em qualquer clique num link de WhatsApp
  document.addEventListener("click",function(e){
@@ -546,7 +546,7 @@ PAGES["civel"] = {
  "title":"Advogado Cível em São Paulo | Lemes Advogados",
  "meta":"Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.",
  "h1":"Advogado Cível em São Paulo",
- "hero_sub":"Divórcio, inventário, partilha, contratos e pequenas causas. Atendimento próximo, com explicação em linguagem que você entende e foco em resolver.",
+ "hero_sub":"Divórcio, inventário, partilha, contratos e pequenas causas. Atendimento próximo e personalizado por um advogado cível especialista para orientar e defender seus direitos com total transparência.",
  "hero_note":"Advogado cível perto de você · Atendimento em todo São Paulo",
  "knows":["Direito Civil","Divórcio","Inventário","Partilha de bens","Pequenas causas","Contratos","Indenizações"],
  "sit_eyebrow":"Áreas do direito cível",
@@ -562,11 +562,11 @@ PAGES["civel"] = {
  ],
  "prose":[
   {"h2":"Advogado cível perto de você em São Paulo",
-   "p":["O escritório fica em <strong>Perdizes, São Paulo</strong>, e atende clientes de toda a cidade e região. O atendimento começa pelo WhatsApp, de forma prática, e segue com a mesma pessoa do início ao fim — você sempre sabe com quem está falando."]},
+   "p":["Se você precisa de um <strong>advogado cível em São Paulo</strong> para assessorar em questões familiares, contratuais ou patrimoniais, o escritório está localizado em <strong>Perdizes, São Paulo</strong> e atende tanto de forma digital quanto física. O atendimento inicial do seu caso é feito de forma prática via WhatsApp diretamente pelo advogado cível responsável, garantindo acompanhamento especializado do início ao fim do processo."]},
   {"h2":"Pequenas causas: quando vale a pena",
-   "p":["O Juizado Especial Cível resolve conflitos de até 40 salários mínimos, como cobranças indevidas, problemas com produtos e serviços e pequenos contratos. Para causas de até 20 salários mínimos, é possível entrar sem advogado, mas a orientação jurídica aumenta as chances de êxito e evita erros que atrasam o processo."]},
+   "p":["O Juizado Especial Cível julga conflitos de até 40 salários mínimos, tais como cobranças indevidas, problemas em relações de consumo e descumprimento de pequenos contratos. Para causas de até 20 salários mínimos, a lei permite ingressar sem assistência jurídica, porém o acompanhamento de um <strong>advogado cível</strong> experiente aumenta significativamente as chances de êxito e evita falhas técnicas processuais que costumam atrasar ou anular seu direito."]},
   {"h2":"Divórcio e inventário: as demandas mais comuns",
-   "p":["Dois dos atendimentos mais frequentes são o <strong>divórcio</strong> e o <strong>inventário</strong>. Quando há acordo entre as partes, ambos podem ser feitos em cartório, de forma mais rápida e barata. Criamos páginas específicas para explicar cada um em detalhe — veja como funciona o <a href=\"/divorcio/\">divórcio</a> e o <a href=\"/inventario/\">inventário</a>."]},
+   "p":["A atuação de um <strong>advogado cível</strong> qualificado também é de suma importância em momentos cruciais de transição e partilha patrimonial, tais como o <strong>divórcio</strong> e o <strong>inventário</strong>. Quando há consenso e concordância mútua, ambos os procedimentos podem ser realizados extrajudicialmente de maneira rápida e com custos reduzidos diretamente em cartório. Conte com a assessoria especializada do nosso advogado cível e confira os guias completos sobre como funciona o <a href=\"/divorcio/\">divórcio em cartório</a> e o <a href=\"/inventario/\">inventário extrajudicial</a>."]},
  ],
  "steps_h2":"Como começamos",
  "steps":[
