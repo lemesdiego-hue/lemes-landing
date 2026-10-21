@@ -904,8 +904,8 @@ PAGES["divorcio"] = {
 
 PAGES["inventario"] = {
  "slug":"inventario",
- "title":"Advogado de Inventário em SP | Custo e Tabela OAB | Lemes",
- "meta":"Quanto custa um advogado de inventário? Veja a tabela OAB/SP, prazos e como funciona o inventário extrajudicial. Fale pelo WhatsApp com a Lemes.",
+ "title":"Quanto Custa Advogado de Inventário em SP? Tabela OAB",
+ "meta":"Quanto cobra um advogado para inventário em SP: honorários pela tabela OAB/SP, ITCMD de 4% e custos de cartório. Peça sua estimativa pelo WhatsApp.",
  "h1":"Advogado de Inventário em São Paulo",
  "hero_sub":"Precisa abrir o inventário e fazer a partilha dos bens? Explico custos, prazos e como funciona no cartório ou na Justiça, e cuido de todo o processo.",
  "hero_note":"Inventário no cartório · Partilha · Atendimento à família",
