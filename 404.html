@@ -15,12 +15,17 @@
 */
 (function(){
  "use strict";
- var known = {trabalhista:1,civel:1,divorcio:1,inventario:1,aereo:1,previdenciario:1};
+ var known = {trabalhista:1,civel:1,divorcio:1,familia:1,inventario:1,imobiliario:1,aereo:1,previdenciario:1,empresarial:1,noticias:1,privacidade:1};
+ // endereços do site antigo que ainda aparecem no Google -> página equivalente
+ var alias = {inss:"previdenciario",aposentadoria:"previdenciario",consumidor:"civel","direito-do-consumidor":"civel",
+  "direito-civil":"civel","direito-trabalhista":"trabalhista","direito-de-familia":"familia",heranca:"inventario",
+  "direito-aereo":"aereo",imoveis:"imobiliario","direito-empresarial":"empresarial",blog:"noticias"};
  var seg = location.pathname
    .replace(/\.html$/i,"")
    .replace(/^\/+|\/+$/g,"")
    .split("/").pop()
    .toLowerCase();
+ if (Object.prototype.hasOwnProperty.call(alias, seg)) seg = alias[seg];
  if (Object.prototype.hasOwnProperty.call(known, seg)) {
   location.replace("/" + seg + "/" + location.search + location.hash);
  } else {
