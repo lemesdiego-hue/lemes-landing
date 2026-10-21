@@ -625,7 +625,7 @@ CONTACT = r"""<section class="section wrap" id="contato">
  <div class="g3 contact">
   <div class="c1">
    <h2>$contact_h2</h2>
-   <p class="lead">Prefere escrever? Preencha ao lado e a mensagem abre pronta no WhatsApp. A primeira conversa é sem compromisso.</p>
+   <p class="lead">Prefere escrever? Preencha o formulário e a mensagem abre pronta no WhatsApp. A primeira conversa é sem compromisso.</p>
    <div class="napcard">
     <b>$name</b><br>
     $street — $district<br>
