@@ -127,7 +127,7 @@ HOME_BODY = r"""$header
  <!-- HERO -->
  <section class="hero wrap g3" aria-labelledby="h1">
   <div class="c12">
-   <h1 id="h1"><span class="eyebrow">Advogado em São Paulo<span class="hide-sm">&nbsp;· Perdizes</span></span><span class="h1-main">Seu caso conduzido por quem atende você, <em>do começo ao fim.</em></span></h1>
+   <h1 id="h1"><span class="eyebrow">Advogado em São Paulo<span class="hide-sm">&nbsp;· Perdizes</span></span> <span class="h1-main">Seu caso conduzido por quem atende você, <em>do começo ao fim.</em></span></h1>
    <p class="lead">Uma orientação clara, em linguagem simples, para você decidir com calma o próximo passo.</p>
    <div class="cta">
     <a class="btn" href="$whats" target="_blank" rel="noopener">$zap Primeira conversa gratuita</a>
