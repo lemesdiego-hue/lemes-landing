@@ -5,9 +5,9 @@ Gerador das landing pages otimizadas da Lemes Advogados.
 Fonte única de verdade: CSS, template e conteúdo de cada página ficam aqui.
 Rode:  python3 build.py
 Saída: pasta dist/ pronta para deploy (rotas limpas em diretório):
-       dist/index.html (home), dist/<slug>/index.html (6 áreas),
+       dist/index.html (home), dist/<slug>/index.html (9 áreas),
        dist/404.html, dist/sitemap.xml, dist/robots.txt, dist/CNAME, dist/.nojekyll
-Estáticos autorais (entradas, não geradas): index.html (home) e 404.html.
+Home gerada por render_home() (conteúdo em HOME); estático autoral: 404.html.
 Artefatos de referência na raiz: schema-markup.json, home-meta-tags.txt.
 """
 import json, pathlib, shutil, datetime
@@ -52,138 +52,346 @@ PRACTICES = [
     ("empresarial",   "Empresarial"),
 ]
 
+GA4_ID = "G-3YLQXJDLJE"
+CLARITY_ID = "xe34fpdzej"
+FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap"
+FOUNDED = "2016"
+# Trajetória (texto aprovado pelo Diego em 21/10/2026 — sem citar a graduação)
+BIO = ("Antes de fundar o escritório, em 2016, foi gestor de departamentos jurídicos de grandes empresas, "
+       "onde coordenou casos em diversas áreas do direito. É especialista em Contratos Internacionais pela PUC-SP "
+       "e tem MBA em Direito Tributário pela FGV.")
+PHOTO = "/assets/diego-lemes-advogado-360.webp"
+LOGO = "/assets/logo-claro.png"
+SAME_AS = ["https://www.linkedin.com/in/diego-henrique-lemes-8882b0/", "https://www.instagram.com/lemesadvsp/"]
+NAV_HOME = ('<a href="#areas">Áreas</a><a href="#como">Como funciona</a><a href="#sobre">O escritório</a>'
+            '<a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>')
+NAV_AREA = ('<a href="/">Início</a><a href="/#areas">Áreas</a><a href="#sobre">O advogado</a>'
+            '<a href="#contato">Contato</a>')
+
+# Ícones (traço) e linha curta de cada área — usados na lista de áreas da home
+AREA_ICONS = {
+    "trabalhista": "M3 8h18v12H3z M8 8V5h8v3 M3 13h18",
+    "civel": "M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h7",
+    "divorcio": "M3 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M11 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0",
+    "familia": "M8 8a3 3 0 1 0 0-.01 M16 9a2.5 2.5 0 1 0 0-.01 M3 20c0-3 2.2-5 5-5s5 2 5 5 M13 20c.3-2.4 1.6-4 3.5-4 2 0 3.5 1.6 3.5 4",
+    "inventario": "M3 11l9-7 9 7 M5 10v10h14V10 M10 20v-6h4v6",
+    "imobiliario": "M4 21V8l8-5 8 5v13 M9 21v-5h6v5 M9 11h.01 M15 11h.01",
+    "aereo": "M22 2L11 13 M22 2l-7 20-4-9-9-4z",
+    "previdenciario": "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4",
+    "empresarial": "M3 21h18 M5 21V7l7-4 7 4v14 M9 10h2 M13 10h2 M9 14h2 M13 14h2",
+}
+AREA_LINES = {
+    "trabalhista": "Demissão, verbas rescisórias, horas extras, FGTS e assédio.",
+    "civel": "Contratos, consumidor, indenizações e cobranças.",
+    "divorcio": "No cartório ou judicial, consensual ou litigioso, guarda e partilha.",
+    "familia": "Guarda, pensão alimentícia, união estável e partilha.",
+    "inventario": "Inventário judicial ou extrajudicial, herança e partilha.",
+    "imobiliario": "Usucapião, regularização de imóvel, despejo e posse.",
+    "aereo": "Voo cancelado ou atrasado, overbooking e bagagem extraviada.",
+    "previdenciario": "Aposentadoria, benefício negado pelo INSS, BPC e revisão.",
+    "empresarial": "Societário, acordo de sócios, marcas e contratos comerciais.",
+}
+
+HOME = {
+    "title": "Advogado em São Paulo | Lemes Advogados",
+    "meta": "Advogado em São Paulo, em Perdizes. Trabalhista, Cível, Família, Divórcio, Inventário, Previdenciário e Aéreo. Primeira conversa gratuita pelo WhatsApp.",
+    "hero_areas": ["trabalhista", "divorcio", "inventario", "civel", "previdenciario", "aereo"],
+    "pillars": [
+        ("Você fala com o advogado", "Quem ouve o seu caso no primeiro contato é quem vai cuidar dele, do início ao fim."),
+        ("Linguagem clara", "Explicação sem juridiquês: o que você pode buscar, quanto tempo costuma levar e quais documentos separar."),
+        ("Tudo pelo celular", "Contrato e procuração assinados no celular. Se preferir, o escritório fica em Perdizes."),
+    ],
+    "prose": [
+        {"h2": "Advogado em São Paulo com atendimento direto", "p": [
+            "A <strong>Lemes Sociedade Individual de Advogados</strong> atua em São Paulo com foco em resolver o seu caso de forma clara e próxima. O atendimento é conduzido pelo próprio advogado, <strong>Diego Henrique Lemes (OAB/SP 255.888)</strong>, do primeiro contato ao desfecho, sem intermediários e sem juridiquês.",
+            "O escritório fica em <strong>Perdizes, São Paulo</strong>, e atende clientes de toda a cidade e do estado. A primeira conversa é <strong>gratuita</strong> e começa pelo WhatsApp: você explica a situação do seu jeito e recebe uma orientação honesta sobre o que dá para fazer."]},
+        {"h2": "Como saber qual é o seu caso", "p": [
+            "Se você foi demitido ou tem horas extras não pagas, comece pelo <a href=\"/trabalhista/\">Direito Trabalhista</a>. Para separação, guarda e partilha, veja <a href=\"/divorcio/\">Divórcio</a> e <a href=\"/familia/\">Família</a>. Após o falecimento de um familiar, o <a href=\"/inventario/\">Inventário</a>. Contratos, consumidor e cobranças ficam no <a href=\"/civel/\">Cível</a>; imóveis, no <a href=\"/imobiliario/\">Imobiliário</a>. Aposentadoria e benefícios negados pelo INSS, no <a href=\"/previdenciario/\">Previdenciário</a>. Problemas em voos, no <a href=\"/aereo/\">Direito Aéreo</a>. Para empresas, o <a href=\"/empresarial/\">Empresarial</a>. Na dúvida, é só mandar uma mensagem que eu indico o caminho certo."]},
+    ],
+    "steps": [
+        {"t": "Você conta o que houve", "d": "Uma mensagem no WhatsApp basta. Você explica do seu jeito e eu faço as perguntas certas."},
+        {"t": "Analiso com cuidado", "d": "Leio os documentos e digo com honestidade o que dá para buscar e qual é o próximo passo."},
+        {"t": "Seguimos juntos", "d": "Acordo ou ação: você acompanha cada etapa diretamente comigo."},
+    ],
+    "faqs": [
+        {"q": "A primeira conversa é gratuita?", "a": ["Sim. Você explica a situação pelo WhatsApp e recebe uma orientação inicial, sem compromisso."]},
+        {"q": "Quais áreas o escritório atende?", "a": ["Trabalhista, Cível, Divórcio, Família, Inventário, Imobiliário, Previdenciário, Direito Aéreo e Empresarial. Cada área tem uma página própria com direitos, prazos e documentos."]},
+        {"q": "Preciso ir ao escritório?", "a": ["Não. Contrato e procuração são assinados pelo celular, e os processos tramitam de forma digital. Se preferir, o escritório fica na Rua Coronel Melo de Oliveira, 557, em Perdizes, São Paulo/SP."]},
+        {"q": "Como falo com o advogado?", "a": ["Pelo WhatsApp (11) 99515-5021 ou pelo e-mail diego@lemesadvogados.com. Quem atende é o próprio Diego Henrique Lemes, OAB/SP 255.888."]},
+    ],
+}
+
+HOME_BODY = r"""<div class="top">
+$header
+<main id="conteudo">
+ <!-- HERO -->
+ <section class="hero hero--home wrap" aria-labelledby="h1">
+  <div>
+   <h1 id="h1"><span class="eyebrow">Advogado em São Paulo · Perdizes</span><span class="h1-main">Seu caso conduzido por quem atende você, <em>do começo ao fim.</em></span></h1>
+   <p class="lead">Uma orientação clara, em linguagem simples, para você decidir com calma o próximo passo.</p>
+   <div class="cta">
+    <a class="btn" href="$whats" target="_blank" rel="noopener">$zap Primeira conversa gratuita</a>
+    <a class="btn btn--ghost" href="#como">Como funciona</a>
+   </div>
+   <div class="sig"><img src="/assets/diego-lemes-advogado-120.webp" alt="" width="120" height="120"><span><b>$lawyer</b><span>Advogado · $oab</span></span></div>
+  </div>
+  <nav class="idx" aria-label="Principais áreas de atuação">
+   <p class="idx__t">Em que posso ajudar</p>
+   $idx
+  </nav>
+ </section>
+</div>
+
+ <!-- COMO TRABALHAMOS -->
+ <section class="section wrap" aria-labelledby="h-como-trab">
+  <h2 class="sr-only" id="h-como-trab">Como trabalhamos</h2>
+  <div class="pillars">$pillars</div>
+ </section>
+
+ <!-- ÁREAS DE ATUAÇÃO (HUB) -->
+ <section class="section tint" id="areas">
+  <div class="wrap">
+   <div class="h2wrap"><h2>Áreas de atuação</h2><p>Cada área tem uma página com direitos, prazos e documentos. Na dúvida, mande uma mensagem e eu indico o caminho.</p></div>
+   <div class="rows">$rows</div>
+  </div>
+ </section>
+
+ <!-- CONTEÚDO RASTREÁVEL -->
+ <section class="section wrap prose">
+  $prose
+ </section>
+
+ <!-- PASSOS -->
+ <section class="section tint" id="como">
+  <div class="wrap">
+   <div class="h2wrap"><h2>Como funciona</h2><p>Do primeiro contato à solução, em três passos.</p></div>
+   $steps
+  </div>
+ </section>
+
+ <!-- O ESCRITÓRIO / E-E-A-T -->
+$about
+
+ <!-- FAQ -->
+ <section class="section wrap" id="duvidas">
+  <div class="h2wrap"><h2>Perguntas frequentes</h2></div>
+  $faq
+ </section>
+
+ <!-- FAIXA CTA -->
+ <section class="section band">
+  <div class="wrap band__in">
+   <div><h2>Conte o que aconteceu.</h2><p>A primeira conversa é gratuita e sem compromisso.</p></div>
+   <a class="btn btn--lite" href="$whats" target="_blank" rel="noopener">$zap Falar no WhatsApp</a>
+  </div>
+ </section>
+
+ <!-- CONTATO + FORMULÁRIO -->
+$contact
+</main>
+
+"""
+
+def _person():
+    return {"@type": "Person", "@id": f"{LANDING}/#diego", "name": NAP["lawyer"], "jobTitle": "Advogado",
+            "identifier": NAP["oab"], "image": LANDING + PHOTO, "description": BIO, "sameAs": SAME_AS[:1],
+            "worksFor": {"@id": f"{LANDING}/#escritorio"}}
+
+def schema_home():
+    org = {
+        "@type": "LegalService", "@id": f"{LANDING}/#escritorio", "name": NAP["name"], "alternateName": NAP["short"],
+        "url": f"{LANDING}/", "logo": LANDING + LOGO, "image": LANDING + "/assets/og-lemes-advogados.jpg",
+        "description": HOME["meta"], "telephone": "+55-11-99515-5021", "email": NAP["email"], "priceRange": "$$",
+        "foundingDate": FOUNDED, "openingHours": "Mo-Fr 09:00-18:00",
+        "address": {"@type": "PostalAddress", "streetAddress": NAP["street"], "addressLocality": f"{NAP['district']}, {NAP['city']}",
+                    "addressRegion": NAP["region"], "postalCode": NAP["cep"], "addressCountry": "BR"},
+        "areaServed": "São Paulo, SP", "founder": {"@id": f"{LANDING}/#diego"}, "sameAs": SAME_AS,
+        "knowsAbout": [f"Direito {l}" if not l.startswith("Direito") else l for _, l in PRACTICES],
+    }
+    site = {"@type": "WebSite", "@id": f"{LANDING}/#site", "url": f"{LANDING}/", "name": NAP["short"], "inLanguage": "pt-BR",
+            "publisher": {"@id": f"{LANDING}/#escritorio"}}
+    faq = {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q["q"], "acceptedAnswer": {"@type": "Answer", "text": " ".join(_strip(p) for p in q["a"])}}
+        for q in HOME["faqs"]]}
+    return {"@context": "https://schema.org", "@graph": [org, _person(), site, faq]}
+
 # ============================================================================ #
-#  CSS — sistema de design "Dossiê" (papel / tinta / carimbo / verde-deferido)
+#  CSS — sistema de design "Escritório" (topo tinta, papel, dourado, verde do WhatsApp)
 #  Inline em cada página para portabilidade e velocidade (1 requisição a menos).
 # ============================================================================ #
 CSS = r"""
 :root{
- --paper:#ECE9E1;--paper2:#E4E0D5;--ink:#1B2420;--ink2:#3C453F;
- --carimbo:#BE3A2B;--ledger:#2E6B52;--muted:#656151;
- --line:rgba(27,36,32,.16);--line2:rgba(27,36,32,.09);
- --display:"Archivo",system-ui,sans-serif;--body:"Spectral",Georgia,serif;
- --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
- --s-1:clamp(.78rem,.76rem + .1vw,.84rem);--s0:clamp(1rem,.97rem + .15vw,1.1rem);
- --s1:clamp(1.18rem,1.1rem + .35vw,1.35rem);--s2:clamp(1.45rem,1.3rem + .7vw,1.85rem);
- --s3:clamp(1.85rem,1.5rem + 1.6vw,2.7rem);--s4:clamp(2.3rem,1.7rem + 2.8vw,3.8rem);
- --gutter:clamp(1.15rem,5vw,4rem);--maxw:1140px;--radius:3px;
+ --paper:#F4F1EA;--paper2:#EAE5D9;--white:#FFFFFF;--ink:#1B2420;--ink2:#3C453F;--text2:#4A4A3E;
+ --gold:#C9A15B;--gold-ink:#7A5C24;--carimbo:#BE3A2B;--ledger:#2E6B52;--muted:#5C5848;
+ --on-dark:#F4F1EA;--on-dark2:#CFC9BA;--on-dark3:#B9B2A2;
+ --line:rgba(27,36,32,.18);--line2:rgba(27,36,32,.1);--line-dark:rgba(244,241,234,.14);
+ --display:"Spectral",Georgia,serif;--ui:"Archivo",system-ui,sans-serif;--mono:var(--ui);--body:"Spectral",Georgia,serif;
+ --s-1:clamp(.82rem,.8rem + .1vw,.88rem);--s0:clamp(1.02rem,.99rem + .15vw,1.12rem);
+ --s1:clamp(1.2rem,1.12rem + .35vw,1.4rem);--s2:clamp(1.5rem,1.33rem + .75vw,1.95rem);
+ --s3:clamp(2rem,1.6rem + 1.7vw,3.2rem);--s4:clamp(2.5rem,1.75rem + 3.2vw,4.25rem);
+ --gutter:clamp(1rem,5vw,3rem);--maxw:1200px;--radius:6px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:var(--s0);line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
-img{display:block;max-width:100%}a{color:inherit}
-:focus-visible{outline:2.5px solid var(--carimbo);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}a{color:inherit}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px}
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1.02;letter-spacing:-.01em}
-.eyebrow{font-family:var(--mono);font-size:var(--s-1);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);overflow-wrap:anywhere}
-.eyebrow::before{content:"";display:inline-block;width:1.6em;height:1px;background:currentColor;vertical-align:middle;margin-right:.6em;opacity:.7}
-.section{padding-block:clamp(3rem,7vw,5.5rem)}
-.lead{font-size:var(--s1);color:var(--ink2);max-width:60ch}
-/* header */
-.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
-.brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;font-family:var(--display);font-weight:800;letter-spacing:.04em;font-size:var(--s1);text-transform:uppercase}
-.brand span{font-family:var(--mono);font-size:.58em;letter-spacing:.14em;color:var(--muted);font-weight:400}
-.bar__phone{display:none;font-family:var(--mono);font-size:var(--s-1);letter-spacing:.06em;color:var(--ink2)}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+.eyebrow{display:flex;align-items:center;gap:.8em;font-family:var(--ui);font-weight:600;font-size:var(--s-1);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);overflow-wrap:anywhere}
+.eyebrow::before{content:"";flex:none;width:2.2em;height:1px;background:currentColor}
+.section{padding-block:clamp(3.2rem,8vw,6.5rem)}
+.lead{font-size:var(--s1);color:var(--text2);max-width:58ch}
+/* topo escuro: barra + hero */
+.top{background:var(--ink);color:var(--on-dark)}
+.top .eyebrow{color:var(--on-dark3)}.top .eyebrow::before{background:var(--gold)}
+.top .lead{color:var(--on-dark2)}
+.bar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--on-dark);border-bottom:1px solid var(--line-dark)}
+.bar__in{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;padding-block:.75rem}
+.brand{display:flex;align-items:center;flex:none;text-decoration:none}
+.brand img{height:clamp(40px,4vw,54px);width:auto}
+.nav{display:none;gap:1.8rem;margin-left:auto;font-family:var(--ui);font-weight:500;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--on-dark2)}.nav a:hover{color:#fff}
+@media(min-width:980px){.nav{display:flex}}
+.bar__phone{display:none;font-family:var(--ui);font-weight:600;font-size:.95rem;color:var(--on-dark2);text-decoration:none}
 @media(min-width:760px){.bar__phone{display:block}}
 /* botões */
-.btn{display:inline-flex;align-items:center;gap:.55em;font-family:var(--display);font-weight:700;font-size:var(--s0);letter-spacing:.02em;text-decoration:none;color:#fff;background:var(--ledger);border:1px solid var(--ledger);padding:.8em 1.3em;border-radius:var(--radius);cursor:pointer;transition:transform .16s,box-shadow .16s;box-shadow:4px 4px 0 var(--ink)}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.btn svg{width:1.1em;height:1.1em}
-.btn--ink{background:var(--ink);border-color:var(--ink)}
-.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line);box-shadow:none}
-.btn--ghost:hover{transform:none;box-shadow:none;background:var(--paper2);border-color:var(--ink)}
-.btn--lite{background:var(--paper);color:var(--ink);border-color:var(--paper);box-shadow:4px 4px 0 rgba(0,0,0,.3)}
-.btn--lite:hover{box-shadow:6px 6px 0 rgba(0,0,0,.3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:3.25rem;font-family:var(--ui);font-weight:700;font-size:var(--s0);text-decoration:none;color:#fff;background:var(--ledger);border:1.5px solid var(--ledger);padding:.7em 1.6em;border-radius:999px;cursor:pointer;transition:transform .16s,background .16s,box-shadow .16s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(27,36,32,.22)}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn--sm{min-height:2.75rem;padding:.5em 1.2em;font-size:.95rem}
+.btn--line{background:transparent;color:var(--on-dark);border-color:rgba(244,241,234,.5)}
+.btn--line:hover{background:rgba(244,241,234,.08);box-shadow:none}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--ink);box-shadow:none}
+.top .btn--ghost{color:var(--on-dark);border-color:rgba(244,241,234,.4)}
+.btn--lite{background:#fff;color:var(--ink);border-color:#fff}
+.btn--lite svg{color:var(--ledger)}
 /* hero */
-.hero{padding-top:clamp(2.2rem,5vw,4rem);padding-bottom:clamp(1.5rem,4vw,3rem)}
-.hero h1{font-weight:900;font-size:var(--s4);overflow-wrap:break-word}
-.hero .lead{margin-top:1.3rem}
-.cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.8rem}
-.hero__note{font-family:var(--mono);font-size:var(--s-1);color:var(--muted);margin-top:.9rem}
-.trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--mono);font-size:var(--s-1);letter-spacing:.04em;color:var(--ink2)}
-.trust b{color:var(--carimbo);font-weight:700}
-/* cards */
-.h2wrap{max-width:54ch}
-.h2wrap h2{font-weight:800;font-size:var(--s3);margin-top:.6rem}
-.h2wrap p{margin-top:.9rem;color:var(--ink2)}
-.cards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(1.8rem,4vw,2.6rem);border-radius:var(--radius);overflow:hidden}
+.hero{padding-top:clamp(2.8rem,7vw,6.5rem);padding-bottom:clamp(3rem,7vw,6rem)}
+.hero h1{font-size:var(--s4);margin-top:1.1rem;max-width:20ch;text-wrap:pretty}
+.hero h1 .eyebrow{font-size:var(--s-1);line-height:1.4;margin-bottom:1.2rem}.h1-main{display:block}
+.hero--home h1{margin-top:0}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.hero .lead{margin-top:1.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin-top:2rem}
+.hero__note{font-family:var(--ui);font-size:var(--s-1);color:var(--on-dark3);margin-top:1rem}
+.sig{display:flex;align-items:center;gap:.9rem;margin-top:2rem;font-family:var(--ui);line-height:1.35}
+.sig img{width:60px;height:60px;border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.sig b{display:block;font-size:1rem;color:var(--on-dark)}.sig span span{font-size:.9rem;color:var(--on-dark3)}
+.trust{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--line-dark);font-family:var(--ui);font-size:var(--s-1);color:var(--on-dark2)}
+/* home: hero em duas colunas + índice de áreas */
+.hero--home{display:grid;gap:clamp(2.5rem,5vw,4.5rem);grid-template-columns:1fr;align-items:start}
+@media(min-width:980px){.hero--home{grid-template-columns:1.35fr 1fr}}
+.idx{border-top:1px solid rgba(244,241,234,.22)}
+.idx__t{padding:1.1rem 0 .3rem;font-family:var(--ui);font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark3)}
+.idx a{display:flex;align-items:baseline;gap:1.1rem;padding:.95rem 0;border-bottom:1px solid var(--line-dark);text-decoration:none;color:var(--on-dark)}
+.idx a i{font-style:normal;font-family:var(--ui);font-weight:600;font-size:.8rem;color:var(--gold)}
+.idx a b{flex:1;font-family:var(--display);font-weight:500;font-size:var(--s1)}
+.idx a::after{content:"\2192";font-family:var(--ui);color:var(--on-dark3);transition:transform .2s}
+.idx a:hover::after{transform:translateX(4px);color:#fff}
+/* pilares */
+.pillars{display:grid;gap:2.2rem clamp(2rem,4vw,3.5rem);grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.pillar{padding-top:1.3rem;border-top:2px solid var(--ink)}
+.pillar h3{font-size:var(--s1)}.pillar p{margin-top:.6rem;color:var(--text2)}
+/* títulos de seção */
+.h2wrap{max-width:60ch}
+.h2wrap h2{font-size:var(--s3)}
+.h2wrap .eyebrow+h2{margin-top:.8rem}
+.h2wrap p{margin-top:1rem;color:var(--text2)}
+.tint{background:var(--paper2)}
+.white{background:var(--white);border-block:1px solid var(--line2)}
+/* cards (áreas e situações) */
+.cards{display:grid;gap:1rem;margin-top:clamp(1.8rem,4vw,2.8rem)}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
 @media(min-width:980px){.cards--3{grid-template-columns:1fr 1fr 1fr}}
-.card{background:var(--paper);padding:clamp(1.3rem,2.5vw,1.8rem);display:block;text-decoration:none}
-.card:hover{background:var(--paper2)}
-.card h3{font-weight:800;font-size:var(--s1);margin-bottom:.5rem}
-.card p{color:var(--ink2);font-size:var(--s0)}
-.card__more{display:inline-block;margin-top:.7rem;font-family:var(--mono);font-size:var(--s-1);color:var(--carimbo);letter-spacing:.06em}
+.card{display:flex;flex-direction:column;gap:.5rem;background:var(--white);border:1px solid var(--line2);border-radius:var(--radius);padding:clamp(1.3rem,2.5vw,1.8rem);text-decoration:none;transition:border-color .16s,transform .16s}
+a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
+.card h3{font-size:var(--s1)}
+.card p{color:var(--text2);font-size:var(--s0)}
+.card__ico{color:var(--ledger)}.card__ico svg{width:28px;height:28px}
+.card__more{margin-top:auto;padding-top:.5rem;font-family:var(--ui);font-weight:600;font-size:var(--s-1);color:var(--gold-ink)}
+/* lista de áreas (home) */
+.rows{display:grid;column-gap:3rem;margin-top:clamp(1.8rem,4vw,2.6rem);border-top:1px solid var(--line)}
+@media(min-width:900px){.rows{grid-template-columns:1fr 1fr}}
+.row{display:flex;gap:1.3rem;align-items:flex-start;padding:1.5rem .8rem;border-bottom:1px solid var(--line);text-decoration:none;transition:background .16s}
+.row:hover{background:var(--white)}
+.row svg{flex:none;width:28px;height:28px;margin-top:.25rem;color:var(--ledger)}
+.row div{flex:1}.row h3{font-size:var(--s1)}.row p{margin-top:.2rem;color:var(--text2);font-size:var(--s0)}
+.row::after{content:"\2192";font-family:var(--ui);font-size:1.2rem;color:var(--gold-ink);margin-top:.2rem}
 /* blocos de conteúdo (texto rastreável) */
-.prose h2{font-weight:800;font-size:var(--s2);margin-top:clamp(2.2rem,4vw,3rem)}
+.prose h2{font-size:var(--s2);margin-top:clamp(2.2rem,4vw,3rem)}
 .prose h2:first-child{margin-top:0}
 .prose p{margin-top:1rem;max-width:68ch}
 .prose ul{margin-top:1rem;max-width:68ch;padding-left:1.1rem}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
-/* faixa escura: passos */
-.dark{background:var(--ink);color:var(--paper)}
-.dark .eyebrow{color:rgba(236,233,225,.6)}.dark .eyebrow::before{background:rgba(236,233,225,.6)}
-.steps{display:grid;gap:clamp(1.3rem,3vw,2.4rem);grid-template-columns:1fr;margin-top:clamp(1.8rem,4vw,2.6rem)}
+.prose a{color:var(--ledger);text-underline-offset:3px}
+.prose{overflow-wrap:break-word}.prose a,.prose strong{overflow-wrap:anywhere}
+/* passos */
+.steps{display:grid;gap:clamp(1.8rem,3vw,3rem);grid-template-columns:1fr;margin-top:clamp(1.8rem,4vw,2.8rem)}
 @media(min-width:740px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{border-top:1px solid rgba(236,233,225,.25);padding-top:1.2rem}
-.step .n{font-family:var(--mono);font-size:var(--s2);color:#8FD3B0;font-weight:700}
-.step h3{font-weight:700;font-size:var(--s1);margin:.7rem 0 .5rem}
-.step p{color:rgba(236,233,225,.8)}
-/* faixa carimbo: CTA */
-.band{background:var(--carimbo);color:#fff}
-.band__in{display:grid;gap:1.4rem;grid-template-columns:1fr;align-items:center}
+.step .n{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(2.6rem,2rem + 2vw,4rem);line-height:1;color:var(--gold-ink)}
+.step h3{font-size:var(--s1);margin:1rem 0 .5rem;padding-top:1rem;border-top:1px solid var(--line)}
+.step p{color:var(--text2)}
+/* faixa CTA */
+.band{background:var(--ledger);color:#fff}
+.band__in{display:grid;gap:1.6rem;grid-template-columns:1fr;align-items:center}
 @media(min-width:820px){.band__in{grid-template-columns:1.5fr auto}}
-.band h2{font-weight:800;font-size:var(--s3)}
-.band p{margin-top:.7rem;font-size:var(--s1);color:rgba(255,255,255,.92);max-width:48ch}
+.band h2{font-size:var(--s3)}
+.band p{margin-top:.7rem;font-size:var(--s1);color:#E3EEE8;max-width:50ch}
 /* FAQ — nativo, rastreável, sem JS */
-.faq{margin-top:clamp(1.8rem,4vw,2.6rem);border-top:2px solid var(--ink)}
+.faq{margin-top:clamp(1.8rem,4vw,2.6rem);border-top:1px solid var(--line);max-width:880px}
 .faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:1.15rem 2.2rem 1.15rem 0;position:relative;font-family:var(--display);font-weight:700;font-size:var(--s1);text-transform:none;letter-spacing:0}
+.faq summary{list-style:none;cursor:pointer;padding:1.25rem 2.6rem 1.25rem 0;position:relative;font-family:var(--display);font-weight:600;font-size:var(--s1);line-height:1.35}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;font-family:var(--mono);font-size:1.5rem;color:var(--carimbo);transition:transform .2s}
-.faq details[open] summary::after{content:"\2013"}
-.faq__a{padding:0 0 1.3rem;max-width:72ch;color:var(--ink2)}
+.faq summary::after{content:"+";position:absolute;right:.3rem;top:1.05rem;font-family:var(--ui);font-size:1.6rem;font-weight:400;color:var(--gold-ink);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq__a{padding:0 0 1.4rem;max-width:72ch;color:var(--text2)}
 .faq__a p+p{margin-top:.8rem}
 /* sobre / E-E-A-T */
-.about{display:grid;gap:1.5rem;grid-template-columns:1fr;align-items:center;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper2);padding:clamp(1.5rem,3.5vw,2.4rem)}
-@media(min-width:720px){.about{grid-template-columns:auto 1fr}}
-.about__sig{font-family:var(--display);font-weight:900;font-size:var(--s2);text-transform:uppercase;line-height:1.15;padding-right:1.5rem}
-@media(min-width:720px){.about__sig{border-right:1px solid var(--line)}}
-.about__sig span{display:block;font-family:var(--mono);font-size:var(--s-1);font-weight:400;color:var(--muted);letter-spacing:.08em;margin-top:.5rem}
-.about p{color:var(--ink2)}.about p+p{margin-top:.8rem}
+.about{display:grid;gap:clamp(2rem,5vw,4.5rem);grid-template-columns:1fr;align-items:center}
+@media(min-width:820px){.about{grid-template-columns:minmax(220px,340px) 1fr}}
+.about__photo{width:100%;max-width:320px;margin-inline:auto;border-radius:50%;box-shadow:0 0 0 10px var(--paper),0 0 0 11px var(--line)}
+.about__quote{font-family:var(--display);font-style:italic;font-weight:500;font-size:var(--s2);line-height:1.3;margin-top:1rem}
+.about__name{margin-top:1.1rem;font-family:var(--ui);font-weight:700}
+.about__name span{font-weight:500;color:var(--text2)}
+.about p.txt{margin-top:1rem;color:var(--text2);max-width:62ch}
+.about .links{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.2rem;font-family:var(--ui);font-weight:600;font-size:.95rem}
+.about .links a{text-underline-offset:5px}
 /* contato + formulário */
-.contact{display:grid;gap:clamp(1.8rem,4vw,3rem);grid-template-columns:1fr}
-@media(min-width:860px){.contact{grid-template-columns:1.05fr .95fr}}
-.contact h2{font-weight:800;font-size:var(--s3)}
-.napcard{margin-top:1.4rem;font-family:var(--mono);font-size:var(--s0);line-height:1.9;color:var(--ink2)}
-.napcard a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-.form{background:var(--paper2);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2rem)}
-.form h3{font-weight:700;font-size:var(--s1);text-transform:none;letter-spacing:0;margin-bottom:1rem}
-.field{margin-bottom:.95rem}
-.field label{display:block;font-family:var(--mono);font-size:var(--s-1);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
-.field input,.field textarea{width:100%;font-family:var(--body);font-size:var(--s0);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:.7em .8em}
-.field textarea{min-height:96px;resize:vertical}
-.form .btn{width:100%;justify-content:center;margin-top:.4rem}
-.form small{display:block;margin-top:.8rem;color:var(--muted);font-size:var(--s-1)}
-/* footer */
-.foot{background:var(--ink);color:var(--paper);padding-block:clamp(2.8rem,6vw,4.5rem)}
-.foot__grid{display:grid;gap:2.2rem;grid-template-columns:1fr}
+.contact{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
+@media(min-width:860px){.contact{grid-template-columns:1fr 1fr}}
+.contact h2{font-size:var(--s3)}
+.napcard{margin-top:1.4rem;font-size:var(--s0);line-height:1.85;color:var(--text2)}
+.napcard b{font-family:var(--ui);color:var(--ink)}
+.napcard a{color:var(--ink);text-underline-offset:3px}
+.form{background:var(--white);border:1px solid var(--line2);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2.2rem)}
+.form h3{font-size:var(--s1);margin-bottom:1.1rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-family:var(--ui);font-weight:600;font-size:.92rem;color:var(--ink);margin-bottom:.4rem}
+.field input,.field textarea{width:100%;min-height:3rem;font-family:var(--body);font-size:var(--s0);color:var(--ink);background:var(--white);border:1px solid rgba(27,36,32,.32);border-radius:4px;padding:.65em .85em}
+.field input:focus,.field textarea:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(201,161,91,.35)}
+.field textarea{min-height:110px;resize:vertical}
+.form .btn{width:100%;margin-top:.4rem}
+.form small{display:block;margin-top:.9rem;color:var(--muted);font-size:var(--s-1)}
+/* rodapé */
+.foot{background:var(--ink);color:var(--on-dark);padding-block:clamp(3rem,6vw,4.5rem) 0}
+.foot__grid{display:grid;gap:2.4rem;grid-template-columns:1fr}
 @media(min-width:760px){.foot__grid{grid-template-columns:1.4fr 1fr 1fr}}
-.foot h2{font-weight:900;font-size:var(--s2);letter-spacing:.02em}
-.foot h4{font-family:var(--mono);font-size:var(--s-1);letter-spacing:.12em;text-transform:uppercase;color:#8FD3B0;margin-bottom:.9rem;font-weight:700}
-.foot a,.foot p{color:rgba(236,233,225,.82);text-decoration:none;display:block;margin-bottom:.45rem;font-size:var(--s0)}
+.foot__logo{width:170px}
+.foot__t{font-family:var(--ui);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:700}
+.foot a,.foot p{color:var(--on-dark2);text-decoration:none;display:block;margin-bottom:.5rem;font-size:var(--s0)}
 .foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.foot__legal{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(236,233,225,.16);font-size:var(--s-1);color:rgba(236,233,225,.55);line-height:1.55;max-width:90ch}
-/* FAB */
-.fab{position:fixed;right:clamp(.9rem,3vw,1.8rem);bottom:clamp(.9rem,3vw,1.8rem);z-index:60;display:inline-flex;align-items:center;gap:.5em;background:var(--ledger);color:#fff;padding:.75em 1.05em;border-radius:100px;text-decoration:none;font-family:var(--display);font-weight:700;box-shadow:0 8px 24px rgba(27,36,32,.28)}
+.foot__legal{margin-top:2.6rem;padding-block:1.4rem 2.2rem;border-top:1px solid var(--line-dark);font-size:var(--s-1)!important;color:var(--on-dark3)!important;line-height:1.6;max-width:96ch}
+/* botão flutuante do WhatsApp */
+.fab{position:fixed;right:clamp(.9rem,3vw,1.8rem);bottom:clamp(.9rem,3vw,1.8rem);z-index:60;display:inline-flex;align-items:center;gap:.55em;min-height:3.5rem;background:var(--ledger);color:#fff;padding:0 1.15em;border-radius:999px;text-decoration:none;font-family:var(--ui);font-weight:700;box-shadow:0 8px 24px rgba(27,36,32,.3);transition:transform .16s}
+.fab svg{width:1.45em;height:1.45em}
 .fab:hover{transform:translateY(-3px)}.fab span{display:none}
 @media(min-width:520px){.fab span{display:inline}}
-@media(max-width:560px){.hero .cta .btn{width:100%;justify-content:center}.band .btn{width:100%;justify-content:center}}
+@media(max-width:560px){.hero .cta .btn{width:100%}.band .btn{width:100%}}
 """
 
 JS = r"""
@@ -251,7 +459,7 @@ def prose_html(blocks):
 def steps_html(steps):
     out = []
     for i, s in enumerate(steps, 1):
-        out.append(f'<div class="step"><p class="n">0{i}</p><h3>{esc(s["t"])}</h3><p>{esc(s["d"])}</p></div>')
+        out.append(f'<div class="step"><p class="n">{i}</p><h3>{esc(s["t"])}</h3><p>{esc(s["d"])}</p></div>')
     return '<div class="steps">' + "".join(out) + "</div>"
 
 def faq_html(faqs):
@@ -270,10 +478,10 @@ def schema_for(page):
     legal = {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": f"{NAP['url']}/{page['slug']}#legalservice",
+        "@id": f"{LANDING}/{page['slug']}/#legalservice",
         "name": NAP["name"],
         "description": page["meta"],
-        "url": f"{NAP['url']}/{page['slug']}",
+        "url": f"{LANDING}/{page['slug']}/",
         "telephone": "+55-11-99515-5021",
         "email": NAP["email"],
         "priceRange": "$$",
@@ -288,8 +496,11 @@ def schema_for(page):
         },
         "areaServed": "São Paulo, SP",
         "knowsAbout": page["knows"],
-        "founder": {"@type": "Person", "name": NAP["lawyer"], "jobTitle": "Advogado", "identifier": NAP["oab"]},
-        "sameAs": ["https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"],
+        "logo": LANDING + LOGO,
+        "image": LANDING + "/assets/og-lemes-advogados.jpg",
+        "foundingDate": FOUNDED,
+        "founder": {"@type": "Person", "name": NAP["lawyer"], "jobTitle": "Advogado", "identifier": NAP["oab"], "image": LANDING + PHOTO},
+        "sameAs": SAME_AS,
     }
     faqpage = {
         "@context": "https://schema.org",
@@ -309,7 +520,7 @@ def _strip(s):
 # ============================================================================ #
 #  Template da página
 # ============================================================================ #
-TPL = Template(r"""<!DOCTYPE html>
+HEAD = r"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -318,32 +529,35 @@ TPL = Template(r"""<!DOCTYPE html>
 <meta name="description" content="$meta">
 <link rel="canonical" href="$canonical">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="theme-color" content="#1B2420">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Lemes Advogados">
 <meta property="og:title" content="$title">
 <meta property="og:description" content="$meta">
 <meta property="og:url" content="$canonical">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="$landing/assets/og-lemes-advogados.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lemes Advogados — Diego Henrique Lemes, advogado em São Paulo">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
+<link rel="icon" href="/assets/diego-lemes-advogado-120.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) — Google Ads -->
+<!-- Fonte sem bloquear render (media=print -> all no onload); texto aparece na hora. -->
+<link rel="stylesheet" href="$fonts" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="$fonts"></noscript>
+<!-- Google tag (gtag.js) — Google Ads + GA4 numa carga só (um clique rápido no -->
+<!-- WhatsApp não se perde esperando dois scripts). Uma biblioteca, dois destinos. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=$ads_id"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
  function gtag(){dataLayer.push(arguments);}
  gtag('js', new Date());
  gtag('config', '$ads_id');
-</script>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YLQXJDLJE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3YLQXJDLJE');
+ gtag('config', '$ga4_id');
 </script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -351,21 +565,100 @@ TPL = Template(r"""<!DOCTYPE html>
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xe34fpdzej");
+    })(window, document, "clarity", "script", "$clarity_id");
 </script>
 <style>$css</style>
 <script type="application/ld+json">$schema</script>
 </head>
 <body>
-<header class="bar">
-  <div class="wrap bar__in">
-   <a class="brand" href="/" aria-label="Lemes Advogados — início" style="display: flex; align-items: center; text-decoration: none;"><img src="/assets/logo_lemes.png" alt="Lemes Advogados" style="height: 42px; width: auto; display: block;"></a>
-   <a class="bar__phone" href="tel:$phone_tel">$phone_display</a>
-  <a class="btn" href="$whats" target="_blank" rel="noopener">$zap WhatsApp</a>
+"""
+
+HEADER = r"""<header class="bar">
+ <div class="wrap bar__in">
+  <a class="brand" href="/" aria-label="Lemes Advogados — início"><img src="/assets/logo-claro.webp" alt="Lemes Advogados" width="373" height="157"></a>
+  <nav class="nav" aria-label="Principal">$nav</nav>
+  <a class="bar__phone" href="tel:$phone_tel">$phone_display</a>
+  <a class="btn btn--line btn--sm" href="$whats" target="_blank" rel="noopener">$zap WhatsApp</a>
  </div>
 </header>
+"""
 
-<main>
+ABOUT = r"""<section class="section white" id="sobre">
+ <div class="wrap about">
+  <img class="about__photo" src="/assets/diego-lemes-advogado-360.webp" alt="Diego Henrique Lemes, advogado em São Paulo" width="360" height="360" loading="lazy">
+  <div>
+   <p class="eyebrow">$about_eyebrow</p>
+   <p class="about__quote">“Quem conversa com você no primeiro dia é quem assina as peças e acompanha o processo até o fim.”</p>
+   <p class="about__name">$lawyer <span>· $oab</span></p>
+   <p class="txt">$bio</p>
+   $about_extra
+   <div class="links"><a href="https://www.instagram.com/lemesadvsp/" target="_blank" rel="noopener">Instagram @lemesadvsp</a><a href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+ </div>
+</section>
+"""
+
+CONTACT = r"""<section class="section wrap" id="contato">
+ <div class="contact">
+  <div>
+   <h2>$contact_h2</h2>
+   <p class="lead" style="margin-top:1rem">Prefere escrever? Preencha ao lado e a mensagem abre pronta no WhatsApp. A primeira conversa é sem compromisso.</p>
+   <div class="napcard">
+    <b>$name</b><br>
+    $street — $district<br>
+    $city/$region · CEP $cep<br>
+    WhatsApp / Tel: <a href="$whats" target="_blank" rel="noopener">$phone_display</a><br>
+    E-mail: <a href="mailto:$email">$email</a><br>
+    $hours
+   </div>
+  </div>
+  <form class="form" id="leadform">
+   <h3>Conte seu caso</h3>
+   <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" required autocomplete="name"></div>
+   <div class="field"><label for="contato">Telefone ou e-mail</label><input id="contato" name="contato" type="text" autocomplete="tel"></div>
+   <div class="field"><label for="msg">Resumo do seu caso</label><textarea id="msg" name="msg"></textarea></div>
+   <button class="btn" type="submit">$zap Enviar pelo WhatsApp</button>
+   <small>Ao enviar, você abre uma conversa no WhatsApp com os dados preenchidos. Suas informações não são compartilhadas com terceiros.</small>
+  </form>
+ </div>
+</section>
+"""
+
+FOOTER = r"""<footer class="foot">
+ <div class="wrap foot__grid">
+  <div>
+   <img class="foot__logo" src="/assets/logo-claro.webp" alt="Lemes Advogados" width="373" height="157" loading="lazy">
+   <p style="margin-top:1rem">$name. Advocacia em $district, $city. Atendimento pessoal e linguagem clara.</p>
+  </div>
+  <div>
+   <h2 class="foot__t">Áreas de atuação</h2>
+   $footer_links
+  </div>
+  <div>
+   <h2 class="foot__t">Contato</h2>
+   <a href="$whats" target="_blank" rel="noopener">WhatsApp $phone_display</a>
+   <a href="mailto:$email">$email</a>
+   <p>$street</p>
+   <p>$district, $city/$region · $cep</p>
+   <a href="https://www.instagram.com/lemesadvsp/" target="_blank" rel="noopener">Instagram</a>
+   <a href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+ </div>
+ <div class="wrap">
+  <p class="foot__legal">$name · CNPJ $cnpj · Advogado responsável: $lawyer ($oab).<br>
+  Conteúdo de caráter exclusivamente informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não constitui oferta de serviços, captação de clientela nem promessa de resultado. Cada caso é analisado individualmente.</p>
+ </div>
+</footer>
+
+<a class="fab" href="$whats" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">$zap<span>Fale conosco</span></a>
+<script>$js</script>
+</body>
+</html>
+"""
+
+AREA_BODY = r"""<div class="top">
+$header
+<main id="conteudo">
  <!-- HERO -->
  <section class="hero wrap" aria-labelledby="h1">
   <p class="eyebrow">$eyebrow</p>
@@ -373,13 +666,12 @@ TPL = Template(r"""<!DOCTYPE html>
   <p class="lead">$hero_sub</p>
   <div class="cta">
    <a class="btn" href="$whats" target="_blank" rel="noopener">$zap Falar agora no WhatsApp</a>
-   <a class="btn--ghost btn" href="#contato">Enviar mensagem</a>
+   <a class="btn btn--ghost" href="#contato">Enviar mensagem</a>
   </div>
   <p class="hero__note">$hero_note</p>
-  <div class="trust">
-   <span>$lawyer · <b>$oab</b></span><span>$district, $city/$region</span><span>$hours</span>
-  </div>
+  <div class="sig"><img src="/assets/diego-lemes-advogado-120.webp" alt="" width="120" height="120"><span><b>$lawyer</b><span>Advogado · $oab · $district, $city</span></span></div>
  </section>
+</div>
 
  <!-- SITUAÇÕES / SERVIÇOS -->
  <section class="section wrap">
@@ -388,22 +680,24 @@ TPL = Template(r"""<!DOCTYPE html>
  </section>
 
  <!-- CONTEÚDO RASTREÁVEL -->
- <section class="section wrap prose">
+ <section class="section tint">
+  <div class="wrap prose">
   $prose
- </section>
-
- <!-- PASSOS -->
- <section class="section dark">
-  <div class="wrap">
-   <div class="h2wrap"><p class="eyebrow">Como funciona</p><h2 style="color:var(--paper)">$steps_h2</h2></div>
-   $steps
   </div>
  </section>
 
- <!-- FAQ -->
+ <!-- PASSOS -->
  <section class="section wrap">
-  <div class="h2wrap"><p class="eyebrow">Dúvidas frequentes</p><h2>$faq_h2</h2></div>
-  $faq
+  <div class="h2wrap"><h2>$steps_h2</h2></div>
+  $steps
+ </section>
+
+ <!-- FAQ -->
+ <section class="section tint">
+  <div class="wrap">
+   <div class="h2wrap"><h2>$faq_h2</h2></div>
+   $faq
+  </div>
  </section>
 
  <!-- FAIXA CTA -->
@@ -415,75 +709,15 @@ TPL = Template(r"""<!DOCTYPE html>
  </section>
 
  <!-- SOBRE / E-E-A-T -->
- <section class="section wrap">
-  <div class="about">
-   <p class="about__sig">Diego H. Lemes<span>$oab · $name</span></p>
-   <div>
-    <p>Atendimento conduzido pelo próprio advogado, do primeiro contato ao desfecho. $about_line</p>
-    <p>Escritório em $district, $city, com atuação em todo o estado de $region. CNPJ $cnpj.</p>
-   </div>
-  </div>
- </section>
+$about
 
  <!-- CONTATO + FORMULÁRIO -->
- <section class="section wrap" id="contato">
-  <div class="contact">
-   <div>
-    <p class="eyebrow">Fale com a Lemes</p>
-    <h2>$contact_h2</h2>
-    <p class="lead" style="margin-top:1rem">A primeira conversa é sem compromisso. Explico com clareza se há o que fazer e qual o próximo passo.</p>
-    <div class="napcard">
-     $name<br>
-     $street — $district<br>
-     $city/$region · CEP $cep<br>
-     WhatsApp / Tel: <a href="$whats" target="_blank" rel="noopener">$phone_display</a><br>
-     E-mail: <a href="mailto:$email">$email</a><br>
-     $hours
-    </div>
-   </div>
-   <form class="form" id="leadform">
-    <h3>Conte seu caso</h3>
-    <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" required autocomplete="name"></div>
-    <div class="field"><label for="contato">Telefone ou e-mail</label><input id="contato" name="contato" type="text" autocomplete="tel"></div>
-    <div class="field"><label for="msg">Resumo do seu caso</label><textarea id="msg" name="msg"></textarea></div>
-    <button class="btn" type="submit">$zap Enviar pelo WhatsApp</button>
-    <small>Ao enviar, você abre uma conversa no WhatsApp com os dados preenchidos. Suas informações não são compartilhadas com terceiros.</small>
-   </form>
-  </div>
- </section>
+$contact
 </main>
 
-<footer class="foot">
- <div class="wrap foot__grid">
-  <div>
-   <h2>$name</h2>
-   <p style="margin-top:.8rem">Advocacia em $district, $city. Atendimento humano, linguagem clara e foco em resolver o seu caso.</p>
-  </div>
-  <div>
-   <h4>Áreas de atuação</h4>
-   $footer_links
-  </div>
-  <div>
-   <h4>Contato</h4>
-   <a href="$whats" target="_blank" rel="noopener">WhatsApp $phone_display</a>
-   <a href="mailto:$email">$email</a>
-   <p>$street</p>
-   <p>$district, $city/$region · $cep</p>
-   <a href="https://www.linkedin.com/in/diego-henrique-lemes-8882b0/" target="_blank" rel="noopener">LinkedIn</a>
-   <a href="https://www.instagram.com/lemesadvsp/" target="_blank" rel="noopener">Instagram</a>
-  </div>
- </div>
- <div class="wrap">
-  <p class="foot__legal">$name · $cnpj · Advogado responsável: $lawyer ($oab).<br>
-  Conteúdo de caráter exclusivamente informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não constitui oferta de serviços, captação de clientela nem promessa de resultado. Cada caso é analisado individualmente.</p>
- </div>
-</footer>
+"""
 
-<a class="fab" href="$whats" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">$zap<span>Fale conosco</span></a>
-<script>$js</script>
-</body>
-</html>
-""")
+
 
 # ============================================================================ #
 #  CONTEÚDO DE CADA PÁGINA
@@ -936,31 +1170,64 @@ PAGES["empresarial"] = {
 # ============================================================================ #
 #  Render + escrita
 # ============================================================================ #
+def _base_mapping(page_title, page_meta, canonical, schema_json):
+    m = dict(NAP)
+    m.update({
+        "title": page_title, "meta": page_meta, "canonical": canonical,
+        "css": CSS, "js": JS, "zap": ZAP_SVG, "whats": WHATS, "landing": LANDING, "fonts": FONTS,
+        "ads_id": ADS_ID, "ga4_id": GA4_ID, "clarity_id": CLARITY_ID,
+        "footer_links": footer_links(), "schema": schema_json, "bio": BIO,
+    })
+    return m
+
+def _fill(tpl, m):
+    return Template(tpl).substitute(m)
+
 def render(page):
     legal, faqpage = schema_for(page)
     schema_json = json.dumps({"@context":"https://schema.org","@graph":[legal, faqpage]}, ensure_ascii=False, indent=1)
-    mapping = dict(NAP)
-    mapping.update({
-        "title": page["title"], "meta": page["meta"], "h1": page["h1"],
-        "hero_sub": page["hero_sub"], "hero_note": page["hero_note"], "eyebrow": page["eyebrow_top"],
-        "canonical": f"{LANDING}/{page['slug']}/",
-        "css": CSS, "js": JS, "zap": ZAP_SVG, "whats": WHATS, "ads_id": ADS_ID,
-        "phone_display": NAP["phone_display"], "phone_tel": NAP["phone_tel"],
+    m = _base_mapping(page["title"], page["meta"], f"{LANDING}/{page['slug']}/", schema_json)
+    m.update({
+        "h1": page["h1"], "hero_sub": page["hero_sub"], "hero_note": page["hero_note"], "eyebrow": page["eyebrow_top"],
         "sit_eyebrow": page["sit_eyebrow"], "sit_h2": page["sit_h2"], "sit_sub": page["sit_sub"],
         "cards": cards_html(page["cards"], three=True),
         "prose": prose_html(page["prose"]),
         "steps_h2": page["steps_h2"], "steps": steps_html(page["steps"]),
         "faq_h2": page["faq_h2"], "faq": faq_html(page["faqs"]),
         "band_h2": page["band_h2"], "band_sub": page["band_sub"],
-        "contact_h2": page["contact_h2"], "about_line": page["about_line"],
-        "footer_links": footer_links(), "schema": schema_json,
+        "contact_h2": page["contact_h2"],
+        "nav": NAV_AREA, "about_eyebrow": "O advogado",
+        "about_extra": f'<p class="txt">{page["about_line"]}</p>',
     })
-    return TPL.substitute(mapping)
+    m["header"] = _fill(HEADER, m)
+    m["about"] = _fill(ABOUT, m)
+    m["contact"] = _fill(CONTACT, m)
+    return _fill(HEAD, m) + _fill(AREA_BODY, m) + _fill(FOOTER, m)
+
+def render_home():
+    m = _base_mapping(HOME["title"], HOME["meta"], f"{LANDING}/", json.dumps(schema_home(), ensure_ascii=False, indent=1))
+    idx = "".join(f'<a href="/{s}/"><i>{n:02d}</i><b>{dict(PRACTICES)[s]}</b></a>' for n, s in enumerate(HOME["hero_areas"], 1))
+    rows = "".join(
+        f'<a class="row" href="/{s}/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{AREA_ICONS[s]}"/></svg>'
+        f'<div><h3>{dict(PRACTICES)[s]}</h3><p>{esc(AREA_LINES[s])}</p></div></a>'
+        for s, _ in PRACTICES)
+    pillars = "".join(f'<div class="pillar"><h3>{esc(t)}</h3><p>{esc(d)}</p></div>' for t, d in HOME["pillars"])
+    m.update({
+        "nav": NAV_HOME, "idx": idx, "rows": rows, "pillars": pillars,
+        "prose": prose_html(HOME["prose"]), "steps": steps_html(HOME["steps"]), "faq": faq_html(HOME["faqs"]),
+        "about_eyebrow": "O escritório", "about_extra": "",
+        "contact_h2": "Fale com um advogado em São Paulo",
+    })
+    m["header"] = _fill(HEADER, m)
+    m["about"] = _fill(ABOUT, m)
+    m["contact"] = _fill(CONTACT, m)
+    return _fill(HEAD, m) + _fill(HOME_BODY, m) + _fill(FOOTER, m)
 
 def sitemap_xml():
     """Gera o sitemap.xml a partir de LANDING + PRACTICES (forma com barra /slug/)."""
     today = datetime.date.today().isoformat()
     entries = [(f"{LANDING}/", "1.0")] + [(f"{LANDING}/{slug}/", "0.8") for slug, _ in PRACTICES]
+    entries.append((f"{LANDING}/privacidade/", "0.2"))
     urls = "\n".join(
         "  <url>\n"
         f"    <loc>{loc}</loc>\n"
@@ -999,8 +1266,11 @@ def main():
         all_schema[slug] = {"@context":"https://schema.org","@graph":[legal, faqpage]}
 
     # ---- estáticos autorais (entradas, NÃO geradas aqui) copiados para o dist ----
-    #   index.html = home (hub)  |  404.html = fallback de rotas
-    for static_name in ("index.html", "404.html"):
+    #   404.html = fallback de rotas (a home agora é gerada por render_home)
+    (dist / "index.html").write_text(render_home(), encoding="utf-8")
+    if len(HOME["title"]) > 60: warnings.append(f"[TITLE>60] home: {len(HOME['title'])}")
+    if len(HOME["meta"]) > 155: warnings.append(f"[META>155] home: {len(HOME['meta'])}")
+    for static_name in ("404.html",):
         src = OUT / static_name
         if src.exists():
             shutil.copy2(src, dist / static_name)

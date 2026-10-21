@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Carregar constantes estruturais do build.py via Python para garantir sincronia absoluta
 function getSiteConstants() {
-  const pythonCmd = `import sys; sys.path.append('${__dirname}'); import build, json; print(json.dumps({'NAP': build.NAP, 'WHATS': build.WHATS, 'LANDING': build.LANDING, 'PRACTICES': build.PRACTICES, 'CSS': build.CSS, 'JS': build.JS, 'ZAP_SVG': build.ZAP_SVG}))`;
+  const pythonCmd = `import sys; sys.path.append('${__dirname}'); import build, json; print(json.dumps({'NAP': build.NAP, 'WHATS': build.WHATS, 'LANDING': build.LANDING, 'PRACTICES': build.PRACTICES, 'CSS': build.CSS, 'JS': build.JS, 'ZAP_SVG': build.ZAP_SVG, 'FONTS': build.FONTS}))`;
   try {
     const stdout = execSync(`python3 -c "${pythonCmd}"`, { encoding: 'utf8' });
     return JSON.parse(stdout);
@@ -19,6 +19,12 @@ function getSiteConstants() {
     console.error("❌ Erro ao ler constantes do build.py via Python:", err.message);
     process.exit(1);
   }
+}
+
+// Meta description com no máximo ~155 caracteres, cortando numa palavra inteira
+function cortarMeta(t) {
+  if (!t || t.length <= 155) return t;
+  return t.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 }
 
 // Parsear Frontmatter manualmente
@@ -73,7 +79,7 @@ function formatBrazilianDate(dateStr) {
 
 // Template Base da Página (Cabeçalho, Rodapé, CSS do escritório)
 function getHtmlTemplate(title, meta, canonical, bodyContent, constants) {
-  const { CSS, JS, ZAP_SVG, WHATS, NAP } = constants;
+  const { CSS, JS, ZAP_SVG, WHATS, NAP, FONTS } = constants;
   
   // Links do rodapé
   const footerLinksHtml = constants.PRACTICES.map(([slug, label]) => 
@@ -104,12 +110,17 @@ function getHtmlTemplate(title, meta, canonical, bodyContent, constants) {
 <meta property="og:description" content="${meta}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="${constants.LANDING}/assets/og-lemes-advogados.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1B2420">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Spectral:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="${FONTS}"></noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993352616"></script>
 <script>
  window.dataLayer = window.dataLayer || [];
@@ -131,13 +142,16 @@ ${extraCss}
 </style>
 </head>
 <body>
+<div class="top">
 <header class="bar">
  <div class="wrap bar__in">
-  <a class="brand" href="/" aria-label="Lemes Advogados — início" style="display: flex; align-items: center; text-decoration: none;"><img src="/assets/logo_lemes.png" alt="Lemes Advogados" style="height: 42px; width: auto; display: block;"></a>
+  <a class="brand" href="/" aria-label="Lemes Advogados — início"><img src="/assets/logo-claro.webp" alt="Lemes Advogados" width="373" height="157"></a>
+  <nav class="nav" aria-label="Principal"><a href="/">Início</a><a href="/#areas">Áreas</a><a href="/noticias/">Notícias</a><a href="/#contato">Contato</a></nav>
   <a class="bar__phone" href="tel:${NAP.phone_tel}">${NAP.phone_display}</a>
-  <a class="btn" href="${WHATS}" target="_blank" rel="noopener">${ZAP_SVG} WhatsApp</a>
+  <a class="btn btn--line btn--sm" href="${WHATS}" target="_blank" rel="noopener">${ZAP_SVG} WhatsApp</a>
  </div>
 </header>
+</div>
 
 <main>
   ${bodyContent}
@@ -146,15 +160,15 @@ ${extraCss}
 <footer class="foot">
  <div class="wrap foot__grid">
   <div>
-   <h2>${NAP.name}</h2>
-   <p style="margin-top:.8rem">Advocacia em ${NAP.district}, ${NAP.city}. Atendimento humano, linguagem clara e foco em resolver o seu caso.</p>
+   <img class="foot__logo" src="/assets/logo-claro.webp" alt="Lemes Advogados" width="373" height="157" loading="lazy">
+   <p style="margin-top:1rem">${NAP.name}. Advocacia em ${NAP.district}, ${NAP.city}. Atendimento pessoal e linguagem clara.</p>
   </div>
   <div>
-   <h4>Áreas de atuação</h4>
+   <h2 class="foot__t">Áreas de atuação</h2>
    ${footerLinksHtml}
   </div>
   <div>
-   <h4>Contato</h4>
+   <h2 class="foot__t">Contato</h2>
    <a href="${WHATS}" target="_blank" rel="noopener">WhatsApp ${NAP.phone_display}</a>
    <a href="mailto:${NAP.email}">${NAP.email}</a>
    <p>${NAP.street}</p>
@@ -164,7 +178,7 @@ ${extraCss}
   </div>
  </div>
  <div class="wrap">
-  <p class="foot__legal">${NAP.name} · ${NAP.cnpj} · Advogado responsável: ${NAP.lawyer} (${NAP.oab}).<br>
+  <p class="foot__legal">${NAP.name} · CNPJ ${NAP.cnpj} · Advogado responsável: ${NAP.lawyer} (${NAP.oab}).<br>
   Conteúdo de caráter exclusivamente informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não constitui oferta de serviços, captação de clientela nem promessa de resultado. Cada caso é analisado individualmente.</p>
  </div>
 </footer>
@@ -212,7 +226,9 @@ async function main() {
     const title = metadata.title || metadata.titulo || "Notícia · Lemes Advogados";
     const date = metadata.date || metadata.data || "";
     const category = metadata.category || metadata.categoria || "Geral";
-    const summary = metadata.description || metadata.resumo || "";
+    // Sem descrição no frontmatter: usa o primeiro parágrafo do texto (SEO)
+    const firstPara = (body.split(/\n\s*\n/).find(b => b.trim() && !b.trim().startsWith('#')) || '').replace(/[*_`>\[\]]/g, '').trim();
+    const summary = metadata.description || metadata.resumo || firstPara;
 
     posts.push({
       slug,
@@ -235,7 +251,7 @@ async function main() {
     // Converter fechamento especial [[fecho]] se houver
     let bodyWithCta = post.bodyMarkdown;
     if (bodyWithCta.includes('[[fecho]]')) {
-      bodyWithCta = bodyWithCta.replace('[[fecho]]', `<p class="eyebrow" style="margin-top: 3rem; color: var(--carimbo);">Lemes Advogados</p>`);
+      bodyWithCta = bodyWithCta.replace('[[fecho]]', `<p class="eyebrow" style="margin-top: 3rem;">Lemes Advogados</p>`);
     }
 
     const htmlBody = marked(bodyWithCta);
@@ -254,7 +270,7 @@ async function main() {
         
         <!-- Bloco CTA de rodapé da notícia -->
         <div style="background: var(--paper2); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.5rem); margin-block: 4rem; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; clear: both;">
-          <h2 style="font-family: var(--display); text-transform: uppercase; font-size: var(--s1); font-weight: 800; margin-top: 0;">Ficou com alguma dúvida?</h2>
+          <h2 style="font-family: var(--display); font-size: var(--s1); font-weight: 600; margin-top: 0;">Ficou com alguma dúvida?</h2>
           <p style="color: var(--ink2); font-size: var(--s0); margin-bottom: 0.5rem; max-width: 60ch;">Se você se identificou com este caso e deseja entender melhor os seus direitos, entre em contato direto com a nossa equipe.</p>
           <a class="btn" href="${constants.WHATS}" target="_blank" rel="noopener">${constants.ZAP_SVG} Falar com o Advogado</a>
         </div>
@@ -263,8 +279,8 @@ async function main() {
 
     const canonical = `${constants.LANDING}/noticias/${post.slug}/`;
     const fullPageHtml = getHtmlTemplate(
-      `${post.title} | Lemes Advogados`,
-      post.summary,
+      (post.title.length + 18 <= 60 ? `${post.title} | Lemes Advogados` : post.title),
+      cortarMeta(post.summary),
       canonical,
       pageContentHtml,
       constants
@@ -284,7 +300,7 @@ async function main() {
           <a href="/noticias/${post.slug}/" style="text-decoration: none; color: inherit;">${post.title}</a>
         </h2>
         <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">${post.summary}</p>
-        <a href="/noticias/${post.slug}/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--carimbo);">Ler decisão completa &rarr;</a>
+        <a href="/noticias/${post.slug}/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
       </div>
     `;
   }).join('\n');

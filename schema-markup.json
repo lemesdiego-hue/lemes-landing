@@ -5,10 +5,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/trabalhista#legalservice",
+        "@id": "https://lemesadvogados.com/trabalhista/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Foi demitido ou tem horas extras não pagas? Calcule sua rescisão e fale com advogado trabalhista em São Paulo pelo WhatsApp. Atendimento direto.",
-        "url": "https://www.lemesadvogados.com/trabalhista",
+        "url": "https://lemesadvogados.com/trabalhista/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -30,14 +30,19 @@
           "Verbas rescisórias",
           "Justa causa"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -94,10 +99,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/civel#legalservice",
+        "@id": "https://lemesadvogados.com/civel/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Divórcio, inventário, partilha e pequenas causas. Advogado cível perto de você em São Paulo. Fale agora pelo WhatsApp e tire suas dúvidas.",
-        "url": "https://www.lemesadvogados.com/civel",
+        "url": "https://lemesadvogados.com/civel/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -120,14 +125,19 @@
           "Contratos",
           "Indenizações"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -176,10 +186,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/divorcio#legalservice",
+        "@id": "https://lemesadvogados.com/divorcio/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Divórcio no cartório ou judicial, consensual ou litigioso. Saiba quanto custa e como funciona com advogado de divórcio em SP. Fale pelo WhatsApp.",
-        "url": "https://www.lemesadvogados.com/divorcio",
+        "url": "https://lemesadvogados.com/divorcio/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -201,14 +211,19 @@
           "Guarda de filhos",
           "Pensão alimentícia"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -265,10 +280,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/inventario#legalservice",
+        "@id": "https://lemesadvogados.com/inventario/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Quanto custa um advogado de inventário? Veja a tabela OAB/SP, prazos e como funciona o inventário extrajudicial. Fale pelo WhatsApp com a Lemes.",
-        "url": "https://www.lemesadvogados.com/inventario",
+        "url": "https://lemesadvogados.com/inventario/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -290,14 +305,19 @@
           "Testamento",
           "ITCMD"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -354,10 +374,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/aereo#legalservice",
+        "@id": "https://lemesadvogados.com/aereo/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Overbooking, preterição de embarque, mala extraviada ou atraso de voo? Saiba seus direitos pela Resolução 400 da ANAC. Fale pelo WhatsApp.",
-        "url": "https://www.lemesadvogados.com/aereo",
+        "url": "https://lemesadvogados.com/aereo/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -380,14 +400,19 @@
           "Atraso de voo",
           "Resolução 400 ANAC"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -444,10 +469,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/previdenciario#legalservice",
+        "@id": "https://lemesadvogados.com/previdenciario/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "INSS negou seu benefício? Saiba com quantos anos a mulher se aposenta e como dar entrada na aposentadoria. Fale com advogado previdenciário em SP.",
-        "url": "https://www.lemesadvogados.com/previdenciario",
+        "url": "https://lemesadvogados.com/previdenciario/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -469,14 +494,19 @@
           "Benefício do INSS",
           "Revisão de benefício"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -525,10 +555,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/familia#legalservice",
+        "@id": "https://lemesadvogados.com/familia/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Guarda, pensão alimentícia, união estável, partilha ou divórcio? Advogado de família em São Paulo. Fale agora pelo WhatsApp, com discrição.",
-        "url": "https://www.lemesadvogados.com/familia",
+        "url": "https://lemesadvogados.com/familia/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -551,14 +581,19 @@
           "Divórcio",
           "Alienação parental"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -615,10 +650,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/imobiliario#legalservice",
+        "@id": "https://lemesadvogados.com/imobiliario/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Usucapião, regularização de imóvel, despejo ou reintegração de posse? Advogado imobiliário em São Paulo. Fale agora pelo WhatsApp, sem compromisso.",
-        "url": "https://www.lemesadvogados.com/imobiliario",
+        "url": "https://lemesadvogados.com/imobiliario/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -641,14 +676,19 @@
           "Ação de despejo",
           "Distrato de imóvel"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
@@ -705,10 +745,10 @@
       {
         "@context": "https://schema.org",
         "@type": "LegalService",
-        "@id": "https://www.lemesadvogados.com/empresarial#legalservice",
+        "@id": "https://lemesadvogados.com/empresarial/#legalservice",
         "name": "Lemes Sociedade Individual de Advogados",
         "description": "Advogado empresarial em São Paulo. Assessoria preventiva, societário, acordos de sócios, marcas e contratos comerciais. Fale agora pelo WhatsApp.",
-        "url": "https://www.lemesadvogados.com/empresarial",
+        "url": "https://lemesadvogados.com/empresarial/",
         "telephone": "+55-11-99515-5021",
         "email": "diego@lemesadvogados.com",
         "priceRange": "$$",
@@ -731,14 +771,19 @@
           "Contratos comerciais",
           "Defesa tributária"
         ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
         "founder": {
           "@type": "Person",
           "name": "Diego Henrique Lemes",
           "jobTitle": "Advogado",
-          "identifier": "OAB/SP 255.888"
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
         },
         "sameAs": [
-          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/"
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
         ]
       },
       {
