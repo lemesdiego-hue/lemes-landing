@@ -78,8 +78,11 @@ function formatBrazilianDate(dateStr) {
 }
 
 // Template Base da Página (Cabeçalho, Rodapé, CSS do escritório)
-function getHtmlTemplate(title, meta, canonical, bodyContent, constants) {
+function getHtmlTemplate(title, meta, canonical, bodyContent, constants, opts = {}) {
+  const { ogImage, ogType = 'website', jsonLd } = opts;
   const { CSS, JS, ZAP_SVG, WHATS, NAP, FONTS } = constants;
+  // Imagem de compartilhamento: a do post (frontmatter image) ou a padrão do site
+  const ogImg = ogImage ? `${constants.LANDING}${ogImage}` : `${constants.LANDING}/assets/og-lemes-advogados.jpg`;
   
   // Links do rodapé
   const footerLinksHtml = constants.PRACTICES.map(([slug, label]) => 
@@ -104,16 +107,17 @@ function getHtmlTemplate(title, meta, canonical, bodyContent, constants) {
 <meta name="description" content="${meta}">
 <link rel="canonical" href="${canonical}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="Lemes Advogados">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${meta}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="${constants.LANDING}/assets/og-lemes-advogados.jpg">
+<meta property="og:image" content="${ogImg}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 <meta name="theme-color" content="#1B2420">
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="São Paulo">
@@ -236,6 +240,8 @@ async function main() {
       date,
       category,
       summary,
+      image: metadata.image || '',
+      seoTitle: metadata.seo_title || '',
       bodyMarkdown: body
     });
   }
@@ -264,6 +270,7 @@ async function main() {
         <div style="font-family: var(--mono); font-size: var(--s-1); color: var(--muted); margin-bottom: 2.5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem;">
           Publicado em ${formattedDate}
         </div>
+        ${post.image ? `<img src="${post.image}" alt="${post.title}" width="1200" height="630" style="width:100%;height:auto;border-radius:var(--radius);margin-bottom:2.5rem;">` : ''}
         <article class="prose" style="font-size: var(--s0); line-height: 1.7; font-family: var(--body);">
           ${htmlBody}
         </article>
@@ -278,12 +285,28 @@ async function main() {
     `;
 
     const canonical = `${constants.LANDING}/noticias/${post.slug}/`;
+    // Título do Google: seo_title do frontmatter (curto, com a busca) ou o título do post
+    const tituloSeo = post.seoTitle || post.title;
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: cortarMeta(post.summary),
+      datePublished: post.date,
+      dateModified: post.date,
+      inLanguage: 'pt-BR',
+      mainEntityOfPage: canonical,
+      image: `${constants.LANDING}${post.image || '/assets/og-lemes-advogados.jpg'}`,
+      author: { '@type': 'Person', '@id': `${constants.LANDING}/#diego`, name: constants.NAP.lawyer, url: `${constants.LANDING}/` },
+      publisher: { '@type': 'LegalService', name: 'Lemes Advogados', url: `${constants.LANDING}/`, logo: `${constants.LANDING}/assets/logo-claro.png` }
+    };
     const fullPageHtml = getHtmlTemplate(
-      (post.title.length + 18 <= 60 ? `${post.title} | Lemes Advogados` : post.title),
+      (tituloSeo.length + 18 <= 60 ? `${tituloSeo} | Lemes Advogados` : tituloSeo),
       cortarMeta(post.summary),
       canonical,
       pageContentHtml,
-      constants
+      constants,
+      { ogImage: post.image, ogType: 'article', jsonLd }
     );
 
     await fs.writeFile(path.join(postDistDir, 'index.html'), fullPageHtml, 'utf8');
