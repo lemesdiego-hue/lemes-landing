@@ -252,9 +252,9 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;letter-spaci
 .sec-head p{margin-top:1rem;color:var(--text2)}
 .sec-head .eyebrow+h2{margin-top:.8rem}
 /* texto justificado (só em colunas largas o bastante), com hifenização em português */
-.row p,.card p,.foot__grid p{-webkit-hyphens:auto;hyphens:auto}
-.lead,.sec-head p,.prose p,.prose li,.pillar p,.step p,.faq__a p,.about p.txt{-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 3}
-@media(min-width:640px){.lead,.sec-head p,.prose p,.prose li,.pillar p,.step p,.faq__a p,.about p.txt{text-align:justify}}
+.prose p,.prose li,.faq__a p,.about p.txt{hyphenate-limit-chars:6 3 3}
+@media(min-width:640px){.prose p,.prose li,.faq__a p,.about p.txt{text-align:justify;-webkit-hyphens:auto;hyphens:auto}}
+p,li{text-wrap:pretty}
 @media(max-width:479px){.hide-sm{display:none}}
 @media(min-width:900px){.prose--split p,.prose--split li,.about p.txt,.c23 .faq__a p{font-size:1.2rem;line-height:1.65}}
 .lead{font-size:var(--s1);color:var(--text2);max-width:58ch}
@@ -409,11 +409,12 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .foot__t{font-family:var(--ui);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:700}
 .foot a,.foot p{color:var(--on-dark2);text-decoration:none;display:block;margin-bottom:.5rem;font-size:var(--s0)}
 .foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.foot__legal{margin-top:2.6rem;padding-block:1.4rem 2.2rem;border-top:1px solid var(--line-dark);font-size:var(--s-1)!important;color:var(--on-dark3)!important;line-height:1.6}
+.foot__legal{max-width:78ch;margin-top:2.6rem;padding-block:1.4rem 2.2rem;border-top:1px solid var(--line-dark);font-size:var(--s-1)!important;color:var(--on-dark3)!important;line-height:1.6}
 /* botão flutuante do WhatsApp */
 .fab{position:fixed;right:clamp(.9rem,3vw,1.8rem);bottom:clamp(.9rem,3vw,1.8rem);z-index:60;display:inline-flex;align-items:center;gap:.55em;min-height:3.5rem;background:var(--ledger);color:#fff;padding:0 1.15em;border-radius:999px;text-decoration:none;font-family:var(--ui);font-weight:700;box-shadow:0 8px 24px rgba(27,36,32,.3);transition:transform .16s}
 .fab svg{width:1.45em;height:1.45em}
-.fab:hover{transform:translateY(-3px)}.fab span{display:none}
+.fab:hover{transform:translateY(-3px)}
+.fab{transition:transform .16s,opacity .2s}.fab--oculto{opacity:0;transform:translateY(1rem);pointer-events:none}.fab span{display:none}
 @media(min-width:520px){.fab span{display:inline}}
 @media(max-width:560px){.hero .cta .btn{width:100%}.band .btn{width:100%}}
 """
@@ -677,6 +678,7 @@ FOOTER = r"""<footer class="foot">
 </footer>
 
 <a class="fab" href="$whats" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">$zap<span>Fale conosco</span></a>
+<script>(function(){var f=document.querySelector('.fab'),h=document.querySelector('.hero .cta');if(!f||!h||!('IntersectionObserver' in window))return;var m=matchMedia('(max-width:899px)');new IntersectionObserver(function(e){f.classList.toggle('fab--oculto',m.matches&&e[0].isIntersecting)}).observe(h)})()</script>
 <script>$js</script>
 </body>
 </html>
