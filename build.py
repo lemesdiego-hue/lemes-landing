@@ -474,7 +474,8 @@ def cards_html(cards, three=False):
 def prose_html(blocks):
     out = []
     for b in blocks:
-        out.append(f'<h2>{esc(b["h2"])}</h2>')
+        anchor = f' id="{b["id"]}"' if b.get("id") else ""  # âncora usada pelos sitelinks do Google Ads
+        out.append(f'<h2{anchor}>{esc(b["h2"])}</h2>')
         for p in b.get("p", []):
             out.append(f"<p>{p}</p>")  # p pode conter <strong>/<a> intencionais
         if b.get("ul"):
@@ -874,7 +875,7 @@ PAGES["divorcio"] = {
   {"t":"Pensão alimentícia","d":"Fixação ou revisão de pensão para filhos e, em alguns casos, para o ex-cônjuge."},
  ],
  "prose":[
-  {"h2":"Como funciona o divórcio no cartório",
+  {"h2":"Como funciona o divórcio no cartório", "id":"cartorio",
    "p":["O divórcio em cartório (extrajudicial) é feito por <strong>escritura pública</strong> e costuma ser concluído em poucos dias. Para isso, o casal precisa estar <strong>de acordo</strong> sobre o fim do casamento e a partilha, e a presença de advogado é <strong>obrigatória</strong>, mesmo no cartório.",
         "Tradicionalmente, o caminho do cartório era reservado a casais <strong>sem filhos menores ou incapazes</strong>. Regras recentes vêm ampliando essas hipóteses em situações específicas, por isso o ideal é avaliar o seu caso antes de decidir o caminho."]},
   {"h2":"Qual a diferença entre divórcio judicial e extrajudicial",
@@ -1073,12 +1074,12 @@ PAGES["familia"] = {
  "prose":[
   {"h2":"O que faz um advogado de família",
    "p":["O advogado de família cuida dos conflitos mais pessoais: <strong>divórcio</strong>, <strong>guarda</strong>, <strong>pensão alimentícia</strong>, <strong>união estável</strong> e <strong>partilha de bens</strong>. São temas delicados, e o meu compromisso é conduzir cada caso com <strong>discrição</strong>, linguagem clara e o menor desgaste possível. O escritório fica em <strong>Perdizes, São Paulo</strong>, e o atendimento começa pelo WhatsApp, com a mesma pessoa do início ao fim."]},
-  {"h2":"Como funciona a guarda dos filhos",
+  {"h2":"Como funciona a guarda dos filhos", "id":"guarda",
    "p":["A regra hoje é a <strong>guarda compartilhada</strong>, em que ambos os pais participam das decisões sobre a vida do filho, com definição da convivência (as antigas “visitas”). A guarda unilateral só é fixada em situações específicas, quando um dos pais não pode ou não deve exercê-la. Em qualquer caso, o critério que orienta a decisão é o <strong>melhor interesse da criança</strong>."]},
-  {"h2":"Pensão alimentícia: como é definida, revisada e cobrada",
+  {"h2":"Pensão alimentícia: como é definida, revisada e cobrada", "id":"pensao",
    "p":["A pensão é fixada conforme o <strong>binômio necessidade e possibilidade</strong> — o que o filho precisa e o que o alimentante pode pagar. Quando a situação de qualquer um muda, cabe <strong>revisão</strong> (para aumentar ou reduzir) ou até exoneração.",
         "Se a pensão não é paga, existe a <strong>execução de alimentos</strong>, que pode levar à <strong>penhora de bens</strong> e até à <strong>prisão do devedor</strong>. Se você precisa cobrar pensão atrasada ou revisar o valor, me envie os detalhes pelo WhatsApp."]},
-  {"h2":"União estável: reconhecimento e dissolução",
+  {"h2":"União estável: reconhecimento e dissolução", "id":"uniao-estavel",
    "p":["A união estável é a convivência pública, contínua e duradoura com objetivo de constituir família — e gera <strong>direitos patrimoniais e sucessórios</strong> semelhantes aos do casamento. Pode ser reconhecida ou dissolvida em cartório (quando há acordo) ou na Justiça, com <strong>partilha dos bens</strong> adquiridos na constância da união. Um <strong>contrato de convivência</strong> ajuda a definir o regime de bens e evitar disputas futuras."]},
  ],
  "steps_h2":"Como conduzo seu caso",
