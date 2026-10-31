@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -388,7 +390,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre direito cível</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre direito cível</h2></div>
    <div class="c23"><div class="faq"><details><summary>O que faz um advogado cível?</summary><div class="faq__a"><p>O advogado cível atua em conflitos do dia a dia entre pessoas e empresas: divórcio, inventário, partilha, contratos, cobranças, indenizações por danos morais e materiais e causas de consumo, entre outros.</p></div></details><details><summary>Tem advogado cível perto de mim em São Paulo?</summary><div class="faq__a"><p>Sim. O escritório fica em Perdizes, São Paulo, e atende toda a cidade, com início do atendimento pelo WhatsApp para a sua comodidade.</p></div></details><details><summary>Como funciona o Juizado de Pequenas Causas?</summary><div class="faq__a"><p>O Juizado Especial Cível julga causas de até 40 salários mínimos de forma mais simples e rápida. Até 20 salários mínimos é possível ingressar sem advogado, mas a orientação jurídica ajuda a montar o pedido e reunir provas.</p></div></details><details><summary>Quanto custa um advogado cível?</summary><div class="faq__a"><p>Depende da complexidade e do tipo de ação. Em muitos casos é possível trabalhar com honorários combinados previamente ou vinculados ao êxito. Na primeira conversa, explico os valores com transparência, sem compromisso.</p></div></details></div></div>
   </div>
  </section>
@@ -480,6 +482,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

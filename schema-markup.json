@@ -825,5 +825,131 @@
         ]
       }
     ]
+  },
+  "societario": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "@id": "https://lemesadvogados.com/societario/#legalservice",
+        "name": "Lemes Sociedade Individual de Advogados",
+        "description": "Alteração contratual, abertura de empresa, atas, cisão, incorporação, distrato e due diligence com advogado. Registro na JUCESP e assinatura pelo gov.br.",
+        "url": "https://lemesadvogados.com/societario/",
+        "telephone": "+55-11-99515-5021",
+        "email": "diego@lemesadvogados.com",
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Coronel Melo de Oliveira, 557",
+          "addressLocality": "Perdizes, São Paulo",
+          "addressRegion": "SP",
+          "postalCode": "05011-040",
+          "addressCountry": "BR"
+        },
+        "areaServed": "São Paulo, SP",
+        "knowsAbout": [
+          "Alteração contratual",
+          "Contrato social",
+          "JUCESP",
+          "Direito societário",
+          "Abertura de empresa",
+          "Sociedade limitada",
+          "Sociedade anônima",
+          "Holding",
+          "Ata de reunião de sócios",
+          "Cisão",
+          "Incorporação",
+          "Distrato social",
+          "Due diligence",
+          "Certidões negativas"
+        ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
+        "founder": {
+          "@type": "Person",
+          "name": "Diego Henrique Lemes",
+          "jobTitle": "Advogado",
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Preciso ir à Junta Comercial ou a cartório?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para alterações, abertura e atos registrados na JUCESP, não: o pedido e o registro são feitos pela internet, e os sócios assinam com a conta gov.br (prata ou ouro) ou certificado digital."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "A alteração atualiza o CNPJ automaticamente?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pelo sistema integrado (Redesim), o registro na JUCESP atualiza o CNPJ. A inscrição estadual e o cadastro municipal podem exigir passos próprios, e conferimos cada um ao final."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Minha empresa precisa ter contador?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. O DBE exige a indicação do contador responsável, e o regime tributário, a escrita fiscal e as demonstrações ficam com ele. Trabalhamos em conjunto."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Precisa de capital mínimo para abrir uma LTDA ou SLU?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não há capital mínimo na lei para LTDA e SLU. O valor deve ser compatível com a atividade, porque os sócios respondem pela integralização."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Toda ata precisa ser registrada na JUCESP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Precisam de arquivamento as atas que alteram o contrato, elegem ou destituem administradores e outros atos que devam produzir efeitos perante terceiros. Indicamos caso a caso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Dá para fechar uma empresa com dívidas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A lei permite a baixa mesmo com débitos, mas a responsabilidade dos sócios e administradores continua. Por isso levantamos as pendências antes do distrato."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Se a matrícula do imóvel está limpa, preciso das certidões do vendedor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A matrícula é o ponto de partida, mas não mostra dívidas e processos que ainda não foram averbados. As certidões do vendedor ajudam a avaliar o risco antes de pagar. Uma certidão com apontamento nem sempre impede o negócio: o relatório explica cada caso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Atendem fora da capital?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim, em todo o estado de São Paulo, já que o registro na JUCESP é online. A viabilidade segue as regras da Prefeitura de cada cidade, e a maioria das certidões é solicitada pela internet."
+            }
+          }
+        ]
+      }
+    ]
   }
 }

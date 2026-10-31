@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -389,7 +391,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre aposentadoria e INSS</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre aposentadoria e INSS</h2></div>
    <div class="c23"><div class="faq"><details><summary>Com quantos anos a mulher pode se aposentar?</summary><div class="faq__a"><p>Pela regra geral pós-reforma, a mulher se aposenta por idade aos 62 anos, com no mínimo 15 anos de contribuição. Quem já contribuía antes de 2019 pode usar regras de transição e, em alguns casos, se aposentar antes dos 62 anos.</p></div></details><details><summary>Como funciona a aposentadoria por tempo de contribuição?</summary><div class="faq__a"><p>A modalidade pura foi extinta para novos segurados. Quem já contribuía pode se aposentar pelas regras de transição, que combinam tempo de contribuição com idade ou pontuação. O primeiro passo é conferir o histórico no CNIS.</p></div></details><details><summary>Meu benefício do INSS foi negado, o que fazer?</summary><div class="faq__a"><p>É possível apresentar recurso administrativo e, se necessário, ação judicial. Muitos indeferimentos decorrem de falta de documento ou erro na contagem do tempo e podem ser revertidos. Guarde a carta de indeferimento e o número do processo.</p></div></details><details><summary>Como calcular minha aposentadoria?</summary><div class="faq__a"><p>O valor depende da média das contribuições e da regra aplicável, e a data do pedido influencia bastante o resultado. Uma simulação com base no seu CNIS indica a data e a regra mais vantajosas.</p></div></details></div></div>
   </div>
  </section>
@@ -481,6 +483,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

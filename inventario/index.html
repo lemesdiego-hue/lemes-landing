@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -398,7 +400,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre inventário</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre inventário</h2></div>
    <div class="c23"><div class="faq"><details><summary>Quanto custa um advogado para inventário?</summary><div class="faq__a"><p>O custo reúne honorários do advogado (em geral um percentual sobre o valor dos bens, com base na tabela da OAB/SP), o ITCMD (em SP, em regra 4%) e as taxas de cartório. Envie a relação dos bens pelo WhatsApp para uma estimativa personalizada.</p></div></details><details><summary>Qual a tabela OAB para inventário em SP?</summary><div class="faq__a"><p>A Tabela de Honorários da OAB/SP traz percentuais de referência para inventário e partilha. Ela serve de parâmetro, e o valor final é combinado conforme a complexidade do caso.</p></div></details><details><summary>Como funciona o inventário extrajudicial?</summary><div class="faq__a"><p>É feito por escritura em cartório quando todos os herdeiros são maiores, capazes e estão de acordo, com advogado acompanhando. É o caminho mais rápido. Havendo herdeiro menor, incapaz, testamento ou desacordo, o inventário corre na Justiça.</p></div></details><details><summary>Qual o prazo para abrir inventário?</summary><div class="faq__a"><p>Em São Paulo, o prazo é de 60 dias a contar do falecimento. O atraso gera multa sobre o ITCMD, por isso é importante iniciar dentro do prazo mesmo que a partilha leve mais tempo.</p></div></details><details><summary>É possível fazer inventário sem ir ao cartório?</summary><div class="faq__a"><p>No inventário extrajudicial é necessário lavrar a escritura em cartório, mas grande parte do trabalho (documentos, cálculos e negociação) é conduzida pelo advogado, com pouca exigência de deslocamento dos herdeiros.</p></div></details></div></div>
   </div>
  </section>
@@ -490,6 +492,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

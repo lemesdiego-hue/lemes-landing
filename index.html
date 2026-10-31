@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -508,6 +510,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

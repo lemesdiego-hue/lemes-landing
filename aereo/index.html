@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -398,7 +400,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre direito do passageiro</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre direito do passageiro</h2></div>
    <div class="c23"><div class="faq"><details><summary>Quais são meus direitos em caso de overbooking?</summary><div class="faq__a"><p>Se não houver voluntários para remarcar, o passageiro preterido tem direito a reacomodação, reembolso ou execução por outra modalidade, mais a compensação financeira da Resolução 400 da ANAC e, conforme o prejuízo, indenização por danos morais.</p></div></details><details><summary>O que fazer quando a mala é extraviada?</summary><div class="faq__a"><p>Registre o RIB no balcão da companhia ainda no aeroporto e guarde comprovantes. A empresa deve localizar a bagagem no prazo previsto e, não o fazendo, indenizar os prejuízos e os gastos com itens essenciais.</p></div></details><details><summary>Como funciona a resolução 400 da ANAC?</summary><div class="faq__a"><p>A Resolução ANAC 400/2016 define a proteção ao passageiro: assistência material em atrasos, regras de reacomodação e reembolso e compensação por preterição. Esses direitos se somam aos do Código de Defesa do Consumidor.</p></div></details><details><summary>Posso ser indenizado por atraso de voo?</summary><div class="faq__a"><p>Sim. Além da assistência material, atrasos longos e cancelamentos com prejuízo (perda de compromissos, diárias, conexões) podem gerar reembolso e indenização por danos morais e materiais.</p></div></details><details><summary>O que é preterição de embarque?</summary><div class="faq__a"><p>É quando o passageiro com passagem e check-in é impedido de embarcar, geralmente por overbooking. Gera direito a reacomodação, reembolso e compensação financeira prevista na Resolução 400 da ANAC.</p></div></details></div></div>
   </div>
  </section>
@@ -490,6 +492,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

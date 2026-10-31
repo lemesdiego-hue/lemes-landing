@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -398,7 +400,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre divórcio</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre divórcio</h2></div>
    <div class="c23"><div class="faq"><details><summary>Como funciona o divórcio no cartório?</summary><div class="faq__a"><p>É feito por escritura pública, com acordo do casal e presença obrigatória de advogado. Costuma ser concluído em poucos dias e, tradicionalmente, é indicado quando não há filhos menores ou incapazes — embora regras recentes venham ampliando as hipóteses em casos específicos.</p></div></details><details><summary>Qual a diferença entre divórcio judicial e extrajudicial?</summary><div class="faq__a"><p>O extrajudicial é feito em cartório quando há consenso e nenhuma pendência sobre filhos menores. O judicial corre na Justiça e é necessário quando há litígio ou questões de guarda, convivência e alimentos de filhos menores a decidir.</p></div></details><details><summary>Quanto custa um divórcio com advogado?</summary><div class="faq__a"><p>Soma os emolumentos do cartório (que variam com o valor dos bens) e os honorários do advogado. O divórcio consensual, sem disputa de patrimônio, tende a custar menos. Explico a estimativa na primeira conversa.</p></div></details><details><summary>Posso me divorciar sem advogado?</summary><div class="faq__a"><p>Não. A presença de advogado é obrigatória em qualquer divórcio. No divórcio consensual, o mesmo advogado pode atender o casal, reduzindo custos.</p></div></details><details><summary>Como fica a guarda dos filhos no divórcio?</summary><div class="faq__a"><p>A regra é a guarda compartilhada, em que ambos os pais participam das decisões, com definição da convivência e da pensão. Em situações específicas, pode ser fixada guarda unilateral, sempre considerando o melhor interesse da criança.</p></div></details></div></div>
   </div>
  </section>
@@ -490,6 +492,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

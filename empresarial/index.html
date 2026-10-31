@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -391,7 +393,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre direito empresarial</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre direito empresarial</h2></div>
    <div class="c23"><div class="faq"><details><summary>O que é e para que serve uma Holding Familiar?</summary><div class="faq__a"><p>É uma empresa constituída com o objetivo de administrar e centralizar o patrimônio de uma família (imóveis, participações societárias, ativos). Ela serve para proteger legalmente os bens familiares contra riscos operacionais das empresas de mercado, planejar a herança em vida sem necessidade de inventário futuro e economizar impostos na locação e venda de bens.</p></div></details><details><summary>Por que o Contrato Social padrão de internet é perigoso?</summary><div class="faq__a"><p>Porque ele é genérico e não prevê conflitos reais. Ele não diz o que acontece se um sócio falecer (se os herdeiros assumem ou são pagos), como calcular o valor da empresa para pagar quem sai, ou quem tem a palavra final em impasses. Qualquer briga em um contrato genérico pode parar a operação da empresa na Justiça.</p></div></details><details><summary>O que acontece se eu não registrar minha marca no INPI?</summary><div class="faq__a"><p>Você corre o risco de ser notificado a qualquer momento por outra empresa que registrou a marca primeiro, sendo obrigado a remover seu site do ar, mudar de redes sociais, descartar embalagens e mudar de nome fantasia da noite para o dia, além de poder sofrer ação de perdas e danos pelo uso indevido da marca alheia.</p></div></details><details><summary>Como o escritório pode ajudar na redução de processos trabalhistas?</summary><div class="faq__a"><p>Através de um compliance e auditoria trabalhista preventiva. Analisamos os contratos de trabalho, prestadores de serviços (PJ), horas extras e formas de remuneração para identificar e estancar brechas legais que geram processos judiciais, reduzindo drasticamente o passivo trabalhista da empresa.</p></div></details></div></div>
   </div>
  </section>
@@ -483,6 +485,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";

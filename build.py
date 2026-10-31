@@ -346,6 +346,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -424,6 +426,7 @@ JS = r"""
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";
@@ -475,11 +478,17 @@ def prose_html(blocks):
     out = []
     for b in blocks:
         anchor = f' id="{b["id"]}"' if b.get("id") else ""  # âncora usada pelos sitelinks do Google Ads
-        out.append(f'<h2{anchor}>{esc(b["h2"])}</h2>')
+        if b.get("h3"):  # subtítulo dentro da seção (fica na coluna do texto)
+            out.append(f'<h3{anchor}>{esc(b["h3"])}</h3>')
+        else:
+            out.append(f'<h2{anchor}>{esc(b["h2"])}</h2>')
         for p in b.get("p", []):
             out.append(f"<p>{p}</p>")  # p pode conter <strong>/<a> intencionais
         if b.get("ul"):
             out.append("<ul>" + "".join(f"<li>{li}</li>" for li in b["ul"]) + "</ul>")
+        if b.get("cta"):  # botão de WhatsApp da seção (rótulo, link, local p/ o evento whatsapp_click)
+            label, url, loc = b["cta"]
+            out.append(f'<p class="sec-cta"><a class="btn" href="{url}" target="_blank" rel="noopener" data-loc="{loc}">{ZAP_SVG} {esc(label)}</a></p>')
     return "\n".join(out)
 
 def steps_html(steps):
@@ -729,7 +738,7 @@ AREA_BODY = r"""$header
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>$faq_h2</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">$faq_h2</h2></div>
    <div class="c23">$faq</div>
   </div>
  </section>
@@ -757,6 +766,12 @@ $contact
 #  CONTEÚDO DE CADA PÁGINA
 # ============================================================================ #
 PAGES = {}
+
+# Link de WhatsApp com mensagem própria (o clique segue no evento whatsapp_click do GA4)
+def _wa(msg):
+    from urllib.parse import quote
+    return "https://wa.me/5511995155021?text=" + quote(msg, safe="")
+WHATS_IMOB_CERT = _wa("Olá, vim pelo site e preciso das certidões para compra e venda de um imóvel")
 
 PAGES["trabalhista"] = {
  "slug":"trabalhista",
@@ -1131,6 +1146,19 @@ PAGES["imobiliario"] = {
    "p":["A <strong>reintegração de posse</strong> serve para recuperar um imóvel que foi <strong>invadido ou ocupado indevidamente</strong>, quando não há contrato entre as partes. Já a <strong>ação de despejo</strong> é usada contra o <strong>inquilino</strong> — por falta de pagamento do aluguel ou pelo fim do contrato de locação. São ações diferentes, com ritos próprios; identifico qual se aplica e conduzo do início à desocupação."]},
   {"h2":"A construtora atrasou a entrega do imóvel, quais são meus direitos?", "id":"construtora",
    "p":["O contrato costuma prever um <strong>prazo de tolerância de até 180 dias</strong>. Passado esse prazo, o atraso é da construtora e você pode ter direito a <strong>multa contratual</strong>, <strong>indenização</strong> pelos prejuízos e até ao <strong>distrato com devolução dos valores pagos</strong>. Guarde o contrato, os comprovantes de pagamento e as comunicações com a construtora."]},
+  {"h2":"Certidões para compra e venda de imóvel", "id":"certidoes",
+   "p":["Antes do sinal e da escritura, a <strong>matrícula atualizada</strong> mostra quem é o proprietário e se há hipoteca, penhora, indisponibilidade ou ação averbada. Ela é o ponto de partida, mas não mostra dívidas e processos do vendedor que ainda não chegaram ao registro.",
+        "Por isso levantamos também as certidões dos vendedores e do imóvel e analisamos os apontamentos antes da assinatura. Uma certidão com apontamento nem sempre impede o negócio: pode ser irrelevante, ser resolvida antes da escritura ou pedir uma cláusula específica no contrato."],
+   "ul":["Matrícula atualizada, com ônus reais e ações",
+         "Certidões de distribuição dos vendedores nos tribunais estaduais, federais e do trabalho pertinentes",
+         "Certidões de protesto",
+         "Certidão negativa de débitos trabalhistas (CNDT)",
+         "Certidões de débitos federais, estaduais e municipais dos vendedores",
+         "Situação do IPTU do imóvel e, em condomínio, declaração de quitação",
+         "Taxas e emolumentos de cartórios e órgãos são pagos à parte"],
+   "cta":("Falar sobre certidões do imóvel", WHATS_IMOB_CERT, "imobiliario_certidoes")},
+  {"h2":"Due diligence completa", "id":"due-diligence",
+   "p":["Para compra de imóvel de empresa, aquisição de participação societária, inventário, divórcio ou licitação, veja como funciona a <a href=\"/societario/#due-diligence\">due diligence e o levantamento de certidões</a>."]},
  ],
  "steps_h2":"Do primeiro contato à solução",
  "steps":[
@@ -1201,6 +1229,144 @@ PAGES["empresarial"] = {
  "about_line":"Atuação em Direito Empresarial — acordo de sócios, holdings patrimoniais, blindagem de bens, contratos comerciais, marcas (INPI) e assessoria preventiva boutique.",
 }
 
+
+# ---------------------------------------------------------------------------- #
+#  SOCIETÁRIO — página única (rascunho 31/10/2026, ainda NÃO publicada)
+#  Reúne alteração contratual, abertura, atos societários e due diligence.
+#  Fora de PRACTICES de propósito: não entra na home, no rodapé nem no sitemap
+#  até o OK do Diego. Sem preço, sem "grátis", sem promessa (Provimento 205/2021).
+#  Não citamos sociedade simples, associação nem fundação (atos de cartório de
+#  RCPJ, fora do escopo — Diego, 31/10/2026).
+#  Âncoras estáveis (usadas pelos anúncios): #alteracao-contratual #abertura-de-empresa
+#  #atos-societarios #due-diligence #como-funciona #documentos #perguntas
+#  e subâncoras #endereco #cnae #nome-empresarial #socios #consolidacao #tipos #holding
+#  #atas #contas #reorganizacao #baixa #imovel #empresa #inventario #licitacao #certidoes
+# ---------------------------------------------------------------------------- #
+
+WHATS_SOC = _wa("Olá, vim pelo site e preciso de um serviço societário para a minha empresa")
+WHATS_ALT = _wa("Olá, vim pelo site e preciso fazer uma alteração contratual da minha empresa")
+WHATS_ABR = _wa("Olá, vim pelo site e quero abrir uma empresa")
+WHATS_ATOS = _wa("Olá, vim pelo site e preciso registrar um ato societário (ata, aprovação de contas, cisão, incorporação, distrato ou baixa)")
+WHATS_DD = _wa("Olá, vim pelo site e preciso de uma due diligence / levantamento de certidões")
+
+PAGES["societario"] = {
+ "slug":"societario",
+ "eyebrow":"Direito Societário · São Paulo",
+ "whats": WHATS_SOC,
+ "title":"Alteração Contratual e Serviços Societários em SP | Advogado",
+ "meta":"Alteração contratual, abertura de empresa, atas, cisão, incorporação, distrato e due diligence com advogado. Registro na JUCESP e assinatura pelo gov.br.",
+ "h1":"Alteração Contratual e Serviços Societários em São Paulo",
+ "hero_sub":"Alteração do contrato social, abertura de empresa, atas e reorganizações, encerramento e due diligence, conduzidos por advogado, com registro na JUCESP e assinatura dos sócios pelo gov.br.",
+ "hero_note":"Processo 100% online · Assinatura pelo gov.br · Registro na JUCESP · Atendimento direto com o advogado",
+ "knows":["Alteração contratual","Contrato social","JUCESP","Direito societário","Abertura de empresa","Sociedade limitada","Sociedade anônima","Holding","Ata de reunião de sócios","Cisão","Incorporação","Distrato social","Due diligence","Certidões negativas"],
+ "sit_eyebrow":"O que fazemos",
+ "sit_h2":"Serviços societários",
+ "sit_sub":"Escolha o assunto para ir direto à explicação. Cada ato tem forma, quórum e documentos próprios.",
+ "cards":[
+  {"t":"Alteração contratual","d":"Endereço, atividades (CNAE), nome empresarial, sócios, capital, administração e consolidação do contrato social.","href":"#alteracao-contratual"},
+  {"t":"Abertura de empresa","d":"Constituição de LTDA, SLU, S.A., empresário individual e holding, com contrato social pensado para a operação.","href":"#abertura-de-empresa"},
+  {"t":"Atos societários","d":"Atas, aprovação de contas, distribuição de lucros, cisão, incorporação, fusão, transformação, distrato e baixa.","href":"#atos-societarios"},
+  {"t":"Due diligence e certidões","d":"Matrícula e certidões levantadas e analisadas para compra de imóvel ou empresa, inventário, divórcio e licitação.","href":"#due-diligence"},
+  {"t":"Como funciona","d":"Atendimento pelo WhatsApp, minutas revisadas por advogado, assinatura pelo gov.br e protocolo online.","href":"#como-funciona"},
+  {"t":"Documentos","d":"O que costuma ser pedido em cada caso. Antes de pedir, consultamos sozinhos o que é público.","href":"#documentos"},
+ ],
+ "prose":[
+  # ---------------- ALTERAÇÃO CONTRATUAL ----------------
+  {"h2":"Alteração contratual", "id":"alteracao-contratual",
+   "p":["A alteração do contrato social da LTDA ou SLU é feita pela internet: consulta de viabilidade na Prefeitura (quando muda endereço ou atividade), Documento Básico de Entrada (DBE) na Receita Federal, instrumento assinado digitalmente pelos sócios e registro na <strong>JUCESP</strong>. Depois do registro, conferimos o CNPJ, a inscrição estadual e o cadastro municipal (CCM).",
+        "Uma alteração pode reunir vários atos no mesmo instrumento, o que costuma economizar tempo e taxas públicas."],
+   "cta":("Falar sobre alteração contratual", WHATS_ALT, "alteracao-contratual")},
+  {"h3":"Mudança de endereço da empresa", "id":"endereco",
+   "p":["Antes de assinar o contrato de locação, vale consultar a viabilidade: a Prefeitura verifica se a atividade é permitida no endereço (zoneamento) e se é preciso licença de funcionamento. Em São Paulo, o pedido exige o número do IPTU (SQL). Também é preciso definir se a empresa vai atender público e ter estoque no local ou usá-lo apenas como endereço fiscal (escritório virtual, coworking ou residência)."]},
+  {"h3":"Inclusão ou troca de atividades (CNAE)", "id":"cnae",
+   "p":["A atividade nova entra na cláusula do objeto social e nos códigos CNAE do CNPJ. Antes de pedir, conferimos se ela é permitida no Simples Nacional, se exige inscrição estadual ou licença específica e se cabe no endereço atual."]},
+  {"h3":"Troca do nome empresarial", "id":"nome-empresarial",
+   "p":["Com duas ou três opções de nome, fazemos a pesquisa de colidência na JUCESP e uma checagem de marcas no INPI: um nome igual a marca registrada de outra empresa pode gerar exigência no registro ou disputa depois."]},
+  {"h3":"Entrada e saída de sócios, quotas, capital e administração", "id":"socios",
+   "p":["Mudanças no quadro de sócios pedem mais cuidado do que uma alteração cadastral. Conferimos o contrato vigente, o quórum, o direito de preferência dos demais sócios, o valor da cessão das quotas e a responsabilidade de quem sai, que continua respondendo por obrigações da sociedade por até dois anos após a averbação da saída (art. 1.003 do Código Civil).",
+        "Desde a Lei 14.451/2022, a modificação do contrato social da limitada exige, em regra, votos que representem mais da metade do capital social (art. 1.076 do Código Civil). O próprio contrato pode exigir mais; por isso a leitura do contrato atual vem antes da minuta."]},
+  {"h3":"Alteração simples ou contrato consolidado?", "id":"consolidacao",
+   "p":["A alteração simples traz só as cláusulas que mudaram. A consolidação reúne tudo num texto único e atualizado, o que facilita a vida com bancos, fornecedores e órgãos públicos quando a empresa já acumula várias alterações. Se o instrumento for levado a registro em até 30 dias da assinatura, os efeitos contam da data em que foi assinado (art. 36 da Lei 8.934/1994)."]},
+  # ---------------- ABERTURA ----------------
+  {"h2":"Abertura de empresa", "id":"abertura-de-empresa",
+   "p":["A escolha do tipo societário define quem decide, como os sócios respondem e como alguém pode sair. Fazemos a pesquisa do nome, a viabilidade do endereço, o DBE, o contrato social ou estatuto, o registro na JUCESP e acompanhamos as inscrições (CNPJ, inscrição estadual, quando a atividade exige, e CCM). O regime tributário é definido junto com o contador."],
+   "cta":("Falar sobre abertura de empresa", WHATS_ABR, "abertura-de-empresa")},
+  {"h3":"LTDA, SLU, S.A. ou empresário individual?", "id":"tipos",
+   "p":["Na <strong>limitada</strong>, cada sócio responde pelo valor das suas quotas, e todos respondem pela integralização do capital. A <strong>limitada unipessoal</strong> tem um único titular, com a mesma proteção. A <strong>sociedade anônima</strong> tem estatuto, ações e regras próprias de assembleia e administração. O <strong>empresário individual</strong> atua em nome próprio, e o patrimônio pessoal responde pelas dívidas do negócio.",
+        "O contrato social padrão costuma ser genérico; administração, lucros, saída ou falecimento de sócio e solução de impasses ficam mais simples quando já estão escritos. O Estatuto da Advocacia exige o visto de advogado nos atos constitutivos de pessoas jurídicas, com dispensa para microempresas e empresas de pequeno porte (art. 1º, § 2º, da Lei 8.906/1994 e art. 9º, § 2º, da LC 123/2006)."]},
+  {"h3":"Holding familiar e patrimonial", "id":"holding",
+   "p":["A holding concentra participações societárias ou bens da família numa sociedade, com regras sobre quem administra, como os lucros são distribuídos e como as quotas passam aos herdeiros. A estrutura depende do patrimônio, dos custos de ITBI e ITCMD e dos objetivos da família, e por isso é analisada caso a caso, junto com o planejamento sucessório."]},
+  # ---------------- ATOS ----------------
+  {"h2":"Atos societários", "id":"atos-societarios",
+   "p":["Decisões importantes da sociedade são tomadas em reunião ou assembleia e registradas em ata. Conferimos a forma de convocação, o quórum do contrato e da lei, redigimos os documentos e fazemos o arquivamento na JUCESP. Também cuidamos de outros arquivamentos, como abertura e encerramento de filial e nomeação ou destituição de administradores."],
+   "cta":("Falar sobre um ato societário", WHATS_ATOS, "atos-societarios")},
+  {"h3":"Atas de reunião e assembleia de sócios", "id":"atas",
+   "p":["Na limitada, a reunião ou assembleia pode ser dispensada quando todos os sócios decidem por escrito (art. 1.072, § 3º, do Código Civil). Na S.A., as assembleias gerais ordinária (AGO) e extraordinária (AGE) seguem a Lei 6.404/1976."]},
+  {"h3":"Aprovação de contas e distribuição de lucros", "id":"contas",
+   "p":["Na limitada, os sócios devem se reunir ao menos uma vez por ano, nos quatro meses seguintes ao fim do exercício, para aprovar as contas e, se for o caso, eleger administradores (art. 1.078 do Código Civil). Na S.A., a assembleia geral ordinária segue o mesmo prazo (art. 132 da Lei 6.404/1976). A distribuição de lucros, inclusive desproporcional à participação, deve estar prevista no contrato e documentada em ata, com as demonstrações preparadas pelo contador."]},
+  {"h3":"Cisão, incorporação, fusão e transformação", "id":"reorganizacao",
+   "p":["Na <strong>incorporação</strong>, uma sociedade absorve outra; na <strong>fusão</strong>, duas ou mais se unem numa nova; na <strong>cisão</strong>, o patrimônio é dividido, total ou parcialmente. Essas operações exigem protocolo e justificação, avaliação do patrimônio, aprovação pelos sócios de cada sociedade e registro, e afetam contratos, empregados e credores.",
+        "A <strong>transformação</strong> muda o tipo societário sem dissolver a empresa, por exemplo de empresário individual para LTDA ou SLU, ou de LTDA para S.A. Trabalhamos junto com o contador nos balanços e laudos."]},
+  {"h3":"Distrato social e baixa da empresa", "id":"baixa",
+   "p":["O encerramento regular passa pelo distrato (ou pela dissolução e liquidação), pelo registro na JUCESP e pela baixa do CNPJ, da inscrição estadual e do CCM. A lei permite a baixa mesmo com débitos, mas os sócios e administradores continuam respondendo por eles (art. 9º da LC 123/2006). Antes do distrato, levantamos pendências fiscais, trabalhistas e contratuais para planejar a saída."]},
+  # ---------------- DUE DILIGENCE ----------------
+  {"h2":"Due diligence e certidões", "id":"due-diligence",
+   "p":["Antes de comprar, vender, partilhar ou contratar, levantamos a matrícula do imóvel e as certidões do vendedor ou da empresa nos órgãos e tribunais pertinentes, e entregamos um relatório com o que cada uma mostra e os pontos de atenção. A lista é ajustada ao negócio e aos lugares onde as partes viveram ou tiveram sede nos últimos anos."],
+   "cta":("Falar sobre due diligence", WHATS_DD, "due-diligence")},
+  {"h3":"Compra e venda de imóvel", "id":"imovel",
+   "p":["A matrícula atualizada mostra o proprietário, as hipotecas, penhoras, indisponibilidades e ações averbadas. Desde a Lei 13.097/2015, esses registros devem estar concentrados na matrícula, e a Lei 14.382/2022 deixou de exigir certidões forenses para a validade do negócio. Ainda assim, as certidões do vendedor mostram riscos que não aparecem na matrícula: dívidas trabalhistas e fiscais, execuções e protestos que podem indicar insolvência e levar a discussões sobre fraude contra credores ou à execução. Por isso o levantamento costuma ser feito antes do sinal e da escritura."]},
+  {"h3":"Aquisição de empresa", "id":"empresa",
+   "p":["Na compra de uma empresa ou de participação societária, levantamos as certidões da sociedade e dos sócios, a situação na JUCESP e na Receita Federal, débitos fiscais e trabalhistas, protestos e processos, junto com a revisão do contrato social e das alterações, para identificar responsabilidades que passam ao comprador."]},
+  {"h3":"Inventário, divórcio e licitação", "id":"inventario",
+   "p":["No inventário e no divórcio, as certidões dos bens e das pessoas são exigidas pelo cartório ou pelo juiz para a partilha; organizamos o levantamento conforme o caso, inclusive as matrículas dos imóveis. Para habilitação em licitações, conferimos a regularidade fiscal, previdenciária e trabalhista da empresa e a validade de cada certidão na data da sessão."]},
+  {"h3":"Quais certidões levantamos", "id":"certidoes",
+   "p":[],
+   "ul":["Matrícula atualizada do imóvel, com ônus reais e ações",
+         "Certidão conjunta federal (Receita Federal e PGFN)",
+         "Certidões estaduais (Secretaria da Fazenda e dívida ativa da PGE)",
+         "Certidões municipais (tributos imobiliários e mobiliários)",
+         "Certificado de regularidade do FGTS (CRF), para empresas",
+         "Certidão negativa de débitos trabalhistas (CNDT)",
+         "Certidões de protesto",
+         "Certidões de distribuição dos tribunais estaduais, federais e do trabalho pertinentes",
+         "Certidão de falência e recuperação judicial, quando aplicável",
+         "Taxas, emolumentos e custas de cartórios e órgãos são pagos à parte"]},
+  # ---------------- COMO FUNCIONA / DOCUMENTOS ----------------
+  {"h2":"Como funciona", "id":"como-funciona",
+   "p":["O atendimento é 100% online. Você informa o CNPJ (ou o imóvel) e o que precisa; consultamos os dados públicos e pedimos só o que falta. Os sócios assinam com a conta <strong>gov.br</strong> nível prata ou ouro, ou com certificado digital, sem precisar ir à Junta Comercial. O tempo total depende da Prefeitura, da Junta Comercial, dos cartórios e de eventuais exigências; informamos a previsão depois de ver o caso."]},
+  {"h2":"Documentos", "id":"documentos",
+   "p":["Antes de pedir, buscamos sozinhos o que é público (cartão CNPJ, ficha da JUCESP, inscrição estadual e CCM). Em regra, pedimos:"],
+   "ul":["Último contrato social consolidado e alterações posteriores (para empresas já abertas)",
+         "Dados de cada sócio: documento de identidade com data de emissão, CPF, estado civil e regime de bens, endereço",
+         "Conta gov.br prata ou ouro (ou certificado digital) de quem vai assinar",
+         "Dados do contador responsável, exigidos no DBE",
+         "Para mudança de endereço ou abertura: endereço completo e número do IPTU (SQL)",
+         "Para due diligence: matrícula ou endereço do imóvel e dados das partes",
+         "As taxas públicas da Junta Comercial são pagas diretamente pela empresa"]},
+ ],
+ "steps_h2":"Etapas do atendimento",
+ "steps":[
+  {"t":"Você conta o que precisa","d":"Pelo WhatsApp, você informa o CNPJ ou o imóvel e o que vai mudar, abrir, registrar ou verificar."},
+  {"t":"Documentos revisados por advogado","d":"Conferimos contrato, quórum e prazos, redigimos minutas e atas e levantamos as certidões necessárias."},
+  {"t":"Assinatura, registro e relatório","d":"Colhemos as assinaturas pelo gov.br, protocolamos na JUCESP e acompanhamos as atualizações, ou entregamos o relatório da due diligence."},
+ ],
+ "faq_h2":"Perguntas frequentes",
+ "faqs":[
+  {"q":"Preciso ir à Junta Comercial ou a cartório?","a":["Para alterações, abertura e atos registrados na JUCESP, não: o pedido e o registro são feitos pela internet, e os sócios assinam com a conta gov.br (prata ou ouro) ou certificado digital."]},
+  {"q":"A alteração atualiza o CNPJ automaticamente?","a":["Pelo sistema integrado (Redesim), o registro na JUCESP atualiza o CNPJ. A inscrição estadual e o cadastro municipal podem exigir passos próprios, e conferimos cada um ao final."]},
+  {"q":"Minha empresa precisa ter contador?","a":["Sim. O DBE exige a indicação do contador responsável, e o regime tributário, a escrita fiscal e as demonstrações ficam com ele. Trabalhamos em conjunto."]},
+  {"q":"Precisa de capital mínimo para abrir uma LTDA ou SLU?","a":["Não há capital mínimo na lei para LTDA e SLU. O valor deve ser compatível com a atividade, porque os sócios respondem pela integralização."]},
+  {"q":"Toda ata precisa ser registrada na JUCESP?","a":["Não. Precisam de arquivamento as atas que alteram o contrato, elegem ou destituem administradores e outros atos que devam produzir efeitos perante terceiros. Indicamos caso a caso."]},
+  {"q":"Dá para fechar uma empresa com dívidas?","a":["A lei permite a baixa mesmo com débitos, mas a responsabilidade dos sócios e administradores continua. Por isso levantamos as pendências antes do distrato."]},
+  {"q":"Se a matrícula do imóvel está limpa, preciso das certidões do vendedor?","a":["A matrícula é o ponto de partida, mas não mostra dívidas e processos que ainda não foram averbados. As certidões do vendedor ajudam a avaliar o risco antes de pagar. Uma certidão com apontamento nem sempre impede o negócio: o relatório explica cada caso."]},
+  {"q":"Atendem fora da capital?","a":["Sim, em todo o estado de São Paulo, já que o registro na JUCESP é online. A viabilidade segue as regras da Prefeitura de cada cidade, e a maioria das certidões é solicitada pela internet."]},
+ ],
+ "band_h2":"Precisa alterar, abrir, registrar ou verificar?",
+ "band_sub":"Envie o CNPJ ou os dados do imóvel e conte o que precisa. Respondemos com os documentos necessários e as etapas do seu caso.",
+ "contact_h2":"Fale com o advogado",
+ "about_line":"Atuação em direito societário: alterações contratuais, abertura de empresas, atas, reorganizações, encerramento e due diligence, com registro na JUCESP.",
+}
+
 # ============================================================================ #
 #  Render + escrita
 # ============================================================================ #
@@ -1221,6 +1387,7 @@ def render(page):
     legal, faqpage = schema_for(page)
     schema_json = json.dumps({"@context":"https://schema.org","@graph":[legal, faqpage]}, ensure_ascii=False, indent=1)
     m = _base_mapping(page["title"], page["meta"], f"{LANDING}/{page['slug']}/", schema_json)
+    if page.get("whats"): m["whats"] = page["whats"]  # mensagem própria do WhatsApp (ex.: societário)
     m.update({
         "h1": page["h1"], "hero_sub": page["hero_sub"], "hero_note": page["hero_note"], "eyebrow": page["eyebrow_top"],
         "sit_eyebrow": page["sit_eyebrow"], "sit_h2": page["sit_h2"], "sit_sub": page["sit_sub"],
@@ -1289,7 +1456,7 @@ def main():
     dist.mkdir()
 
     for slug, page in PAGES.items():
-        page["eyebrow_top"] = f"Direito {dict(PRACTICES)[slug]} · São Paulo" if slug in dict(PRACTICES) else "São Paulo"
+        page["eyebrow_top"] = page.get("eyebrow") or (f"Direito {dict(PRACTICES)[slug]} · São Paulo" if slug in dict(PRACTICES) else "São Paulo")
         # avisos de tamanho
         if len(page["title"]) > 60: warnings.append(f"[TITLE>60] {slug}: {len(page['title'])}")
         if len(page["meta"]) > 155: warnings.append(f"[META>155] {slug}: {len(page['meta'])}")

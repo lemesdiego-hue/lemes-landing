@@ -170,6 +170,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -399,7 +401,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
-   <div class="c1 sec-head"><h2>Perguntas frequentes sobre direito de família</h2></div>
+   <div class="c1 sec-head"><h2 id="perguntas">Perguntas frequentes sobre direito de família</h2></div>
    <div class="c23"><div class="faq"><details><summary>O que faz um advogado de família?</summary><div class="faq__a"><p>Atua nos conflitos de família: divórcio, guarda de filhos, pensão alimentícia, união estável, partilha de bens e alienação parental, entre outros. Orienta acordos, atua em cartório quando possível e representa o cliente na Justiça quando necessário.</p></div></details><details><summary>Como funciona a guarda compartilhada?</summary><div class="faq__a"><p>Na guarda compartilhada, ambos os pais participam das decisões sobre a vida do filho, com a convivência definida entre eles. É a regra atual e não depende de os pais morarem juntos. A guarda unilateral só é fixada em situações específicas, sempre no melhor interesse da criança.</p></div></details><details><summary>Como é definido o valor da pensão alimentícia?</summary><div class="faq__a"><p>Pelo binômio necessidade e possibilidade: o que o filho precisa e o quanto o alimentante pode pagar. Não há percentual fixo em lei. Quando a situação muda, o valor pode ser revisado para mais ou para menos, ou até cessar.</p></div></details><details><summary>O que fazer quando a pensão não é paga?</summary><div class="faq__a"><p>É possível ajuizar a execução de alimentos. Conforme o rito, o devedor pode ter bens penhorados e, no rito mais severo, ser preso pela dívida de pensão. Guarde os comprovantes do que não foi pago.</p></div></details><details><summary>União estável precisa de partilha ao terminar?</summary><div class="faq__a"><p>Sim. A dissolução da união estável, como o divórcio, exige a partilha dos bens adquiridos durante a convivência, conforme o regime aplicável. Havendo acordo, pode ser feita em cartório; havendo conflito, na Justiça.</p></div></details></div></div>
   </div>
  </section>
@@ -491,6 +493,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";
