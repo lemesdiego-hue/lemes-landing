@@ -1429,6 +1429,7 @@ def sitemap_xml():
     today = datetime.date.today().isoformat()
     entries = [(f"{LANDING}/", "1.0")] + [(f"{LANDING}/{slug}/", "0.8") for slug, _ in PRACTICES]
     entries.append((f"{LANDING}/privacidade/", "0.2"))
+    entries.append((f"{LANDING}/termos/", "0.2"))
     urls = "\n".join(
         "  <url>\n"
         f"    <loc>{loc}</loc>\n"
