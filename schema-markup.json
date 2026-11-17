@@ -951,5 +951,118 @@
         ]
       }
     ]
+  },
+  "bancario": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "@id": "https://lemesadvogados.com/bancario/#legalservice",
+        "name": "Lemes Sociedade Individual de Advogados",
+        "description": "Golpe do Pix, consignado não contratado, RMC/RCC, nome negativado ou tarifa indevida? Advogado acompanha seu processo contra o banco em SP.",
+        "url": "https://lemesadvogados.com/bancario/",
+        "telephone": "+55-11-99515-5021",
+        "email": "diego@lemesadvogados.com",
+        "priceRange": "$$",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Coronel Melo de Oliveira, 557",
+          "addressLocality": "Perdizes, São Paulo",
+          "addressRegion": "SP",
+          "postalCode": "05011-040",
+          "addressCountry": "BR"
+        },
+        "areaServed": "São Paulo, SP",
+        "knowsAbout": [
+          "Direito Bancário",
+          "Direito do Consumidor",
+          "Golpe do Pix",
+          "Fraude bancária",
+          "Empréstimo consignado não contratado",
+          "Cartão de crédito consignado (RMC/RCC)",
+          "Negativação indevida",
+          "Tarifas bancárias indevidas",
+          "Juizado Especial Cível"
+        ],
+        "logo": "https://lemesadvogados.com/assets/logo-claro.png",
+        "image": "https://lemesadvogados.com/assets/og-lemes-advogados.jpg",
+        "foundingDate": "2016",
+        "founder": {
+          "@type": "Person",
+          "name": "Diego Henrique Lemes",
+          "jobTitle": "Advogado",
+          "identifier": "OAB/SP 255.888",
+          "image": "https://lemesadvogados.com/assets/diego-lemes-advogado-360.webp"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/diego-henrique-lemes-8882b0/",
+          "https://www.instagram.com/lemesadvsp/"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Entrei no Juizado sem advogado. Posso contratar agora?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. O advogado pode entrar no processo em qualquer fase: antes da audiência, depois da sentença, para o recurso ou no cumprimento de sentença. Basta a procuração, que pode ser assinada pelo celular."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Preciso de advogado para recorrer da sentença?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. No Juizado Especial Cível, o recurso contra a sentença exige advogado (art. 41, § 2º, da Lei 9.099/95). O prazo é de 10 dias a partir da ciência da sentença, por isso vale buscar orientação logo que ela sair."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O banco tem de devolver o dinheiro do golpe do Pix?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de como o golpe aconteceu. A Súmula 479 do STJ diz que as instituições financeiras respondem objetivamente pelos danos gerados por fraudes e delitos praticados por terceiros no âmbito de operações bancárias. Cada caso é analisado a partir dos extratos, dos protocolos e do boletim de ocorrência."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Apareceu um consignado que eu não fiz. O que faço primeiro?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Guarde o extrato do benefício ou o contracheque, registre a reclamação no banco e anote o protocolo, e faça o boletim de ocorrência. Se o valor caiu na sua conta, não o utilize antes de receber orientação. O guia sobre consignado não contratado explica o passo a passo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como vou saber o que acontece no meu processo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O escritório consulta os processos todos os dias. A cada movimentação, você recebe o aviso pelo WhatsApp com a explicação do que ela significa e do próximo passo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Preciso ir ao escritório?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. A conversa, o envio de documentos e a assinatura da procuração e do contrato são feitos pelo celular. Se preferir, o escritório fica na Rua Coronel Melo de Oliveira, 557, em Perdizes, São Paulo/SP."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como são combinados os honorários?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Os honorários são explicados na primeira conversa e formalizados em contrato escrito, antes de qualquer trabalho no processo."
+            }
+          }
+        ]
+      }
+    ]
   }
 }

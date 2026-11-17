@@ -166,6 +166,8 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .prose li{margin-top:.45rem}
 .prose strong{color:var(--ink)}
 .prose a{color:var(--ledger);text-underline-offset:3px}
+.prose h3{font-size:var(--s1);margin-top:2rem;scroll-margin-top:6rem}.prose h2[id],#perguntas{scroll-margin-top:6rem}
+.prose .sec-cta{margin-top:1.4rem}.prose a.btn{color:#fff;text-decoration:none;overflow-wrap:normal}
 .prose{overflow-wrap:break-word}
 @media(min-width:900px){
  .prose--split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gap)}
@@ -237,6 +239,22 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .fab{transition:transform .16s,opacity .2s}.fab--oculto{opacity:0;transform:translateY(1rem);pointer-events:none}.fab span{display:none}
 @media(min-width:520px){.fab span{display:inline}}
 @media(max-width:560px){.hero .cta .btn{width:100%}.band .btn{width:100%}}
+/* seção escura de destaque (mesmos tokens do topo) */
+.dark{background:var(--ink);color:var(--on-dark)}
+.dark .eyebrow{color:var(--on-dark3)}.dark .eyebrow::before{background:var(--gold)}
+.dark .sec-head p{color:var(--on-dark2)}
+.checks{list-style:none;padding:0;display:grid;gap:1.25rem var(--gap);margin-top:clamp(1.8rem,4vw,2.8rem)}
+@media(min-width:900px){.checks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.checks li{padding-top:1.1rem;border-top:1px solid rgba(244,241,234,.22)}
+.checks b{display:block;font-family:var(--display);font-weight:600;font-size:var(--s1);line-height:1.25;color:var(--on-dark)}
+.checks span{display:block;margin-top:.5rem;color:var(--on-dark2)}
+.card__tag{font-family:var(--ui);font-weight:600;font-size:var(--s-1);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.sec-foot{margin-top:clamp(1.6rem,3vw,2.2rem);display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.sec-foot small{font-family:var(--ui);font-size:var(--s-1);color:var(--muted)}
+/* número do processo vindo do link (?p=) */
+.hero__proc{margin-top:1.2rem;padding:.7rem 1rem;border-left:3px solid var(--gold);background:rgba(244,241,234,.06);font-family:var(--ui);font-size:.95rem;color:var(--on-dark2)}
+.hero__proc b{color:var(--on-dark);font-weight:700;overflow-wrap:anywhere}
+@media(max-width:560px){.sec-foot .btn{width:100%}}
 
 
     .prose h1, .prose h2, .prose h3 { margin-top: 2rem; margin-bottom: 1rem; text-transform: none; }
@@ -268,6 +286,66 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
       
       <div>
         
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/cartao-consignado-rmc-rcc-inss-cancelar-devolucao/" style="text-decoration: none; color: inherit;">Cartão de crédito consignado (RMC/RCC) no benefício do INSS: como cancelar e pedir devolução</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">Desconto de cartão consignado (RMC ou RCC) no seu benefício do INSS? Entenda o que é, como pedir o cancelamento e quando cabe pedir a devolução no Juizado.</p>
+        <a href="/noticias/cartao-consignado-rmc-rcc-inss-cancelar-devolucao/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/emprestimo-consignado-nao-contratado-juizado/" style="text-decoration: none; color: inherit;">Empréstimo consignado que você não contratou: o que fazer e como funciona a ação no Juizado</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">Apareceu desconto de empréstimo consignado que você não fez? Veja os primeiros passos, as provas e como funciona a ação no Juizado Especial Cível de SP.</p>
+        <a href="/noticias/emprestimo-consignado-nao-contratado-juizado/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/golpe-pix-falsa-central-banco-devolucao-sumula-479/" style="text-decoration: none; color: inherit;">Golpe do Pix e falsa central do banco: quando o banco tem de devolver o dinheiro (Súmula 479 do STJ)</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">Caiu no golpe do Pix ou da falsa central do banco? Veja o que fazer nas primeiras horas, o MED e quando a Súmula 479 do STJ obriga o banco a ressarcir.</p>
+        <a href="/noticias/golpe-pix-falsa-central-banco-devolucao-sumula-479/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/juizado-sem-advogado-contra-banco-quando-contratar/" style="text-decoration: none; color: inherit;">Entrei no Juizado sem advogado contra o banco: quando vale contratar um advogado</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">Entrou sozinho no Juizado contra o banco? Veja quando o advogado faz diferença: audiência de instrução, recurso (obrigatório) e cumprimento de sentença.</p>
+        <a href="/noticias/juizado-sem-advogado-contra-banco-quando-contratar/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/nome-negativado-indevidamente-banco-dano-moral-juizado/" style="text-decoration: none; color: inherit;">Nome negativado indevidamente pelo banco: indenização por dano moral no Juizado</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">O banco negativou seu nome por dívida inexistente ou já paga? Veja como tirar o nome dos cadastros e quando cabe dano moral no Juizado Especial Cível.</p>
+        <a href="/noticias/nome-negativado-indevidamente-banco-dano-moral-juizado/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
+      <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
+        <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 17 de novembro de 2026</span>
+        <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
+          <a href="/noticias/tarifas-seguros-descontados-sem-autorizacao-devolucao/" style="text-decoration: none; color: inherit;">Tarifas e seguros descontados sem autorização na conta: como pedir o dinheiro de volta</a>
+        </h2>
+        <p style="color: var(--ink2); font-size: var(--s0); line-height: 1.6; margin-bottom: 1.2rem; max-width: 75ch;">O banco desconta tarifa, pacote ou seguro que você não contratou? Veja como identificar, cancelar e pedir a devolução, inclusive em dobro (art. 42 do CDC).</p>
+        <a href="/noticias/tarifas-seguros-descontados-sem-autorizacao-devolucao/" style="font-family: var(--mono); font-size: var(--s-1); font-weight: 700; text-decoration: none; color: var(--gold-ink);">Ler decisão completa &rarr;</a>
+      </div>
+    
+
       <div style="border-bottom: 1px solid var(--line2); padding-bottom: 2.5rem; margin-bottom: 2.5rem;">
         <span class="eyebrow" style="font-size: var(--s-1); color: var(--muted); display: block; margin-bottom: 0.6rem;">Direito do Consumidor · 24 de outubro de 2026</span>
         <h2 style="font-size: var(--s2); margin-bottom: 0.8rem; text-transform: none; line-height: 1.2;">
@@ -332,6 +410,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
    <h2 class="foot__t">Áreas de atuação</h2>
    <a href="/trabalhista/">Trabalhista</a>
 <a href="/civel/">Cível</a>
+<a href="/bancario/">Bancário</a>
 <a href="/divorcio/">Divórcio</a>
 <a href="/familia/">Família</a>
 <a href="/inventario/">Inventário</a>
@@ -364,6 +443,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var Z="https://wa.me/5511995155021";
  // local do clique no WhatsApp (rótulo para o GA4)
  function whatsLoc(a){
+  if(a.dataset&&a.dataset.loc) return a.dataset.loc;
   if(a.classList.contains("fab")) return "fab";
   if(a.closest(".bar")) return "header";
   if(a.closest(".hero")) return "hero";
@@ -384,7 +464,7 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
  var f=document.getElementById("leadform");
  if(f){f.addEventListener("submit",function(e){e.preventDefault();
   var n=(f.nome.value||"").trim(),c=(f.contato.value||"").trim(),m=(f.msg.value||"").trim();
-  var t="Olá! Meu nome é "+n+". "+(m||"Gostaria de uma consulta.")+(c?" Meu contato: "+c+".":"");
+  var t="Olá! Meu nome é "+n+". "+(m||"Gostaria de uma consulta.")+(window.LM_PROC?" Número do processo: "+window.LM_PROC+".":"")+(c?" Meu contato: "+c+".":"");
   whatsEvent("form","");
   window.open(Z+"?text="+encodeURIComponent(t),"_blank","noopener");
  });}

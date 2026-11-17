@@ -43,6 +43,7 @@ NAP = {
 PRACTICES = [
     ("trabalhista",   "Trabalhista"),
     ("civel",         "Cível"),
+    ("bancario",      "Bancário"),
     ("divorcio",      "Divórcio"),
     ("familia",       "Família"),
     ("inventario",    "Inventário"),
@@ -72,6 +73,7 @@ NAV_AREA = ('<a href="/">Início</a><a href="/#areas">Áreas</a><a href="#sobre"
 AREA_ICONS = {
     "trabalhista": "M3 8h18v12H3z M8 8V5h8v3 M3 13h18",
     "civel": "M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h7",
+    "bancario": "M3 6h18v12H3z M3 10h18 M7 14.5h4",
     "divorcio": "M3 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0 M11 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0",
     "familia": "M8 8a3 3 0 1 0 0-.01 M16 9a2.5 2.5 0 1 0 0-.01 M3 20c0-3 2.2-5 5-5s5 2 5 5 M13 20c.3-2.4 1.6-4 3.5-4 2 0 3.5 1.6 3.5 4",
     "inventario": "M3 11l9-7 9 7 M5 10v10h14V10 M10 20v-6h4v6",
@@ -83,6 +85,7 @@ AREA_ICONS = {
 AREA_LINES = {
     "trabalhista": "Demissão, verbas rescisórias, horas extras, FGTS e assédio.",
     "civel": "Contratos, consumidor, indenizações e cobranças.",
+    "bancario": "Golpe do Pix, consignado não contratado, RMC/RCC, negativação e tarifas.",
     "divorcio": "No cartório ou judicial, consensual ou litigioso, guarda e partilha.",
     "familia": "Guarda, pensão alimentícia, união estável e partilha.",
     "inventario": "Inventário judicial ou extrajudicial, herança e partilha.",
@@ -106,7 +109,7 @@ HOME = {
             "A <strong>Lemes Sociedade Individual de Advogados</strong> atua em São Paulo com foco em resolver o seu caso de forma clara e próxima. O atendimento é conduzido pelo próprio advogado, <strong>Diego Henrique Lemes (OAB/SP 255.888)</strong>, do primeiro contato ao desfecho, sem intermediários e sem juridiquês.",
             "O escritório fica em <strong>Perdizes, São Paulo</strong>, e atende clientes de toda a cidade e do estado. A primeira conversa é <strong>gratuita</strong> e começa pelo WhatsApp: você explica a situação do seu jeito e recebe uma orientação honesta sobre o que dá para fazer."]},
         {"h2": "Como saber qual é o seu caso", "p": [
-            "Se você foi demitido ou tem horas extras não pagas, comece pelo <a href=\"/trabalhista/\">Direito Trabalhista</a>. Para separação, guarda e partilha, veja <a href=\"/divorcio/\">Divórcio</a> e <a href=\"/familia/\">Família</a>. Após o falecimento de um familiar, o <a href=\"/inventario/\">Inventário</a>. Contratos, consumidor e cobranças ficam no <a href=\"/civel/\">Cível</a>; imóveis, no <a href=\"/imobiliario/\">Imobiliário</a>. Aposentadoria e benefícios negados pelo INSS, no <a href=\"/previdenciario/\">Previdenciário</a>. Problemas em voos, no <a href=\"/aereo/\">Direito Aéreo</a>. Para empresas, o <a href=\"/empresarial/\">Empresarial</a>. Na dúvida, é só mandar uma mensagem que eu indico o caminho certo."]},
+            "Se você foi demitido ou tem horas extras não pagas, comece pelo <a href=\"/trabalhista/\">Direito Trabalhista</a>. Para separação, guarda e partilha, veja <a href=\"/divorcio/\">Divórcio</a> e <a href=\"/familia/\">Família</a>. Após o falecimento de um familiar, o <a href=\"/inventario/\">Inventário</a>. Contratos, consumidor e cobranças ficam no <a href=\"/civel/\">Cível</a>. Golpe do Pix, consignado que você não fez, nome negativado ou processo contra banco no Juizado, no <a href=\"/bancario/\">Direito Bancário</a>; imóveis, no <a href=\"/imobiliario/\">Imobiliário</a>. Aposentadoria e benefícios negados pelo INSS, no <a href=\"/previdenciario/\">Previdenciário</a>. Problemas em voos, no <a href=\"/aereo/\">Direito Aéreo</a>. Para empresas, o <a href=\"/empresarial/\">Empresarial</a>. Na dúvida, é só mandar uma mensagem que eu indico o caminho certo."]},
     ],
     "steps": [
         {"t": "Você conta o que houve", "d": "Uma mensagem no WhatsApp basta. Você explica do seu jeito e eu faço as perguntas certas."},
@@ -115,7 +118,7 @@ HOME = {
     ],
     "faqs": [
         {"q": "A primeira conversa é gratuita?", "a": ["Sim. Você explica a situação pelo WhatsApp e recebe uma orientação inicial, sem compromisso."]},
-        {"q": "Quais áreas o escritório atende?", "a": ["Trabalhista, Cível, Divórcio, Família, Inventário, Imobiliário, Previdenciário, Direito Aéreo e Empresarial. Cada área tem uma página própria com direitos, prazos e documentos."]},
+        {"q": "Quais áreas o escritório atende?", "a": ["Trabalhista, Cível, Bancário, Divórcio, Família, Inventário, Imobiliário, Previdenciário, Direito Aéreo e Empresarial. Cada área tem uma página própria com direitos, prazos e documentos."]},
         {"q": "Preciso ir ao escritório?", "a": ["Não. Contrato e procuração são assinados pelo celular, e os processos tramitam de forma digital. Se preferir, o escritório fica na Rua Coronel Melo de Oliveira, 557, em Perdizes, São Paulo/SP."]},
         {"q": "Como falo com o advogado?", "a": ["Pelo WhatsApp (11) 99515-5021 ou pelo e-mail diego@lemesadvogados.com. Quem atende é o próprio Diego Henrique Lemes, OAB/SP 255.888."]},
     ],
@@ -419,6 +422,22 @@ a.card:hover{border-color:var(--ink);transform:translateY(-2px)}
 .fab{transition:transform .16s,opacity .2s}.fab--oculto{opacity:0;transform:translateY(1rem);pointer-events:none}.fab span{display:none}
 @media(min-width:520px){.fab span{display:inline}}
 @media(max-width:560px){.hero .cta .btn{width:100%}.band .btn{width:100%}}
+/* seção escura de destaque (mesmos tokens do topo) */
+.dark{background:var(--ink);color:var(--on-dark)}
+.dark .eyebrow{color:var(--on-dark3)}.dark .eyebrow::before{background:var(--gold)}
+.dark .sec-head p{color:var(--on-dark2)}
+.checks{list-style:none;padding:0;display:grid;gap:1.25rem var(--gap);margin-top:clamp(1.8rem,4vw,2.8rem)}
+@media(min-width:900px){.checks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.checks li{padding-top:1.1rem;border-top:1px solid rgba(244,241,234,.22)}
+.checks b{display:block;font-family:var(--display);font-weight:600;font-size:var(--s1);line-height:1.25;color:var(--on-dark)}
+.checks span{display:block;margin-top:.5rem;color:var(--on-dark2)}
+.card__tag{font-family:var(--ui);font-weight:600;font-size:var(--s-1);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.sec-foot{margin-top:clamp(1.6rem,3vw,2.2rem);display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.sec-foot small{font-family:var(--ui);font-size:var(--s-1);color:var(--muted)}
+/* número do processo vindo do link (?p=) */
+.hero__proc{margin-top:1.2rem;padding:.7rem 1rem;border-left:3px solid var(--gold);background:rgba(244,241,234,.06);font-family:var(--ui);font-size:.95rem;color:var(--on-dark2)}
+.hero__proc b{color:var(--on-dark);font-weight:700;overflow-wrap:anywhere}
+@media(max-width:560px){.sec-foot .btn{width:100%}}
 """
 
 JS = r"""
@@ -447,7 +466,7 @@ JS = r"""
  var f=document.getElementById("leadform");
  if(f){f.addEventListener("submit",function(e){e.preventDefault();
   var n=(f.nome.value||"").trim(),c=(f.contato.value||"").trim(),m=(f.msg.value||"").trim();
-  var t="Olá! Meu nome é "+n+". "+(m||"Gostaria de uma consulta.")+(c?" Meu contato: "+c+".":"");
+  var t="Olá! Meu nome é "+n+". "+(m||"Gostaria de uma consulta.")+(window.LM_PROC?" Número do processo: "+window.LM_PROC+".":"")+(c?" Meu contato: "+c+".":"");
   whatsEvent("form","");
   window.open(Z+"?text="+encodeURIComponent(t),"_blank","noopener");
  });}
@@ -702,7 +721,7 @@ AREA_BODY = r"""$header
   <div class="c12">
    <p class="eyebrow">$eyebrow</p>
    <h1 id="h1">$h1</h1>
-   <p class="lead">$hero_sub</p>
+   <p class="lead">$hero_sub</p>$hero_extra
    <div class="cta">
     <a class="btn" href="$whats" target="_blank" rel="noopener">$zap Falar agora no WhatsApp</a>
     <a class="btn btn--ghost" href="#contato">Enviar mensagem</a>
@@ -721,7 +740,7 @@ AREA_BODY = r"""$header
   <div class="g3"><div class="c12 sec-head"><p class="eyebrow">$sit_eyebrow</p><h2>$sit_h2</h2><p>$sit_sub</p></div></div>
   $cards
  </section>
-
+$after_cards
  <!-- CONTEÚDO RASTREÁVEL -->
  <section class="section tint">
   <div class="wrap prose prose--split">
@@ -734,7 +753,7 @@ AREA_BODY = r"""$header
   <div class="g3"><div class="c12 sec-head"><h2>$steps_h2</h2></div></div>
   $steps
  </section>
-
+$after_steps
  <!-- FAQ -->
  <section class="section tint">
   <div class="wrap g3">
@@ -757,7 +776,7 @@ $about
  <!-- CONTATO + FORMULÁRIO -->
 $contact
 </main>
-
+$page_js
 """
 
 
@@ -1368,6 +1387,153 @@ PAGES["societario"] = {
 }
 
 # ============================================================================ #
+#  DIREITO BANCÁRIO (17/11/2026): destino dos contatos com quem entrou sozinho
+#  no Juizado contra banco (e-mail/WhatsApp), de anúncios e de SEO.
+#  ?p=<número do processo> na URL entra na mensagem do WhatsApp (só dígitos, ponto e hífen).
+# ============================================================================ #
+WHATS_BANC_MSG = "Olá, tenho um processo contra banco e quero ajuda"
+WHATS_BANC = _wa(WHATS_BANC_MSG)
+WHATS_BANC_NOVO = _wa("Olá, tive um problema com banco e quero orientação")
+
+# Artigos do blog (noticias/<slug>.md -> /noticias/<slug>/)
+BANC_ARTIGOS = [
+    ("golpe-pix-falsa-central-banco-devolucao-sumula-479", "Golpe do Pix e falsa central do banco",
+     "O que fazer nas primeiras horas, o MED e quando o banco tem de devolver o dinheiro."),
+    ("emprestimo-consignado-nao-contratado-juizado", "Empréstimo consignado que você não contratou",
+     "Primeiros passos, provas e como funciona a ação no Juizado Especial Cível."),
+    ("cartao-consignado-rmc-rcc-inss-cancelar-devolucao", "Cartão consignado RMC/RCC no INSS",
+     "O que é, por que o desconto parece não acabar e como pedir o cancelamento."),
+    ("nome-negativado-indevidamente-banco-dano-moral-juizado", "Nome negativado indevidamente pelo banco",
+     "Como tirar o nome dos cadastros e quando se discute dano moral."),
+    ("tarifas-seguros-descontados-sem-autorizacao-devolucao", "Tarifas e seguros descontados sem autorização",
+     "Como identificar, cancelar e pedir a devolução do que foi cobrado."),
+    ("juizado-sem-advogado-contra-banco-quando-contratar", "Entrei no Juizado sem advogado contra o banco",
+     "Fase por fase: quando dá para seguir sozinho e quando vale ter advogado."),
+]
+_ART = {s: f"/noticias/{s}/" for s, _, _ in BANC_ARTIGOS}
+_DOC_ICO = "M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h7"
+
+BANC_JEC = r"""
+ <!-- ENTROU NO JUIZADO SOZINHO? -->
+ <section class="section white" id="juizado">
+  <div class="wrap">
+   <div class="g3"><div class="c12 sec-head"><p class="eyebrow">Já tem processo</p><h2>Entrou no Juizado sozinho?</h2>
+    <p>Em causas de até 20 salários mínimos, a lei permite começar a ação no Juizado Especial Cível sem advogado. Do outro lado, o banco costuma vir com advogado, contrato e uma defesa padronizada. Há fases em que a orientação técnica faz diferença, e uma delas exige advogado por lei.</p></div></div>
+   <div class="cards cards--3">
+    <div class="card"><span class="card__tag">Fase 1</span><h3>Audiência de instrução</h3><p>É quando se produzem as provas: depoimentos, testemunhas e documentos. O advogado lê a defesa do banco, prepara as perguntas e aponta o que ainda falta provar.</p></div>
+    <div class="card"><span class="card__tag">Fase 2</span><h3>Recurso: advogado obrigatório</h3><p>Para recorrer da sentença, ou responder ao recurso do banco, a lei exige advogado (art. 41, § 2º, da Lei 9.099/95). O prazo é de 10 dias a partir da ciência da sentença.</p></div>
+    <div class="card"><span class="card__tag">Fase 3</span><h3>Cumprimento de sentença</h3><p>Com a decisão, é preciso conferir se o banco pagou o valor certo, com correção e juros, e pedir as medidas cabíveis quando ele não paga.</p></div>
+   </div>
+   <div class="sec-foot"><a class="btn" href="$whats" target="_blank" rel="noopener" data-loc="juizado">$zap Enviar o número do processo</a><small>O advogado pode entrar no processo em qualquer fase.</small></div>
+  </div>
+ </section>
+"""
+
+BANC_MONITOR = r"""
+ <!-- ACOMPANHAMENTO: AVISO DE CADA MOVIMENTAÇÃO -->
+ <section class="section dark" id="acompanhamento">
+  <div class="wrap">
+   <div class="g3"><div class="c12 sec-head"><p class="eyebrow">Acompanhamento</p><h2>Você é avisado de cada movimentação do seu processo.</h2>
+    <p>O escritório consulta os processos todos os dias, nos sistemas dos tribunais e nas publicações oficiais. Quando algo acontece no seu, como um despacho, uma audiência marcada, a sentença ou um recurso do banco, você recebe o aviso pelo WhatsApp, com a explicação do que aquilo significa.</p></div></div>
+   <ul class="checks">
+    <li><b>Consulta diária</b><span>Tribunais e Diário de Justiça verificados todos os dias, sem depender de você perguntar.</span></li>
+    <li><b>Aviso no WhatsApp</b><span>Cada movimentação chega para você, no mesmo canal em que conversamos.</span></li>
+    <li><b>Linguagem simples</b><span>O que aconteceu, o que muda para você e qual é o próximo passo.</span></li>
+   </ul>
+  </div>
+ </section>
+"""
+
+def _banc_artigos():
+    rows = "".join(
+        f'<a class="row" href="{_ART[s]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{_DOC_ICO}"/></svg>'
+        f'<div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></a>'
+        for s, t, d in BANC_ARTIGOS)
+    return ('\n <!-- GUIAS DO BLOG -->\n <section class="section wrap" id="guias">\n  <div class="g3">\n'
+            '   <div class="c1 sec-head"><p class="eyebrow">Para ler com calma</p><h2>Guias sobre problemas com banco</h2>'
+            '<p>Textos informativos, em linguagem simples, sobre as situações mais comuns.</p></div>\n'
+            f'   <div class="rows c23">{rows}</div>\n  </div>\n </section>\n')
+
+# ?p=<processo>: valida (só dígitos, ponto e hífen; 7+ dígitos) e põe só na mensagem do WhatsApp; não aparece na tela (Diego, 17/11/2026)
+BANC_JS = r"""<script>(function(){"use strict";
+ var raw="";try{raw=new URLSearchParams(location.search).get("p")||"";}catch(e){}
+ var p=(raw.match(/[0-9][0-9.\-]{5,29}/)||[""])[0].replace(/[.\-]+$/,"");
+ if((p.match(/[0-9]/g)||[]).length<7)return;
+ window.LM_PROC=p;
+ var msg="__MSG__. Número do processo: "+p;
+ function apply(){
+  var url="https://wa.me/5511995155021?text="+encodeURIComponent(msg);
+  document.querySelectorAll('a[href*="wa.me/5511995155021"]').forEach(function(a){a.href=url;});
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply);else apply();
+})();</script>""".replace("__MSG__", WHATS_BANC_MSG)
+
+PAGES["bancario"] = {
+ "slug":"bancario",
+ "whats": WHATS_BANC,
+ "nav": ('<a href="/">Início</a><a href="#juizado">Juizado</a><a href="#acompanhamento">Acompanhamento</a>'
+         '<a href="#perguntas">Dúvidas</a><a href="#contato">Contato</a>'),
+ "title":"Advogado de Direito Bancário em SP | Juizado | Lemes",
+ "meta":"Golpe do Pix, consignado não contratado, RMC/RCC, nome negativado ou tarifa indevida? Advogado acompanha seu processo contra o banco em SP.",
+ "h1":"Problema com banco? Seu processo acompanhado por advogado, <em>do começo ao fim.</em>",
+ "hero_sub":"Golpe do Pix, empréstimo consignado que você não fez, cartão RMC/RCC no INSS, nome negativado ou tarifa cobrada sem autorização. Se você já entrou no Juizado sozinho, o advogado assume o processo na fase em que ele está.",
+ "hero_note":"Juizado Especial Cível · Audiência, recurso e cumprimento de sentença · Aviso de cada movimentação",
+ "knows":["Direito Bancário","Direito do Consumidor","Golpe do Pix","Fraude bancária","Empréstimo consignado não contratado","Cartão de crédito consignado (RMC/RCC)","Negativação indevida","Tarifas bancárias indevidas","Juizado Especial Cível"],
+ "sit_eyebrow":"Para quem é",
+ "sit_h2":"Situações com banco que mais atendemos",
+ "sit_sub":"Pessoas físicas, muitas vezes aposentadas e pensionistas, com um destes problemas. Toque no assunto para ler o guia completo.",
+ "cards":[
+  {"t":"Golpe do Pix e falsa central","d":"Transferência feita sob orientação de um falso funcionário do banco. A Súmula 479 do STJ trata da responsabilidade do banco por fraudes de terceiros em operações bancárias.","href":_ART["golpe-pix-falsa-central-banco-devolucao-sumula-479"]},
+  {"t":"Consignado que você não contratou","d":"Desconto de empréstimo que você não pediu no benefício do INSS ou no salário, com ou sem depósito do valor na sua conta.","href":_ART["emprestimo-consignado-nao-contratado-juizado"]},
+  {"t":"Cartão consignado RMC/RCC","d":"Desconto mensal de cartão de crédito consignado no benefício, quando a intenção era um empréstimo comum ou nenhum cartão foi usado.","href":_ART["cartao-consignado-rmc-rcc-inss-cancelar-devolucao"]},
+  {"t":"Nome negativado indevidamente","d":"Inclusão no Serasa, SPC ou Boa Vista por dívida que você não reconhece, que já foi paga ou que está em discussão.","href":_ART["nome-negativado-indevidamente-banco-dano-moral-juizado"]},
+  {"t":"Tarifas e seguros sem autorização","d":"Cesta de serviços, seguro ou título de capitalização descontado na conta sem contratação. O art. 42 do CDC trata da devolução em dobro do que foi cobrado indevidamente.","href":_ART["tarifas-seguros-descontados-sem-autorizacao-devolucao"]},
+  {"t":"Já tenho processo no Juizado","d":"Entrou sozinho e agora vem a audiência, a sentença, o recurso ou a cobrança do valor? O advogado pode assumir em qualquer fase.","href":"#juizado"},
+ ],
+ "after_cards": BANC_JEC.replace("$whats", WHATS_BANC).replace("$zap", ZAP_SVG),
+ "prose":[
+  {"h2":"Advogado para ações contra bancos em São Paulo",
+   "p":["A <strong>Lemes Sociedade Individual de Advogados</strong> atua em ações de consumidores contra bancos, financeiras e instituições de pagamento, no <strong>Juizado Especial Cível</strong> e na Justiça comum de São Paulo. O atendimento começa pelo WhatsApp e é conduzido pelo advogado <strong>Diego Henrique Lemes (OAB/SP 255.888)</strong>.",
+        "Se você já tem um processo, basta enviar o número. Lemos o que já foi feito, a defesa do banco e os documentos, e explicamos com clareza em que fase ele está."]},
+  {"h2":"Quando o banco responde por fraude", "id":"fraude",
+   "p":["Pelo <strong>art. 14 do Código de Defesa do Consumidor</strong>, o fornecedor de serviços responde pelos danos causados por defeito na prestação do serviço, independentemente de culpa. A <strong>Súmula 479 do STJ</strong> aplica essa lógica aos bancos: as instituições financeiras respondem objetivamente pelos danos gerados por fraudes e delitos praticados por terceiros no âmbito de operações bancárias.",
+        "Isso não quer dizer que todo golpe gera devolução. A análise depende de como a fraude aconteceu, das movimentações registradas e das provas disponíveis, como extratos, protocolos de atendimento e boletim de ocorrência."]},
+  {"h2":"Cobrança indevida e devolução em dobro", "id":"devolucao",
+   "p":["Quando o banco desconta tarifa, seguro, parcela de empréstimo ou cartão que você não contratou, é possível pedir o cancelamento e a devolução. O <strong>parágrafo único do art. 42 do CDC</strong> prevê que o consumidor cobrado em quantia indevida tem direito à repetição do indébito, por valor igual ao dobro do que pagou em excesso, salvo hipótese de engano justificável."]},
+  {"h2":"Quais documentos separar", "id":"documentos",
+   "p":["Não é preciso ter tudo para a primeira conversa. O que você já tiver ajuda a entender o caso mais rápido:"],
+   "ul":["Número do processo, se você já entrou no Juizado;",
+         "Extratos da conta ou do benefício do INSS (no Meu INSS, o extrato de empréstimos mostra consignados e cartões);",
+         "Protocolos de reclamação no banco, no SAC, na ouvidoria ou no consumidor.gov.br;",
+         "Boletim de ocorrência, mensagens e prints, em caso de golpe;",
+         "Comprovante da negativação (consulta ao Serasa, SPC ou Boa Vista)."],
+   "cta":("Enviar documentos pelo WhatsApp", WHATS_BANC, "documentos")},
+ ],
+ "steps_h2":"Como funciona",
+ "steps":[
+  {"t":"Você manda o número do processo","d":"Pelo WhatsApp, envie o número do processo. Se ainda não entrou na Justiça, conte o que aconteceu. Não precisa ir ao escritório."},
+  {"t":"Analisamos o caso","d":"Lemos o processo, a defesa do banco e os seus documentos, e explicamos com clareza a fase em que ele está e os próximos passos."},
+  {"t":"Acompanhamos até o fim","d":"Com a procuração assinada pelo celular, assumimos o processo: audiências, petições, recurso e cumprimento de sentença."},
+ ],
+ "after_steps": BANC_MONITOR + _banc_artigos(),
+ "faq_h2":"Perguntas frequentes sobre processos contra bancos",
+ "faqs":[
+  {"q":"Entrei no Juizado sem advogado. Posso contratar agora?","a":["Sim. O advogado pode entrar no processo em qualquer fase: antes da audiência, depois da sentença, para o recurso ou no cumprimento de sentença. Basta a procuração, que pode ser assinada pelo celular."]},
+  {"q":"Preciso de advogado para recorrer da sentença?","a":["Sim. No Juizado Especial Cível, o recurso contra a sentença exige advogado (art. 41, § 2º, da Lei 9.099/95). O prazo é de 10 dias a partir da ciência da sentença, por isso vale buscar orientação logo que ela sair."]},
+  {"q":"O banco tem de devolver o dinheiro do golpe do Pix?","a":["Depende de como o golpe aconteceu. A Súmula 479 do STJ diz que as instituições financeiras respondem objetivamente pelos danos gerados por fraudes e delitos praticados por terceiros no âmbito de operações bancárias. Cada caso é analisado a partir dos extratos, dos protocolos e do boletim de ocorrência."]},
+  {"q":"Apareceu um consignado que eu não fiz. O que faço primeiro?","a":["Guarde o extrato do benefício ou o contracheque, registre a reclamação no banco e anote o protocolo, e faça o boletim de ocorrência. Se o valor caiu na sua conta, não o utilize antes de receber orientação. O <a href=\"/noticias/emprestimo-consignado-nao-contratado-juizado/\">guia sobre consignado não contratado</a> explica o passo a passo."]},
+  {"q":"Como vou saber o que acontece no meu processo?","a":["O escritório consulta os processos todos os dias. A cada movimentação, você recebe o aviso pelo WhatsApp com a explicação do que ela significa e do próximo passo."]},
+  {"q":"Preciso ir ao escritório?","a":["Não. A conversa, o envio de documentos e a assinatura da procuração e do contrato são feitos pelo celular. Se preferir, o escritório fica na Rua Coronel Melo de Oliveira, 557, em Perdizes, São Paulo/SP."]},
+  {"q":"Como são combinados os honorários?","a":["Os honorários são explicados na primeira conversa e formalizados em contrato escrito, antes de qualquer trabalho no processo."]},
+ ],
+ "band_h2":"Já tem processo contra o banco?",
+ "band_sub":"Envie o número pelo WhatsApp. Explicamos a fase em que ele está e como podemos acompanhar.",
+ "contact_h2":"Fale com o escritório sobre o seu caso",
+ "about_line":"Atuação em ações de consumidores contra bancos e financeiras, no Juizado Especial Cível e na Justiça comum, com acompanhamento diário dos processos.",
+ "page_js": BANC_JS,
+}
+
+# ============================================================================ #
 #  Render + escrita
 # ============================================================================ #
 def _base_mapping(page_title, page_meta, canonical, schema_json):
@@ -1397,8 +1563,10 @@ def render(page):
         "faq_h2": page["faq_h2"], "faq": faq_html(page["faqs"]),
         "band_h2": page["band_h2"], "band_sub": page["band_sub"],
         "contact_h2": page["contact_h2"],
-        "nav": NAV_AREA, "about_eyebrow": "O advogado",
-        "about_extra": f'<p class="txt">{page["about_line"]}</p>',
+        "nav": page.get("nav", NAV_AREA), "about_eyebrow": "O advogado",
+        "about_extra": f'<p class="txt">{page["about_line"]}</p>' + page.get("about_more", ""),
+        "hero_extra": page.get("hero_extra", ""), "after_cards": page.get("after_cards", ""),
+        "after_steps": page.get("after_steps", ""), "page_js": page.get("page_js", ""),
     })
     m["header"] = _fill(HEADER, m)
     m["about"] = _fill(ABOUT, m)
